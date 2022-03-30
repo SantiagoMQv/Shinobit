@@ -7,58 +7,63 @@ public class MovementPlayer : MonoBehaviour
     [SerializeField] private float speed;
 
     public bool moving => movementDirection.magnitude > 0;
+    public bool CanMove { get; private set; }
     public Vector2 MovementDirection => movementDirection;
 
     private Rigidbody2D rigibody2D;
     private Vector2 input;
     private Vector2 movementDirection;
 
-    // Start is called before the first frame update
     void Start()
     {
         rigibody2D = GetComponent<Rigidbody2D>();
-
+        CanMove = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (CanMove) { 
+            input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            // X
+            if(input.x > 0.1f)
+            {
+                movementDirection.x = 1f;
+            }else if(input.x < 0)
+            {
+                movementDirection.x = -1f;
+            }
+            else
+            {
+                movementDirection.x = 0f;
+            }
 
-        // X
-        if(input.x > 0.1f)
-        {
-            movementDirection.x = 1f;
-        }else if(input.x < 0)
-        {
-            movementDirection.x = -1f;
+            // Y
+            if (input.y > 0.1f)
+            {
+                movementDirection.y = 1f;
+            }
+            else if (input.y < 0)
+            {
+                movementDirection.y = -1f;
+            }
+            else
+            {
+                movementDirection.y = 0f;
+            }
         }
-        else
-        {
-            movementDirection.x = 0f;
-        }
-
-        // Y
-        if (input.y > 0.1f)
-        {
-            movementDirection.y = 1f;
-        }
-        else if (input.y < 0)
-        {
-            movementDirection.y = -1f;
-        }
-        else
-        {
-            movementDirection.y = 0f;
-        }
-
-
     }
 
     //Usamos FixedUpdate porque trabajamos con un RigiBody2D
     private void FixedUpdate()
     {
         rigibody2D.MovePosition(rigibody2D.position + movementDirection * speed * Time.fixedDeltaTime);
+    }
+
+    public void SetCanMove(bool result)
+    {
+
+        CanMove = result;
     }
 }

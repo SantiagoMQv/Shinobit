@@ -6,9 +6,11 @@ public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] private string layerIdle;
     [SerializeField] private string layerWalk;
+    [SerializeField] private string layerJump;
 
     private Animator animator;
     private MovementPlayer movementPlayer;
+    private StaminaPlayer staminaPlayer;
 
     //Hash de las animaciones
     private readonly int xDirection = Animator.StringToHash("X");
@@ -18,6 +20,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         movementPlayer = GetComponent<MovementPlayer>();
+        staminaPlayer = GetComponent<StaminaPlayer>();
 
     }
 
@@ -49,14 +52,22 @@ public class PlayerAnimation : MonoBehaviour
 
     private void LayersUpdate()
     {
-        if (movementPlayer.moving)
+        if (movementPlayer.CanMove)
         {
-            ActivateLayer(layerWalk);
+            if (movementPlayer.moving)
+            {
+                ActivateLayer(layerWalk);
+            }
+            else
+            {
+                ActivateLayer(layerIdle);
+            }
         }
         else
         {
-            ActivateLayer(layerIdle);
+            ActivateLayer(layerJump);
         }
+       
     }
 
     public void PlayerRevive()
@@ -64,6 +75,7 @@ public class PlayerAnimation : MonoBehaviour
         ActivateLayer(layerIdle);
         animator.SetBool(defeated, false);
     }
+
 
     private void DefeatedPlayerRequest()
     {
@@ -77,6 +89,7 @@ public class PlayerAnimation : MonoBehaviour
     private void OnEnable()
     {
         HealthPlayer.DefeatedPlayerEvent += DefeatedPlayerRequest;
+
     }
 
     private void OnDisable()

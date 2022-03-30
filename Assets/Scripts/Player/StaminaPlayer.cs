@@ -11,10 +11,12 @@ public class StaminaPlayer : MonoBehaviour
     public float CurrentStamina { get; private set; }
 
     private HealthPlayer healthPlayer;
-    private bool CanBeRegenerate;
+    private PlayerJump playerJump;
+    public bool CanBeRegenerate { get; private set; }
     private void Awake()
     {
         healthPlayer = GetComponent<HealthPlayer>();
+        playerJump = GetComponent<PlayerJump>();
     }
     void Start()
     {
@@ -43,7 +45,7 @@ public class StaminaPlayer : MonoBehaviour
             if(CurrentStamina < amount)
             {
                 CurrentStamina = 0;
-                CanBeRegenerate = false;
+                
                 StartCoroutine("WaitForRegenerate");
             }
             else
@@ -59,9 +61,12 @@ public class StaminaPlayer : MonoBehaviour
     IEnumerator WaitForRegenerate()
     {
         UpdateColorBarStaminaToBlack();
+        CanBeRegenerate = false;
+        playerJump.SetCanJump(false);
         yield return new WaitForSeconds(2);
         ResetColorBarStamina();
         CanBeRegenerate = true;
+        playerJump.SetCanJump(true);
         StaminaRegenerate();
     }
 
@@ -93,5 +98,11 @@ public class StaminaPlayer : MonoBehaviour
     protected void ResetColorBarStamina()
     {
         UIManager.Instance.ResetColorStamina();
+    }
+
+    public void SetCanBeRegenerate(bool result)
+    {
+
+        CanBeRegenerate = result;
     }
 }
