@@ -45,8 +45,15 @@ public class StaminaPlayer : MonoBehaviour
             if(CurrentStamina < amount)
             {
                 CurrentStamina = 0;
+                if (playerJump.Jumping)
+                {
+                    StartCoroutine("WaitForRegenerateWithJump");
+                }
+                else
+                {
+                    StartCoroutine("WaitForRegenerate");
+                }
                 
-                StartCoroutine("WaitForRegenerate");
             }
             else
             {
@@ -69,12 +76,27 @@ public class StaminaPlayer : MonoBehaviour
         playerJump.SetCanJump(true);
         StaminaRegenerate();
     }
+    IEnumerator WaitForRegenerateWithJump()
+    {
+        UpdateColorBarStaminaToBlack();
+        CanBeRegenerate = false;
+        playerJump.SetCanJump(false);
+        yield return new WaitForSeconds(3f);
+        ResetColorBarStamina();
+        CanBeRegenerate = true;
+        playerJump.SetCanJump(true);
+        StaminaRegenerate();
+    }
 
     private void StaminaRegenerate()
     {
         if (healthPlayer.Health > 0 && CurrentStamina < maxStamina && CanBeRegenerate)
         {
             CurrentStamina += regenerationPerSecond;
+            if(CurrentStamina > maxStamina)
+            {
+                CurrentStamina = maxStamina;
+            }
             UpdateStaminaBar();
         }
     }

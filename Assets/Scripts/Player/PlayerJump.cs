@@ -10,6 +10,7 @@ public class PlayerJump : MonoBehaviour
     public static Action JumpPlayerEvent;
 
     public bool CanJump { get; private set; }
+    public bool Jumping { get; private set; }
 
     private StaminaPlayer staminaPlayer;
     private void Awake()
@@ -27,10 +28,8 @@ public class PlayerJump : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && movementPlayer.CanMove && CanJump)
         {
-            if (staminaPlayer.CanBeRegenerate)
-            {
-                staminaPlayer.UseStamina(staminaJump);
-            }
+            Jumping = true;
+            staminaPlayer.UseStamina(staminaJump);
             DoJump();
             
         }
@@ -43,11 +42,23 @@ public class PlayerJump : MonoBehaviour
 
     IEnumerator WaitForJump()
     {
-        movementPlayer.SetCanMove(false);
-        staminaPlayer.SetCanBeRegenerate(false);
-        yield return new WaitForSeconds(0.75f);
-        movementPlayer.SetCanMove(true);
-        staminaPlayer.SetCanBeRegenerate(true);
+        if(staminaPlayer.CurrentStamina <= 0)
+        {
+            movementPlayer.SetCanMove(false);
+            yield return new WaitForSeconds(0.75f);
+            Jumping = false;
+            movementPlayer.SetCanMove(true);
+        }
+        else
+        {
+            movementPlayer.SetCanMove(false);
+            staminaPlayer.SetCanBeRegenerate(false);
+            yield return new WaitForSeconds(0.75f);
+            Jumping = false;
+            movementPlayer.SetCanMove(true);
+            staminaPlayer.SetCanBeRegenerate(true);
+        }
+        
     }
 
     public void SetCanJump(bool result)
