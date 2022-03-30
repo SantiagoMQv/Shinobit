@@ -1,0 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Healthbase : MonoBehaviour
+{
+    [SerializeField] protected float initialHealth;
+    [SerializeField] protected float maxHealth;
+
+    public float Health { get; protected set; }
+
+    protected virtual void Start()
+    {
+        Health = initialHealth;
+    }
+
+    
+    public void GetDamage(float amount)
+    {
+        if(amount <= 0)
+        {
+            return;
+        }
+        if(Health > 0)
+        {
+            Health -= amount;
+            UpdateHealthBar(Health, maxHealth);
+
+            if(Health <= 0)
+            {
+                UpdateHealthBar(Health, maxHealth);
+                DefeatedPlayer();
+            }
+        }
+    }
+
+    protected virtual void UpdateHealthBar(float currentHealth, float maxHealth)
+    {
+
+    }
+
+    protected virtual void DefeatedPlayer()
+    {
+
+    }
+
+}

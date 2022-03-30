@@ -1,0 +1,87 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerAnimation : MonoBehaviour
+{
+    [SerializeField] private string layerIdle;
+    [SerializeField] private string layerWalk;
+
+    private Animator animator;
+    private MovementPlayer movementPlayer;
+
+    //Hash de las animaciones
+    private readonly int xDirection = Animator.StringToHash("X");
+    private readonly int yDirection = Animator.StringToHash("Y");
+    private readonly int defeated = Animator.StringToHash("Defeated");
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        movementPlayer = GetComponent<MovementPlayer>();
+
+    }
+
+    void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        LayersUpdate();
+        if (movementPlayer.moving)
+        {
+            animator.SetFloat(xDirection, movementPlayer.MovementDirection.x);
+            animator.SetFloat(yDirection, movementPlayer.MovementDirection.y);
+        }
+        
+    }
+
+    private void ActivateLayer(string layerName)
+    {
+        for (int i = 0; i < animator.layerCount; i++) //Desactiva las layers antes de activar una.
+        {
+            animator.SetLayerWeight(i, 0); //Asigna un peso a un layer. 0 -> Desactivado.  1 -> Activa.
+        }
+
+        animator.SetLayerWeight(animator.GetLayerIndex(layerName), 1);
+    }
+
+    private void LayersUpdate()
+    {
+        if (movementPlayer.moving)
+        {
+            ActivateLayer(layerWalk);
+        }
+        else
+        {
+            ActivateLayer(layerIdle);
+        }
+    }
+
+    public void PlayerRevive()
+    {
+        ActivateLayer(layerIdle);
+        animator.SetBool(defeated, false);
+    }
+
+    private void DefeatedPlayerRequest()
+    {
+        if (animator.GetLayerWeight(animator.GetLayerIndex(layerIdle)) == 1) //Esto es porque la animacion de defeated está en layerIdle
+        {
+            animator.SetBool(defeated, true);
+        }
+    }
+
+    //Son necesarios los siguientes métodos para que una clase se pueda sobrescribir a un evento
+    private void OnEnable()
+    {
+        HealthPlayer.DefeatedPlayerEvent += DefeatedPlayerRequest;
+    }
+
+    private void OnDisable()
+    {
+        HealthPlayer.DefeatedPlayerEvent -= DefeatedPlayerRequest;
+    }
+
+}
