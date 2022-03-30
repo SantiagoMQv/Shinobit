@@ -724,6 +724,7 @@ GameObject:
   - component: {fileID: 718014148}
   - component: {fileID: 718014152}
   - component: {fileID: 718014147}
+  - component: {fileID: 718014155}
   - component: {fileID: 718014150}
   - component: {fileID: 718014151}
   - component: {fileID: 718014153}
@@ -949,6 +950,18 @@ MonoBehaviour:
   initialStamina: 90
   maxStamina: 90
   regenerationPerSecond: 15
+--- !u!114 &718014155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718014143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbeddba2ca4f1ba4880a5a5555f928f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &802047078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,7 +1347,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
