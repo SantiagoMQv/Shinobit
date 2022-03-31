@@ -9,7 +9,16 @@ public class PlayerJump : MonoBehaviour
     private MovementPlayer movementPlayer;
     public static Action JumpPlayerEvent;
     private Rigidbody2D rigibody2D;
+    private SpriteRenderer spriteRenderer;
+
+    private Vector2 bigScale;
+    private Vector2 normalScale;
+    private Color transparenceColor;
+    private Color normalColor;
     private bool increaseSizePlayer;
+
+    private float timeChangeTransparence;
+    bool firstTimeJump;
     public bool CanJump { get; private set; }
     public bool Jumping { get; private set; }
 
@@ -19,15 +28,23 @@ public class PlayerJump : MonoBehaviour
         movementPlayer = GetComponent<MovementPlayer>();
         staminaPlayer = GetComponent<StaminaPlayer>();
         rigibody2D = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
     {
+        timeChangeTransparence = 0;
         CanJump = true;
+        firstTimeJump = false;
         increaseSizePlayer = false;
+        bigScale = new Vector2(1.25f, 1.25f);
+        normalScale = new Vector2(1f, 1f);
+        transparenceColor = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.5f);
+        normalColor = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f);
     }
     void Update()
     {
+        timeChangeTransparence += Time.deltaTime;
         UpdateSizePlayer();
 
         if (Input.GetKeyDown(KeyCode.Space) && movementPlayer.CanMove && CanJump && movementPlayer.moving)
@@ -35,7 +52,6 @@ public class PlayerJump : MonoBehaviour
             Jumping = true;
             staminaPlayer.UseStamina(staminaJump);
             DoJump();
-            
         }
     }
 
@@ -46,13 +62,15 @@ public class PlayerJump : MonoBehaviour
 
     IEnumerator WaitForJump()
     {
+        timeChangeTransparence = 0;
         increaseSizePlayer = true;
         if (staminaPlayer.CurrentStamina <= 0)
         {
-            movementPlayer.SetCanMove(false);
-            yield return new WaitForSeconds(0.5f);
+            movementPlayer.SetCanMove(false);    
+            yield return new WaitForSeconds(0.515f);
+            timeChangeTransparence = 0;
             increaseSizePlayer = false;
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(0.075f);
             Jumping = false;
             movementPlayer.SetCanMove(true);
         }
@@ -60,14 +78,15 @@ public class PlayerJump : MonoBehaviour
         {
             movementPlayer.SetCanMove(false);
             staminaPlayer.SetCanBeRegenerate(false);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.515f);
+            timeChangeTransparence = 0;
             increaseSizePlayer = false;
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(0.075f);
             Jumping = false;
             movementPlayer.SetCanMove(true);
             staminaPlayer.SetCanBeRegenerate(true);
         }
-        
+        firstTimeJump = true;
     }
 
     public void SetCanJump(bool result)
@@ -77,15 +96,16 @@ public class PlayerJump : MonoBehaviour
 
     private void UpdateSizePlayer()
     {
-        Vector2 bigScale = new Vector2(1.25f, 1.25f);
-        Vector2 normalScale = new Vector2(1f, 1f);
-        if (increaseSizePlayer)
+        
+        if (increaseSizePlayer )
         {
             transform.localScale = Vector2.Lerp(transform.localScale, bigScale, 10 * Time.deltaTime);
+            spriteRenderer.color = Color.Lerp(normalColor, transparenceColor, 5 * timeChangeTransparence);
         }
-        else
+        else if(!increaseSizePlayer  && firstTimeJump)
         {
-            transform.localScale = Vector2.Lerp(transform.localScale, normalScale, 10 * Time.deltaTime);
+            transform.localScale = Vector2.Lerp(transform.localScale, normalScale, 35 * Time.deltaTime);
+            spriteRenderer.color = Color.Lerp(transparenceColor, normalColor, 2 * timeChangeTransparence);
         }
     }
 }
