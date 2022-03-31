@@ -894,6 +894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerIdle: Idle
   layerWalk: Walk
+  layerJump: Jump
 --- !u!114 &718014151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -962,6 +963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbeddba2ca4f1ba4880a5a5555f928f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  staminaJump: 35
 --- !u!1 &802047078
 GameObject:
   m_ObjectHideFlags: 0
