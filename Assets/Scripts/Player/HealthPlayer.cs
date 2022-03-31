@@ -8,10 +8,12 @@ public class HealthPlayer : Healthbase
     public bool Defeated { get; private set; }
 
     private BoxCollider2D boxCollider2D;
+    private PlayerJump playerJump;
 
     private void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
+        playerJump = GetComponent<PlayerJump>();
     }
 
     protected override void Start()
@@ -48,6 +50,15 @@ public class HealthPlayer : Healthbase
 
             UpdateHealthBar(Health, maxHealth);
         }
+    }
+
+    public override void GetDamage(float amount)
+    {
+        if (!playerJump.Jumping)
+        {
+            base.GetDamage(amount);
+        }
+        
     }
 
     protected override void DefeatedPlayer()

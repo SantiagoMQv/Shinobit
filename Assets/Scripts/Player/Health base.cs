@@ -15,8 +15,9 @@ public class Healthbase : MonoBehaviour
     }
 
     
-    public void GetDamage(float amount)
+    public virtual void GetDamage(float amount)
     {
+
         if(amount <= 0)
         {
             return;
@@ -32,6 +33,7 @@ public class Healthbase : MonoBehaviour
                 DefeatedPlayer();
             }
         }
+
     }
 
     protected virtual void UpdateHealthBar(float currentHealth, float maxHealth)
