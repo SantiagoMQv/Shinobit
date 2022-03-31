@@ -27,10 +27,10 @@ public class UIManager : Singleton<UIManager>
     private bool colorToBlack;
     private Color blackColor;
     private Color greenColor;
-    private float time;
+    private float timeChangeColorStamina;
     private void Start()
     {
-        time = 0;
+        timeChangeColorStamina = 0;
         ColorUtility.TryParseHtmlString("#1B1D1C", out blackColor);
         ColorUtility.TryParseHtmlString("#22652F", out greenColor);
 
@@ -38,7 +38,7 @@ public class UIManager : Singleton<UIManager>
 
     void Update()
     {
-        time += Time.deltaTime;
+        timeChangeColorStamina += Time.deltaTime;
         UpdatePlayerUI();
     }
 
@@ -56,11 +56,11 @@ public class UIManager : Singleton<UIManager>
         //Color Stamina
         if (colorToBlack)
         {
-            backgroundStamina.color = Color.Lerp(greenColor, blackColor, time*5);
+            backgroundStamina.color = Color.Lerp(greenColor, blackColor, timeChangeColorStamina * 5);
         }
         else
         {
-            backgroundStamina.color = Color.Lerp(Color.black, greenColor, time*5);
+            backgroundStamina.color = Color.Lerp(Color.black, greenColor, timeChangeColorStamina * 5);
         }
         
     }
@@ -85,7 +85,7 @@ public class UIManager : Singleton<UIManager>
 
     public void UpdateColorStaminaToBlack()
     {
-        time = 0;
+        timeChangeColorStamina = 0;
         colorToBlack = true;
         
         //backgroundStamina.color = color;
@@ -93,7 +93,7 @@ public class UIManager : Singleton<UIManager>
 
     public void ResetColorStamina()
     {
-        time = 0;
+        timeChangeColorStamina = 0;
         colorToBlack = false;
         //backgroundStamina.color = greenColor;
     }
