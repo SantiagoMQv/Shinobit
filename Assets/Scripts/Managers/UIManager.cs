@@ -24,8 +24,21 @@ public class UIManager : Singleton<UIManager>
     private float currentStamina;
     private float maxStamina;
 
+    private bool colorToBlack;
+    private Color blackColor;
+    private Color greenColor;
+    private float time;
+    private void Start()
+    {
+        time = 0;
+        ColorUtility.TryParseHtmlString("#1B1D1C", out blackColor);
+        ColorUtility.TryParseHtmlString("#22652F", out greenColor);
+
+    }
+
     void Update()
     {
+        time += Time.deltaTime;
         UpdatePlayerUI();
     }
 
@@ -40,6 +53,16 @@ public class UIManager : Singleton<UIManager>
         //Stamina
         playerStamina.fillAmount = Mathf.Lerp(playerStamina.fillAmount, currentStamina / maxStamina, 10 * Time.deltaTime);
         staminaTMP.text = $"{currentStamina}/{maxStamina}";
+        //Color Stamina
+        if (colorToBlack)
+        {
+            backgroundStamina.color = Color.Lerp(greenColor, blackColor, time*5);
+        }
+        else
+        {
+            backgroundStamina.color = Color.Lerp(Color.black, greenColor, time*5);
+        }
+        
     }
 
     public void UpdatePlayerHealth(float currentHealth, float maxHealth)
@@ -62,15 +85,16 @@ public class UIManager : Singleton<UIManager>
 
     public void UpdateColorStaminaToBlack()
     {
-        Color color;
-        ColorUtility.TryParseHtmlString("#1B1D1C", out color);
-        backgroundStamina.color = color;
+        time = 0;
+        colorToBlack = true;
+        
+        //backgroundStamina.color = color;
     }
 
     public void ResetColorStamina()
     {
-        Color greenColor;
-        ColorUtility.TryParseHtmlString("#22652F", out greenColor);
-        backgroundStamina.color = greenColor;
+        time = 0;
+        colorToBlack = false;
+        //backgroundStamina.color = greenColor;
     }
 }
