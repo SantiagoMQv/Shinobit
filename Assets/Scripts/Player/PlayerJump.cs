@@ -105,7 +105,7 @@ public class PlayerJump : MonoBehaviour
         else if(!increaseSizePlayer  && firstTimeJump)
         {
             transform.localScale = Vector2.Lerp(transform.localScale, normalScale, 35 * Time.deltaTime);
-            spriteRenderer.color = Color.Lerp(transparenceColor, normalColor, 2 * timeChangeTransparence);
+            spriteRenderer.color = Color.Lerp(transparenceColor, normalColor, 7 * timeChangeTransparence);
         }
     }
 }
