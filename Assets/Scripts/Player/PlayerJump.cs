@@ -26,7 +26,7 @@ public class PlayerJump : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space) && movementPlayer.CanMove && CanJump)
+        if (Input.GetKeyDown(KeyCode.Space) && movementPlayer.CanMove && CanJump && movementPlayer.moving)
         {
             Jumping = true;
             staminaPlayer.UseStamina(staminaJump);
