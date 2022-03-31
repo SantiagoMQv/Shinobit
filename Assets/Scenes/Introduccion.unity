@@ -948,8 +948,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4321deb0af99b9e46bd8968e72308ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialStamina: 90
-  maxStamina: 90
+  initialStamina: 100
+  maxStamina: 100
   regenerationPerSecond: 15
 --- !u!114 &718014155
 MonoBehaviour:

@@ -8,7 +8,8 @@ public class PlayerJump : MonoBehaviour
 
     private MovementPlayer movementPlayer;
     public static Action JumpPlayerEvent;
-
+    private Rigidbody2D rigibody2D;
+    private bool increaseSizePlayer;
     public bool CanJump { get; private set; }
     public bool Jumping { get; private set; }
 
@@ -17,14 +18,17 @@ public class PlayerJump : MonoBehaviour
     {
         movementPlayer = GetComponent<MovementPlayer>();
         staminaPlayer = GetComponent<StaminaPlayer>();
+        rigibody2D = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
     {
         CanJump = true;
+        increaseSizePlayer = false;
     }
     void Update()
     {
+        UpdateSizePlayer();
 
         if (Input.GetKeyDown(KeyCode.Space) && movementPlayer.CanMove && CanJump && movementPlayer.moving)
         {
@@ -42,10 +46,13 @@ public class PlayerJump : MonoBehaviour
 
     IEnumerator WaitForJump()
     {
-        if(staminaPlayer.CurrentStamina <= 0)
+        increaseSizePlayer = true;
+        if (staminaPlayer.CurrentStamina <= 0)
         {
             movementPlayer.SetCanMove(false);
-            yield return new WaitForSeconds(0.75f);
+            yield return new WaitForSeconds(0.5f);
+            increaseSizePlayer = false;
+            yield return new WaitForSeconds(0.15f);
             Jumping = false;
             movementPlayer.SetCanMove(true);
         }
@@ -53,7 +60,9 @@ public class PlayerJump : MonoBehaviour
         {
             movementPlayer.SetCanMove(false);
             staminaPlayer.SetCanBeRegenerate(false);
-            yield return new WaitForSeconds(0.75f);
+            yield return new WaitForSeconds(0.5f);
+            increaseSizePlayer = false;
+            yield return new WaitForSeconds(0.15f);
             Jumping = false;
             movementPlayer.SetCanMove(true);
             staminaPlayer.SetCanBeRegenerate(true);
@@ -64,5 +73,19 @@ public class PlayerJump : MonoBehaviour
     public void SetCanJump(bool result)
     {
         CanJump = result;
+    }
+
+    private void UpdateSizePlayer()
+    {
+        Vector2 bigScale = new Vector2(1.25f, 1.25f);
+        Vector2 normalScale = new Vector2(1f, 1f);
+        if (increaseSizePlayer)
+        {
+            transform.localScale = Vector2.Lerp(transform.localScale, bigScale, 10 * Time.deltaTime);
+        }
+        else
+        {
+            transform.localScale = Vector2.Lerp(transform.localScale, normalScale, 10 * Time.deltaTime);
+        }
     }
 }
