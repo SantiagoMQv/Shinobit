@@ -3,17 +3,31 @@ using UnityEngine.UI;
 using TMPro;
 public class UIManager : Singleton<UIManager>
 {
+    [Header("Stats")]
+    [SerializeField] private PlayerStats stats;
+
+    [Header("Panels")]
+    [SerializeField] private GameObject panelStats;
 
     [Header("Health Config")]
     [SerializeField] private Image playerHealth;
     [SerializeField] private TextMeshProUGUI healthTMP;
+
     [Header("Mana Config")]
     [SerializeField] private Image playerMana;
     [SerializeField] private TextMeshProUGUI manaTMP;
+
     [Header("Stamina Config")]
     [SerializeField] private Image playerStamina;
     [SerializeField] private TextMeshProUGUI staminaTMP;
     [SerializeField] private Image backgroundStamina;
+
+    [Header("Stats")]
+    [SerializeField] private TextMeshProUGUI damageStatTMP;
+    [SerializeField] private TextMeshProUGUI defenseStatTMP;
+    [SerializeField] private TextMeshProUGUI speedStatTMP;
+    [SerializeField] private TextMeshProUGUI CriticPercent;
+    [SerializeField] private TextMeshProUGUI CriticBlock;
 
     private float currentHealth;
     private float maxHealth;
@@ -40,6 +54,7 @@ public class UIManager : Singleton<UIManager>
     {
         timeChangeColorStamina += Time.deltaTime;
         UpdatePlayerUI();
+        UpdateStatsPanel();
     }
 
     private void UpdatePlayerUI()
@@ -63,6 +78,20 @@ public class UIManager : Singleton<UIManager>
             backgroundStamina.color = Color.Lerp(Color.black, greenColor, timeChangeColorStamina * 5);
         }
         
+    }
+
+    private void UpdateStatsPanel()
+    {
+        if (!panelStats.activeSelf)
+        {
+            return;
+        }
+
+        damageStatTMP.text = stats.Damage.ToString();
+        defenseStatTMP.text = stats.Defense.ToString();
+        speedStatTMP.text = stats.Speed.ToString();
+        CriticPercent.text = $"{stats.CriticPercent}%";
+        CriticBlock.text = $"{stats.CriticBlock}%";
     }
 
     public void UpdatePlayerHealth(float currentHealth, float maxHealth)

@@ -41,6 +41,7 @@ public class PlayerJump : MonoBehaviour
         normalScale = new Vector2(1f, 1f);
         transparenceColor = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.5f);
         normalColor = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f);
+        Jumping = false;
     }
     void Update()
     {

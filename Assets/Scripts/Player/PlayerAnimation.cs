@@ -11,7 +11,7 @@ public class PlayerAnimation : MonoBehaviour
     private Animator animator;
     private MovementPlayer movementPlayer;
     private StaminaPlayer staminaPlayer;
-
+    private PlayerJump playerJump;
     //Hash de las animaciones
     private readonly int xDirection = Animator.StringToHash("X");
     private readonly int yDirection = Animator.StringToHash("Y");
@@ -21,7 +21,7 @@ public class PlayerAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
         movementPlayer = GetComponent<MovementPlayer>();
         staminaPlayer = GetComponent<StaminaPlayer>();
-
+        playerJump = GetComponent<PlayerJump>();
     }
 
     void Start()
@@ -52,7 +52,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void LayersUpdate()
     {
-        if (movementPlayer.CanMove)
+        if (!playerJump.Jumping)
         {
             if (movementPlayer.moving)
             {
