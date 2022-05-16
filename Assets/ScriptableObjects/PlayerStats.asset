@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e329053e817d63144a7a4808f8a2e01e, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  Damage: 3
+  Damage: 1
   Defense: 1
-  Speed: 1
-  CriticPercent: 9.9
-  CriticBlock: 0
+  Potion: 1
+  HealthPoints: 1
+  SpellPoints: 1
+  StaminaPoints: 1
