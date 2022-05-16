@@ -25,9 +25,10 @@ public class UIManager : Singleton<UIManager>
     [Header("Stats")]
     [SerializeField] private TextMeshProUGUI damageStatTMP;
     [SerializeField] private TextMeshProUGUI defenseStatTMP;
-    [SerializeField] private TextMeshProUGUI speedStatTMP;
-    [SerializeField] private TextMeshProUGUI CriticPercent;
-    [SerializeField] private TextMeshProUGUI CriticBlock;
+    [SerializeField] private TextMeshProUGUI PotionTMP;
+    [SerializeField] private TextMeshProUGUI HealthPointsTMP;
+    [SerializeField] private TextMeshProUGUI SpellPointsTMP;
+    [SerializeField] private TextMeshProUGUI StaminaPointsTMP;
 
     private float currentHealth;
     private float maxHealth;
@@ -89,9 +90,10 @@ public class UIManager : Singleton<UIManager>
 
         damageStatTMP.text = stats.Damage.ToString();
         defenseStatTMP.text = stats.Defense.ToString();
-        speedStatTMP.text = stats.Speed.ToString();
-        CriticPercent.text = $"{stats.CriticPercent}%";
-        CriticBlock.text = $"{stats.CriticBlock}%";
+        PotionTMP.text = stats.Potion.ToString();
+        HealthPointsTMP.text = stats.HealthPoints.ToString();
+        SpellPointsTMP.text = stats.SpellPoints.ToString();
+        StaminaPointsTMP.text = stats.StaminaPoints.ToString();
     }
 
     public void UpdatePlayerHealth(float currentHealth, float maxHealth)

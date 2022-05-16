@@ -9,16 +9,18 @@ public class PlayerStats : ScriptableObject
 {
     public float Damage = 1;
     public float Defense = 1;
-    public float Speed = 1;
-    [Range(0, 100)] public float CriticPercent;
-    [Range(0, 100)] public float CriticBlock;
+    public float Potion = 1;
+    public float HealthPoints = 1;
+    public float SpellPoints = 1;
+    public float StaminaPoints = 1;
 
     public void ResetValues()
     {
         Damage = 1;
         Defense = 1;
-        Speed = 1;
-        CriticPercent = 0;
-        CriticBlock = 0;
+        Potion = 1;
+        HealthPoints = 1;
+        SpellPoints = 1;
+        StaminaPoints = 1;
     }
 }
