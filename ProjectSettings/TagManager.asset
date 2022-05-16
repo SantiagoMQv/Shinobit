@@ -53,8 +53,14 @@ TagManager:
   - name: Tilemap_casa
     uniqueID: 4270087927
     locked: 0
+  - name: Tilemap_detalles-casa
+    uniqueID: 4248883653
+    locked: 0
   - name: Tilemap_props
     uniqueID: 2556648803
+    locked: 0
+  - name: Tilemap_hierba-destruible
+    uniqueID: 585624647
     locked: 0
   - name: Player
     uniqueID: 3557786029
