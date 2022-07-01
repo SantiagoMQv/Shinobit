@@ -7,21 +7,23 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private string layerIdle;
     [SerializeField] private string layerWalk;
     [SerializeField] private string layerJump;
+    [SerializeField] private string layerSpell;
 
     private Animator animator;
     private MovementPlayer movementPlayer;
-    private StaminaPlayer staminaPlayer;
     private PlayerJump playerJump;
+    private Player player;
     //Hash de las animaciones
     private readonly int xDirection = Animator.StringToHash("X");
     private readonly int yDirection = Animator.StringToHash("Y");
     private readonly int defeated = Animator.StringToHash("Defeated");
+    private readonly int healing = Animator.StringToHash("Healing");
     private void Awake()
     {
         animator = GetComponent<Animator>();
         movementPlayer = GetComponent<MovementPlayer>();
-        staminaPlayer = GetComponent<StaminaPlayer>();
         playerJump = GetComponent<PlayerJump>();
+        player = GetComponent<Player>();
     }
 
     void Start()
@@ -54,14 +56,22 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (!playerJump.Jumping)
         {
-            if (movementPlayer.moving)
+            if (player.Healing)
             {
-                ActivateLayer(layerWalk);
+                ActivateLayer(layerSpell);
             }
             else
             {
-                ActivateLayer(layerIdle);
+                if (movementPlayer.moving)
+                {
+                    ActivateLayer(layerWalk);
+                }
+                else
+                {
+                    ActivateLayer(layerIdle);
+                }
             }
+            
         }
         else
         {

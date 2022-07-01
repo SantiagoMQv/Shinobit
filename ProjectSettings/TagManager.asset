@@ -62,6 +62,9 @@ TagManager:
   - name: Tilemap_hierba-destruible
     uniqueID: 585624647
     locked: 0
+  - name: Items
+    uniqueID: 2130285931
+    locked: 0
   - name: Player
     uniqueID: 3557786029
     locked: 0

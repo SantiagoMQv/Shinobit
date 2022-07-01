@@ -8,6 +8,8 @@ public class UIManager : Singleton<UIManager>
 
     [Header("Panels")]
     [SerializeField] private GameObject panelStats;
+    [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject HealthTokenPanel;
 
     [Header("Health Config")]
     [SerializeField] private Image playerHealth;
@@ -21,6 +23,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Image playerStamina;
     [SerializeField] private TextMeshProUGUI staminaTMP;
     [SerializeField] private Image backgroundStamina;
+
+    [Header("HealthToken Config")]
+    [SerializeField] private GameObject HealthToken;
 
     [Header("Stats")]
     [SerializeField] private TextMeshProUGUI damageStatTMP;
@@ -43,12 +48,14 @@ public class UIManager : Singleton<UIManager>
     private Color blackColor;
     private Color greenColor;
     private float timeChangeColorStamina;
+
+    private Transform HealthTokenContainer;
     private void Start()
     {
         timeChangeColorStamina = 0;
         ColorUtility.TryParseHtmlString("#1B1D1C", out blackColor);
         ColorUtility.TryParseHtmlString("#22652F", out greenColor);
-
+        HealthTokenContainer = HealthTokenPanel.transform.GetChild(0);
     }
 
     void Update()
@@ -56,8 +63,17 @@ public class UIManager : Singleton<UIManager>
         timeChangeColorStamina += Time.deltaTime;
         UpdatePlayerUI();
         UpdateStatsPanel();
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            OpenCloseMenu();
+        }
+        if(Inventary.Instance.specialItems.HealingNinjutsu == true)
+        {
+            GenerateHealthTokenPanel();
+        }
     }
 
+    #region PlayerInfo
     private void UpdatePlayerUI()
     {
         //Health
@@ -128,4 +144,36 @@ public class UIManager : Singleton<UIManager>
         colorToBlack = false;
         //backgroundStamina.color = greenColor;
     }
+    #endregion
+
+    #region HealthToken
+
+    public int RemoveHealthTokenUI()
+    {
+        Destroy(HealthTokenContainer.GetChild(0).gameObject);
+        return HealthTokenContainer.childCount;
+
+    }
+
+    public int AddHealthTokenUI()
+    {
+        Instantiate(HealthToken, HealthTokenContainer);
+        return HealthTokenContainer.childCount;
+    }
+
+    #endregion
+
+    #region Panels
+
+    public void OpenCloseMenu()
+    {
+        menu.SetActive(!menu.activeSelf);
+    }
+
+    public void GenerateHealthTokenPanel()
+    {
+        HealthTokenPanel.SetActive(true);
+    }
+
+    #endregion
 }
