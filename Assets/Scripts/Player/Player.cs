@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public HealthPlayer HealthPlayer { get; private set; }
     public ManaPlayer ManaPlayer { get; private set; }
     public PlayerAnimation playerAnimation { get; set; }
-    public PlayerJump playerJump;
+    private PlayerJump playerJump;
     public bool Healing { get; private set; }
 
     private void Awake()

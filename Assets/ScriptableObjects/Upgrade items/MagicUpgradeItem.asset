@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b780222ad06344499c7d7ebb2953be, type: 3}
+  m_Name: MagicUpgradeItem
+  m_EditorClassIdentifier: 
+  ID: MagicUpgrade
+  Name: Pez (Mejora de magia)
+  icon: {fileID: 21300000, guid: 24d09d1be34eae349a067a9a7aa86ce7, type: 3}
+  Description: "Pez proveniente de lejanas tierras m\xE1gicas. Para usar este objeto
+    es necesario un altar de guardado."
+  Type: 2
+  IsEquippable: 0
+  IsCumulative: 1
+  upgradeItem: 5
+  IsSpecialItem: 0
+  specialItem: 0
+  MaxAccumulation: 10
+  Amount: 0

@@ -13,6 +13,17 @@ public enum SpecialItems
     HealingNinjutsu
 }
 
+public enum UpgradeItems
+{
+    None,
+    AttackUpgrade,
+    DefenseUpgrade,
+    PotionUpgrade,
+    HealthUpgrade,
+    MagicUpgrade,
+    ResistenceUpgrade
+}
+
 public class InventaryItem : ScriptableObject
 {
     [Header("Parameters")]
@@ -25,7 +36,7 @@ public class InventaryItem : ScriptableObject
     public ItemTypes Type;
     public bool IsEquippable;
     public bool IsCumulative;
-    public bool IsConsumable;
+    public UpgradeItems upgradeItem;
     public bool IsSpecialItem;
     public SpecialItems specialItem;
     public int MaxAccumulation;

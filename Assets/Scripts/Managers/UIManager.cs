@@ -67,9 +67,13 @@ public class UIManager : Singleton<UIManager>
         {
             OpenCloseMenu();
         }
-        if(Inventary.Instance.specialItems.HealingNinjutsu == true)
+        if(Inventary.Instance.specialItems.HealingNinjutsu == true && Inventary.Instance.healingNinjutsuItem != null)
         {
             GenerateHealthTokenPanel();
+        }
+        else
+        {
+            HideHealthTokenPanel();
         }
     }
 
@@ -175,5 +179,9 @@ public class UIManager : Singleton<UIManager>
         HealthTokenPanel.SetActive(true);
     }
 
+    public void HideHealthTokenPanel()
+    {
+        HealthTokenPanel.SetActive(false);
+    }
     #endregion
 }

@@ -19,7 +19,12 @@ MonoBehaviour:
   Type: 1
   IsEquippable: 0
   IsCumulative: 0
-  IsConsumable: 0
+  upgradeItem: 0
+  IsSpecialItem: 1
+  specialItem: 1
   MaxAccumulation: 1
   Amount: 1
-  InitialHPRestaurate: 20
+  InitialHPRestoration: 15
+  InitialTokens: 3
+  currentNumTokens: 0
+  currentHPRestoration: 0

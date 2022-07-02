@@ -12,7 +12,7 @@ public class Inventary : Singleton<Inventary>
     [SerializeField] private InventaryItem[] inventaryItems;
     public InventaryItem[] InventaryItems => inventaryItems;
 
-    public HealingNinjutsu healingNinjutsuItem;
+    [HideInInspector] public HealingNinjutsu healingNinjutsuItem;
 
     public static Action PickupHealingNinjutsuItemEvent;
 
