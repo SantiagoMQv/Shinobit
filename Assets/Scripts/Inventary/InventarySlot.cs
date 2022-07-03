@@ -6,8 +6,7 @@ using TMPro;
 public enum InteractionType
 {
     Click,
-    Use,
-    Equip,
+    UseEquip,
     Remove
 }
 

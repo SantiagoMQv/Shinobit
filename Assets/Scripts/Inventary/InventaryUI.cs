@@ -11,12 +11,18 @@ public class InventaryUI : Singleton<InventaryUI>
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemNameTMP;
     [SerializeField] private TextMeshProUGUI itemDescriptionTMP;
+    [SerializeField] private TextMeshProUGUI buttonEquipUseTMP;
+    [SerializeField] private GameObject buttonEquipUse;
+    [SerializeField] private GameObject buttonRemove;
     [Header("Principal")]
     [SerializeField] private InventarySlot slotPrefab;
     [SerializeField] private Transform container;
+    [SerializeField] private Player player;
 
     public InventarySlot selectedSlot { get; private set; }
     List<InventarySlot> availableSlot = new List<InventarySlot>();
+
+    private PlayerNearToSaveAltar saveAltar;
 
     void Start()
     {
@@ -51,7 +57,39 @@ public class InventaryUI : Singleton<InventaryUI>
         if(slot != null)
         {
             selectedSlot = slot;
+
+            if(Inventary.Instance.InventaryItems[selectedSlot.Index] != null)
+            {
+                // Botones
+                if (Inventary.Instance.InventaryItems[selectedSlot.Index].Type == ItemTypes.UpgradeItems && player.saveAltar.NearToRespawn)
+                {
+                    buttonEquipUseTMP.text = "USAR";
+                    buttonEquipUse.SetActive(true);
+                    buttonRemove.SetActive(false);
+                }
+                else if (Inventary.Instance.InventaryItems[selectedSlot.Index].Type == ItemTypes.UpgradeItems)
+                {
+                    buttonEquipUseTMP.text = "USAR";
+                    buttonEquipUse.SetActive(false);
+                    buttonRemove.SetActive(false);
+                }
+                else if (Inventary.Instance.InventaryItems[selectedSlot.Index].IsSpecialItem)
+                {
+                    buttonEquipUse.SetActive(false);
+                    buttonRemove.SetActive(false);
+                }
+                else if (Inventary.Instance.InventaryItems[selectedSlot.Index].Type == ItemTypes.Ninjutsus)
+                {
+                    buttonEquipUseTMP.text = "EQUIPAR";
+                    buttonEquipUse.SetActive(true);
+                    buttonRemove.SetActive(true);
+                }
+            }
+
+            
+
         }
+
     }
 
     public void DrawnItemInInventary(InventaryItem itemToAdd, int amount, int itemIndex)
@@ -65,6 +103,7 @@ public class InventaryUI : Singleton<InventaryUI>
                 slot.ActivateBackgroundAmount(true);
             }
             slot.UpdateSlot(itemToAdd, amount);
+            
         }
         else
         {

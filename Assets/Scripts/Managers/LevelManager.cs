@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
         {
             if (player.HealthPlayer.Defeated)
             {
-                player.transform.localPosition = reappearancePoint.position;
+                player.transform.localPosition = reappearancePoint.position - new Vector3(0, 1.5f, 0);
                 player.PlayerRestore();
             }
         }

@@ -4598,7 +4598,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TilesetHouse_537
+      name: Punto de guardado
       rect:
         serializedVersion: 2
         x: 48
@@ -5698,7 +5698,7 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -5759,10 +5759,10 @@ TextureImporter:
       TilesetHouse_332: 1285764944
       TilesetHouse_429: -1120401872
       TilesetHouse_171: 1049146222
-      TilesetHouse_527: 1658807375
+      TilesetHouse_176: -1931850158
       TilesetHouse_298: -1688800741
       TilesetHouse_123: 601296445
-      TilesetHouse_176: -1931850158
+      TilesetHouse_527: 1658807375
       TilesetHouse_372: 170293066
       TilesetHouse_427: 45018826
       TilesetHouse_275: -896997261
@@ -6086,6 +6086,7 @@ TextureImporter:
       TilesetHouse_447: 1002653274
       TilesetHouse_139: -1402756926
       TilesetHouse_358: -1864430005
+      Punto de guardado: -4833339
       TilesetHouse_138: 695596524
       TilesetHouse_562: -1293224277
       TilesetHouse_48: 422588967
@@ -6293,7 +6294,6 @@ TextureImporter:
       TilesetHouse_182: 2083640428
       TilesetHouse_143: 2145914268
       TilesetHouse_466: 1951159930
-      TilesetHouse_537: -4833339
       TilesetHouse_496: 1706141941
       TilesetHouse_249: 949780083
       TilesetHouse_66: 1758867703

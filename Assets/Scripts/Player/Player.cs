@@ -7,15 +7,16 @@ public class Player : MonoBehaviour
     public HealthPlayer HealthPlayer { get; private set; }
     public ManaPlayer ManaPlayer { get; private set; }
     public PlayerAnimation playerAnimation { get; set; }
-    private PlayerJump playerJump;
+    public PlayerJump playerJump { get; set; }
+    public PlayerNearToSaveAltar saveAltar { get; set; }
     public bool Healing { get; private set; }
-
     private void Awake()
     {
         HealthPlayer = GetComponent<HealthPlayer>();
         ManaPlayer = GetComponent<ManaPlayer>();
         playerAnimation = GetComponent<PlayerAnimation>();
         playerJump = GetComponent<PlayerJump>();
+        saveAltar = GetComponent<PlayerNearToSaveAltar>();
     }
 
 
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        // Uso de HealingNinjutsu
         if(Inventary.Instance.healingNinjutsuItem != null) {
             if (Input.GetKeyDown(KeyCode.P) && !Healing && !playerJump.Jumping && !HealthPlayer.Defeated && Inventary.Instance.healingNinjutsuItem.currentNumTokens > 0)
             {
@@ -41,6 +43,7 @@ public class Player : MonoBehaviour
         {
             AddAllHealthToken();
         }
+
     }
 
 
@@ -76,6 +79,7 @@ public class Player : MonoBehaviour
         Healing = false;
     }
 
+    // Al coger el HealingNinjutsu los niveles actuales de Tokens y curación se inicializan
     private void PickupHealingNinjutsuItemResponse()
     {
         Inventary.Instance.healingNinjutsuItem.currentNumTokens = Inventary.Instance.healingNinjutsuItem.InitialTokens;

@@ -89,10 +89,11 @@ public class PlayerAnimation : MonoBehaviour
 
     private void DefeatedPlayerRequest()
     {
-        if (animator.GetLayerWeight(animator.GetLayerIndex(layerIdle)) == 1) //Esto es porque la animacion de defeated está en layerIdle
-        {
-            animator.SetBool(defeated, true);
-        }
+        //if (animator.GetLayerWeight(animator.GetLayerIndex(layerIdle)) == 1) //Esto es porque la animacion de defeated está en layerIdle
+        //{
+        //    animator.SetBool(defeated, true);
+        //}
+        animator.SetBool(defeated, true);
     }
 
     //Son necesarios los siguientes métodos para que una clase se pueda sobrescribir a un evento
