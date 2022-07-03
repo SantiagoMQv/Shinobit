@@ -35,6 +35,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI SpellPointsTMP;
     [SerializeField] private TextMeshProUGUI StaminaPointsTMP;
 
+    [Header("Bits")]
+    [SerializeField] private TextMeshProUGUI BitsTMP;
+
     private float currentHealth;
     private float maxHealth;
 
@@ -63,6 +66,7 @@ public class UIManager : Singleton<UIManager>
         timeChangeColorStamina += Time.deltaTime;
         UpdatePlayerUI();
         UpdateStatsPanel();
+        BitsTMP.text = Inventary.Instance.CurrentBits.ToString();
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             OpenCloseMenu();

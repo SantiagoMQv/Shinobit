@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "UpgradeItem/HealthUpgrade")]
-public class HealthUpgradeItem : InventaryItem
+public class HealthUpgradeItem : UpgradeItem
 {
     
 

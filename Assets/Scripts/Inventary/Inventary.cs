@@ -5,20 +5,24 @@ using System;
 
 public class Inventary : Singleton<Inventary>
 {
+    [SerializeField] private Player player;
     [SerializeField] private int slotNum;
-    public int SlotNum => slotNum;
     [SerializeField] public InventarySpecialItems specialItems;
     [Header("Items")]
     [SerializeField] private InventaryItem[] inventaryItems;
-    public InventaryItem[] InventaryItems => inventaryItems;
 
+    public Player Player => player;
+    public InventaryItem[] InventaryItems => inventaryItems;
+    public int SlotNum => slotNum;
     [HideInInspector] public HealingNinjutsu healingNinjutsuItem;
+    public int CurrentBits { get; set; }
 
     public static Action PickupHealingNinjutsuItemEvent;
 
     private void Start()
     {
         inventaryItems = new InventaryItem[slotNum];
+        CurrentBits = 0;
     }
 
     public void AddItem(InventaryItem itemToAdd, int amount)
@@ -109,4 +113,19 @@ public class Inventary : Singleton<Inventary>
             }
         }
     }
+
+    #region Bits
+
+    public void AddBits(int amount)
+    {
+        CurrentBits += amount;
+    }
+
+    public void RemoveBits(int amount)
+    {
+        CurrentBits -= amount;
+    }
+
+    #endregion
+
 }

@@ -25,3 +25,4 @@ MonoBehaviour:
   specialItem: 0
   MaxAccumulation: 10
   Amount: 0
+  bitsToUpgrade: 100

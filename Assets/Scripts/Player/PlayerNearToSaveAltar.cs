@@ -31,6 +31,14 @@ public class PlayerNearToSaveAltar : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Respawn"))
+        {
+            player.AddAllHealthToken();
+        }
+        
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Respawn"))

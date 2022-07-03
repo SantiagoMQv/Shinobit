@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "UpgradeItem/DefenseUpgrade")]
-public class DefenseUpgradeItem : InventaryItem
+public class DefenseUpgradeItem : UpgradeItem
 {
 
 }

@@ -11,18 +11,21 @@ public class InventaryUI : Singleton<InventaryUI>
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemNameTMP;
     [SerializeField] private TextMeshProUGUI itemDescriptionTMP;
+
+    [Header("Botones")]
     [SerializeField] private TextMeshProUGUI buttonEquipUseTMP;
     [SerializeField] private GameObject buttonEquipUse;
     [SerializeField] private GameObject buttonRemove;
+    [SerializeField] private GameObject BitsToUpgradeGO;
+    [SerializeField] private VerticalLayoutGroup verticalLayoutGroup; //Necesario para ajustar el espaciado entre botones y texto en determinados casos
+    [SerializeField] private TextMeshProUGUI BitsNecessaryTMP;
+
     [Header("Principal")]
     [SerializeField] private InventarySlot slotPrefab;
     [SerializeField] private Transform container;
-    [SerializeField] private Player player;
 
     public InventarySlot selectedSlot { get; private set; }
     List<InventarySlot> availableSlot = new List<InventarySlot>();
-
-    private PlayerNearToSaveAltar saveAltar;
 
     void Start()
     {
@@ -58,31 +61,42 @@ public class InventaryUI : Singleton<InventaryUI>
         {
             selectedSlot = slot;
 
-            if(Inventary.Instance.InventaryItems[selectedSlot.Index] != null)
+            // Dibujar botones
+            if (Inventary.Instance.InventaryItems[selectedSlot.Index] != null)
             {
-                // Botones
-                if (Inventary.Instance.InventaryItems[selectedSlot.Index].Type == ItemTypes.UpgradeItems && player.saveAltar.NearToRespawn)
+                if (Inventary.Instance.InventaryItems[selectedSlot.Index].Type == ItemTypes.UpgradeItems && Inventary.Instance.Player.saveAltar.NearToRespawn)
                 {
                     buttonEquipUseTMP.text = "USAR";
                     buttonEquipUse.SetActive(true);
                     buttonRemove.SetActive(false);
+                    BitsToUpgradeGO.SetActive(true);
+                    UpgradeItem upgradeItem = (UpgradeItem)Inventary.Instance.InventaryItems[selectedSlot.Index];
+                    BitsNecessaryTMP.text = upgradeItem.bitsToUpgrade.ToString();
+                    verticalLayoutGroup.spacing = -86;
                 }
-                else if (Inventary.Instance.InventaryItems[selectedSlot.Index].Type == ItemTypes.UpgradeItems)
+                else
                 {
-                    buttonEquipUseTMP.text = "USAR";
-                    buttonEquipUse.SetActive(false);
-                    buttonRemove.SetActive(false);
-                }
-                else if (Inventary.Instance.InventaryItems[selectedSlot.Index].IsSpecialItem)
-                {
-                    buttonEquipUse.SetActive(false);
-                    buttonRemove.SetActive(false);
-                }
-                else if (Inventary.Instance.InventaryItems[selectedSlot.Index].Type == ItemTypes.Ninjutsus)
-                {
-                    buttonEquipUseTMP.text = "EQUIPAR";
-                    buttonEquipUse.SetActive(true);
-                    buttonRemove.SetActive(true);
+                    verticalLayoutGroup.spacing = -16.6f;
+                    if (Inventary.Instance.InventaryItems[selectedSlot.Index].Type == ItemTypes.UpgradeItems)
+                    {
+                        buttonEquipUseTMP.text = "USAR";
+                        buttonEquipUse.SetActive(false);
+                        BitsToUpgradeGO.SetActive(false);
+                        buttonRemove.SetActive(false);
+                    }
+                    else if (Inventary.Instance.InventaryItems[selectedSlot.Index].IsSpecialItem)
+                    {
+                        buttonEquipUse.SetActive(false);
+                        BitsToUpgradeGO.SetActive(false);
+                        buttonRemove.SetActive(false);
+                    }
+                    else if (Inventary.Instance.InventaryItems[selectedSlot.Index].Type == ItemTypes.Ninjutsus)
+                    {
+                        buttonEquipUseTMP.text = "EQUIPAR";
+                        buttonEquipUse.SetActive(true);
+                        BitsToUpgradeGO.SetActive(false);
+                        buttonRemove.SetActive(true);
+                    }
                 }
             }
 
