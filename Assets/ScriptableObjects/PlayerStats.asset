@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
   Damage: 1
-  Defense: 3
-  Potion: 4
-  HealthPoints: 5
-  SpellPoints: 1
-  StaminaPoints: 1
+  Defense: 5
+  Potion: 10
+  HealthPoints: 1
+  SpellPoints: 2
+  StaminaPoints: 3

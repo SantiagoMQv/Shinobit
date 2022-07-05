@@ -4,5 +4,11 @@ using UnityEngine;
 
 public class UpgradeItem : InventaryItem
 {
-    public int bitsToUpgrade;
+    public float bitsToUpgrade;
+    public float multiplier;
+
+    public void ResetValues()
+    {
+        bitsToUpgrade = 100;
+    }
 }

@@ -9,6 +9,8 @@ public class PotionUpgradeItem : UpgradeItem
     {
         if(Inventary.Instance.CurrentBits >= bitsToUpgrade)
         {
+            Inventary.Instance.Player.PlayerStats.Potion++;
+            bitsToUpgrade *= multiplier;
             return true;
         }
         return false;

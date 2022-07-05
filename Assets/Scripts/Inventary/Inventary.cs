@@ -8,14 +8,23 @@ public class Inventary : Singleton<Inventary>
     [SerializeField] private Player player;
     [SerializeField] private int slotNum;
     [SerializeField] public InventarySpecialItems specialItems;
+
     [Header("Items")]
     [SerializeField] private InventaryItem[] inventaryItems;
+
+    [Header("Upgrade Items")]
+    [SerializeField] private StaminaUpgradeItem staminaUpgradeItem;
+    [SerializeField] private AttackUpgradeItem attackUpgradeItem;
+    [SerializeField] private DefenseUpgradeItem defenseUpgradeItem;
+    [SerializeField] private HealthUpgradeItem healthUpgradeItem;
+    [SerializeField] private MagicUpgradeItem magicUpgradeItem;
+    [SerializeField] private PotionUpgradeItem potionUpgradeItem;
 
     public Player Player => player;
     public InventaryItem[] InventaryItems => inventaryItems;
     public int SlotNum => slotNum;
     [HideInInspector] public HealingNinjutsu healingNinjutsuItem;
-    public int CurrentBits { get; set; }
+    public float CurrentBits { get; set; }
 
     public static Action PickupHealingNinjutsuItemEvent;
 
@@ -114,18 +123,105 @@ public class Inventary : Singleton<Inventary>
         }
     }
 
+    private void RemoveItem(int index)
+    {
+        inventaryItems[index].Amount--;
+        if(inventaryItems[index].Amount <= 0)
+        {
+            inventaryItems[index].Amount = 0;
+            inventaryItems[index] = null;
+            InventaryUI.Instance.DrawnItemInInventary(null, 0, index);
+        }
+        else
+        {
+            InventaryUI.Instance.DrawnItemInInventary(inventaryItems[index], inventaryItems[index].Amount, index);
+        }
+    }
+
+    private void UseItem(int index)
+    {
+        if(inventaryItems[index] != null)
+        {
+            if (inventaryItems[index].Type == ItemTypes.UpgradeItems)
+            {
+                if (inventaryItems[index].UseItem())
+                {
+                    UpgradeItem upgradeItem = ChooseUpgradeItem(Inventary.Instance.InventaryItems[index].upgradeItem);
+                    RemoveItem(index);
+                    RemoveBits(upgradeItem.bitsToUpgrade);
+                    upgradeItem.bitsToUpgrade = upgradeItem.bitsToUpgrade * upgradeItem.multiplier;
+                    InventaryUI.Instance.UpdateInventaryDescription(index);
+                    InventaryUI.Instance.UpdateButtons(index);
+                }
+            }
+        }
+    }
+
+    private UpgradeItem ChooseUpgradeItem(UpgradeItems type)
+    {
+        UpgradeItem item = null;
+        switch (type)
+        {
+            case UpgradeItems.AttackUpgrade:
+                item = attackUpgradeItem;
+                break;
+            case UpgradeItems.DefenseUpgrade:
+                item = defenseUpgradeItem;
+                break;
+            case UpgradeItems.HealthUpgrade:
+                item = healthUpgradeItem;
+                break;
+            case UpgradeItems.MagicUpgrade:
+                item = magicUpgradeItem;
+                break;
+            case UpgradeItems.PotionUpgrade:
+                item = potionUpgradeItem;
+                break;
+            case UpgradeItems.ResistenceUpgrade:
+                item = staminaUpgradeItem;
+                break;
+        }
+        return item;
+    }
+
     #region Bits
 
-    public void AddBits(int amount)
+    public void AddBits(float amount)
     {
         CurrentBits += amount;
     }
 
-    public void RemoveBits(int amount)
+    public void RemoveBits(float amount)
     {
         CurrentBits -= amount;
     }
 
     #endregion
 
+    #region Events
+
+    private void SlotInteractionResponse(InteractionType type, int index)
+    {
+        switch (type)
+        {
+            case InteractionType.UseEquip:
+                UseItem(index);
+                break;
+            case InteractionType.Remove:
+                break;
+        }
+    }
+
+    private void OnEnable()
+    {
+        InventarySlot.SlotInteractionEvent += SlotInteractionResponse;
+    }
+
+
+    private void OnDisable()
+    {
+        InventarySlot.SlotInteractionEvent -= SlotInteractionResponse;
+    }
+
+    #endregion
 }

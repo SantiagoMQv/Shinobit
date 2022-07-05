@@ -9,7 +9,9 @@ public class Player : MonoBehaviour
     public PlayerAnimation playerAnimation { get; set; }
     public PlayerJump playerJump { get; set; }
     public PlayerNearToSaveAltar saveAltar { get; set; }
+    [SerializeField] private PlayerStats playerStats;
     public bool Healing { get; private set; }
+    public PlayerStats PlayerStats => playerStats;
     private void Awake()
     {
         HealthPlayer = GetComponent<HealthPlayer>();

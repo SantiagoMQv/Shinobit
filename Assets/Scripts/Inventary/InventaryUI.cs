@@ -27,6 +27,7 @@ public class InventaryUI : Singleton<InventaryUI>
     public InventarySlot selectedSlot { get; private set; }
     List<InventarySlot> availableSlot = new List<InventarySlot>();
 
+
     void Start()
     {
         InitializeInventary();
@@ -51,8 +52,9 @@ public class InventaryUI : Singleton<InventaryUI>
     private void UpdateSelectedSlot()
     {
         GameObject gameObejectSelected = EventSystem.current.currentSelectedGameObject; // Devuelve el objeto que está siendo actualmente seleccionado
-        if(gameObejectSelected == null)
+        if (gameObejectSelected == null)
         {
+            inventaryDescriptionPanel.SetActive(false);
             return;
         }
 
@@ -60,51 +62,13 @@ public class InventaryUI : Singleton<InventaryUI>
         if(slot != null)
         {
             selectedSlot = slot;
-
+            UpdateInventaryDescription(selectedSlot.Index);
             // Dibujar botones
-            if (Inventary.Instance.InventaryItems[selectedSlot.Index] != null)
-            {
-                if (Inventary.Instance.InventaryItems[selectedSlot.Index].Type == ItemTypes.UpgradeItems && Inventary.Instance.Player.saveAltar.NearToRespawn)
-                {
-                    buttonEquipUseTMP.text = "USAR";
-                    buttonEquipUse.SetActive(true);
-                    buttonRemove.SetActive(false);
-                    BitsToUpgradeGO.SetActive(true);
-                    UpgradeItem upgradeItem = (UpgradeItem)Inventary.Instance.InventaryItems[selectedSlot.Index];
-                    BitsNecessaryTMP.text = upgradeItem.bitsToUpgrade.ToString();
-                    verticalLayoutGroup.spacing = -86;
-                }
-                else
-                {
-                    verticalLayoutGroup.spacing = -16.6f;
-                    if (Inventary.Instance.InventaryItems[selectedSlot.Index].Type == ItemTypes.UpgradeItems)
-                    {
-                        buttonEquipUseTMP.text = "USAR";
-                        buttonEquipUse.SetActive(false);
-                        BitsToUpgradeGO.SetActive(false);
-                        buttonRemove.SetActive(false);
-                    }
-                    else if (Inventary.Instance.InventaryItems[selectedSlot.Index].IsSpecialItem)
-                    {
-                        buttonEquipUse.SetActive(false);
-                        BitsToUpgradeGO.SetActive(false);
-                        buttonRemove.SetActive(false);
-                    }
-                    else if (Inventary.Instance.InventaryItems[selectedSlot.Index].Type == ItemTypes.Ninjutsus)
-                    {
-                        buttonEquipUseTMP.text = "EQUIPAR";
-                        buttonEquipUse.SetActive(true);
-                        BitsToUpgradeGO.SetActive(false);
-                        buttonRemove.SetActive(true);
-                    }
-                }
-            }
-
-            
-
+            UpdateButtons(selectedSlot.Index);
         }
 
     }
+
 
     public void DrawnItemInInventary(InventaryItem itemToAdd, int amount, int itemIndex)
     {
@@ -127,9 +91,9 @@ public class InventaryUI : Singleton<InventaryUI>
         
     }
 
-    private void UpdateInventaryDescription(int index)
+    public void UpdateInventaryDescription(int index)
     {
-        if(Inventary.Instance.InventaryItems[index] != null)
+        if (Inventary.Instance.InventaryItems[index] != null)
         {
             itemIcon.sprite = Inventary.Instance.InventaryItems[index].icon;
             itemNameTMP.text = Inventary.Instance.InventaryItems[index].Name;
@@ -141,10 +105,79 @@ public class InventaryUI : Singleton<InventaryUI>
             inventaryDescriptionPanel.SetActive(false);
         }
     }
+    #region Buttons
 
+    public void UpdateButtons(int index)
+    {
+        if (Inventary.Instance.InventaryItems[index] != null)
+        {
+            if (Inventary.Instance.InventaryItems[index].Type == ItemTypes.UpgradeItems && Inventary.Instance.Player.saveAltar.NearToRespawn)
+            {
+                UpgradeItem upgradeItem = (UpgradeItem)Inventary.Instance.InventaryItems[index];
+                string buttonText = "";
+                if (Inventary.Instance.CurrentBits < upgradeItem.bitsToUpgrade)
+                {
+                    buttonText = "BLOQUEADO";
+                    buttonEquipUseTMP.color = Color.red;
+                    buttonEquipUse.GetComponent<Image>().color = Color.red;
+                    buttonEquipUseTMP.enableAutoSizing = true;
+                }
+                else
+                {
+                    buttonText = "USAR";
+                    buttonEquipUseTMP.color = Color.green;
+                    buttonEquipUse.GetComponent<Image>().color = Color.green;
+                    buttonEquipUseTMP.enableAutoSizing = false;
+                }
+                ModifyButtons(buttonText, true, true, false);
+                BitsNecessaryTMP.text = upgradeItem.bitsToUpgrade.ToString();
+                verticalLayoutGroup.spacing = -86;
+            }
+            else
+            {
+                buttonEquipUseTMP.enableAutoSizing = false;
+                buttonEquipUseTMP.color = Color.green;
+                buttonEquipUse.GetComponent<Image>().color = Color.green;
+
+                verticalLayoutGroup.spacing = -16.6f;
+                if (Inventary.Instance.InventaryItems[index].Type == ItemTypes.UpgradeItems)
+                {
+                    ModifyButtons("USAR", false, false, false);
+                }
+                else if (Inventary.Instance.InventaryItems[index].IsSpecialItem)
+                {
+                    ModifyButtons("", false, false, false);
+                }
+                else if (Inventary.Instance.InventaryItems[index].Type == ItemTypes.Ninjutsus)
+                {
+                    ModifyButtons("EQUIPAR", true, false, true);
+                }
+            }
+        }
+    }
+
+    private void ModifyButtons(string buttonText, bool equipUse, bool bitsToUpgrate, bool remove)
+    {
+        buttonEquipUseTMP.text = buttonText;
+        buttonEquipUse.SetActive(equipUse);
+        BitsToUpgradeGO.SetActive(bitsToUpgrate);
+        buttonRemove.SetActive(remove);
+    }
+
+    public void UseEquipItem()
+    {
+        if(selectedSlot != null)
+        {
+            selectedSlot.UseEquipItemSlot();
+            selectedSlot.SelectSlot();
+        }
+    }
+    #endregion
+
+    #region Events
     private void SlotInteractionResponse(InteractionType type, int index)
     {
-        if(type == InteractionType.Click)
+        if (type == InteractionType.Click)
         {
             UpdateInventaryDescription(index);
         }
@@ -159,4 +192,7 @@ public class InventaryUI : Singleton<InventaryUI>
     {
         InventarySlot.SlotInteractionEvent -= SlotInteractionResponse;
     }
+    #endregion
+
+   
 }
