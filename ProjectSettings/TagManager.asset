@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Coin
+  - GoldKey
   layers:
   - Default
   - TransparentFX
@@ -66,9 +67,12 @@ TagManager:
   - name: Items
     uniqueID: 2130285931
     locked: 0
-  - name: Player
+  - name: Character
     uniqueID: 3557786029
     locked: 0
   - name: Tilemap_altura
     uniqueID: 61115875
+    locked: 0
+  - name: UI
+    uniqueID: 47991101
     locked: 0

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="MovementPlayer">
+    <Position X="4.75" Y="2.5" Width="2.5" />
+    <Members>
+      <Method Name="FixedUpdate" Hidden="true" />
+      <Field Name="input" Hidden="true" />
+      <Field Name="movementDirection" Hidden="true" />
+      <Field Name="rigibody2D" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAQiACAAAiAAAAAACCAAAAAgAAAAARAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\MovementPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -26,10 +26,6 @@ public class PlayerAnimation : MonoBehaviour
         player = GetComponent<Player>();
     }
 
-    void Start()
-    {
-        
-    }
 
     void Update()
     {

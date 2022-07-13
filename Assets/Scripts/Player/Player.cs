@@ -9,15 +9,15 @@ public class Player : MonoBehaviour
     public PlayerAnimation playerAnimation { get; set; }
     public PlayerJump playerJump { get; set; }
     public PlayerNearToSaveAltar saveAltar { get; set; }
-    [SerializeField] private PlayerStats playerStats;
+    public UpgradeStats upgradeStats { get; set; }
     public bool Healing { get; private set; }
-    public PlayerStats PlayerStats => playerStats;
     private void Awake()
     {
         HealthPlayer = GetComponent<HealthPlayer>();
         ManaPlayer = GetComponent<ManaPlayer>();
         playerAnimation = GetComponent<PlayerAnimation>();
         playerJump = GetComponent<PlayerJump>();
+        upgradeStats = GetComponent<UpgradeStats>();
         saveAltar = GetComponent<PlayerNearToSaveAltar>();
     }
 

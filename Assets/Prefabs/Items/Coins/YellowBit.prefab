@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3691777363616499719}
   - component: {fileID: 3691777363616499712}
   - component: {fileID: 3691777363616499713}
-  - component: {fileID: 3691777363616499718}
+  - component: {fileID: -8605004119018026375}
   - component: {fileID: 3691777363616499717}
   m_Layer: 0
   m_Name: YellowBit
@@ -107,7 +107,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3691777363616499718
+--- !u!114 &-8605004119018026375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,9 +116,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3691777363616499714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43f45faef612c614188fbde1dd328d5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3762120465755f7448ac8004d966c814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventaryItemReference: {fileID: 0}
   amountToAdd: 5
 --- !u!60 &3691777363616499717
 PolygonCollider2D:
