@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Singleton<Player>
 {
     public HealthPlayer HealthPlayer { get; private set; }
     public ManaPlayer ManaPlayer { get; private set; }
     public PlayerAnimation playerAnimation { get; set; }
     public PlayerJump playerJump { get; set; }
-    public NearToSaveAltar saveAltar { get; set; }
     public UpgradeStats upgradeStats { get; set; }
+    public MovementPlayer movementPlayer { get; set; }
     public bool Healing { get; private set; }
     public bool NearToRespawn { get; private set; }
     private void Awake()
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
         playerAnimation = GetComponent<PlayerAnimation>();
         playerJump = GetComponent<PlayerJump>();
         upgradeStats = GetComponent<UpgradeStats>();
-        saveAltar = GetComponent<NearToSaveAltar>();
+        movementPlayer = GetComponent<MovementPlayer>();
     }
 
 

@@ -16,34 +16,58 @@ public class DialogueManager : Singleton<DialogueManager>
     private Queue<string> dialogSequence;
     private bool animatedDialogEnded;
     private bool endDialogDisplayed;
-
+    private bool endDialogEnded;
+    private bool dialogFinished;
+    private bool dialogStarted;
+    private bool spaceKeySecondPressed;
     private void Start()
     {
         dialogSequence = new Queue<string>();
+        dialogFinished = true;
+        spaceKeySecondPressed = false;
+        dialogStarted = false;
     }
 
     private void Update()
     {
         if(NPCAvailable != null)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && dialogFinished)
             {
+                dialogFinished = false;
+                dialogStarted = true;
+                Player.Instance.movementPlayer.SetCanMove(false);
                 SetUpPanel(NPCAvailable.Dialog);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (endDialogDisplayed)
+            if (endDialogEnded)
             {
                 OpenCloseDialogPanel(false);
+                spaceKeySecondPressed = false;
+                endDialogEnded = false;
                 endDialogDisplayed = false;
+                dialogFinished = true;
+                dialogStarted = false;
+                Player.Instance.movementPlayer.SetCanMove(true);
                 return;
             }
-            if (animatedDialogEnded)
+            if (dialogStarted)
             {
-                ContinueDialog();
+                if (animatedDialogEnded)
+                {
+                    
+                    ContinueDialog();
+                }
+                else
+                {
+                    spaceKeySecondPressed = true;
+                }
             }
+            
+
         }
 
     }
@@ -101,8 +125,24 @@ public class DialogueManager : Singleton<DialogueManager>
         char[] letters = sentence.ToCharArray();
         for (int i = 0; i < letters.Length; i++)
         {
+            if (spaceKeySecondPressed)
+            {
+                if(endDialogDisplayed)
+                {
+                    endDialogEnded = true;
+                }
+                npcConversationTMP.text = "";
+                npcConversationTMP.text = sentence;
+                animatedDialogEnded = true;
+                spaceKeySecondPressed = false;
+                yield break;
+            }
             npcConversationTMP.text += letters[i];
             yield return new WaitForSeconds(0.03f);
+        }
+        if (endDialogDisplayed)
+        {
+            endDialogEnded = true;
         }
         animatedDialogEnded = true;
     }
