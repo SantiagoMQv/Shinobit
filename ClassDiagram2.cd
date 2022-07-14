@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DialogueManager" Collapsed="true">
+    <Position X="0.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAEAAACAAAABAUAAABBAAABAQAAAAAAAQAAAAgIQ=</HashCode>
+      <FileName>Assets\Scripts\Dialog\DialogueManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NPCDialog" Collapsed="true">
+    <Position X="23" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAQAEAAAAAICAAAAAAEAABA=</HashCode>
+      <FileName>Assets\Scripts\Dialog\NPCDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DialogueText" Collapsed="true">
+    <Position X="19.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Dialog\NPCDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NPCInteraction" Collapsed="true">
+    <Position X="24.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAACAAIAAAAAAAAAAAAAAAEAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Dialog\NPCInteraction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Singleton&lt;T&gt;" Collapsed="true">
+    <Position X="5.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Extrras\Singleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZoneConfiner" Collapsed="true">
+    <Position X="23" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Extrras\ZoneConfiner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelManager" Collapsed="true">
+    <Position X="26.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Managers\LevelManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIManager" Collapsed="true">
+    <Position X="3" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iCQAAFAYBKAoAAQEgAABIAogApIGEAhAAABgMQAqIQA=</HashCode>
+      <FileName>Assets\Scripts\Managers\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Healthbase">
+    <Position X="3.25" Y="7.5" Width="1.5" />
+    <Members>
+      <Method Name="Start" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAACAAIACgAAAAAAABACAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\Health base.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealthPlayer">
+    <Position X="3.25" Y="10.5" Width="2" />
+    <Members>
+      <Method Name="Awake" Hidden="true" />
+      <Field Name="boxCollider2D" Hidden="true" />
+      <Method Name="Start" Hidden="true" />
+      <Method Name="Update" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAQAAQACACgAIAAAQABAAAAACIQAAAAAABAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Player\HealthPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManaPlayer">
+    <Position X="8.25" Y="7.5" Width="2" />
+    <Members>
+      <Method Name="Awake" Hidden="true" />
+      <Method Name="Start" Hidden="true" />
+      <Method Name="Update" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AQQAAAAAACAAACAAgAgAAAAAAAAAgAAAACAAIAAAIEI=</HashCode>
+      <FileName>Assets\Scripts\Player\ManaPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovementPlayer" Collapsed="true">
+    <Position X="21.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQiACAAAiAAAAAACCAAAAAgAAAAARAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\MovementPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="26.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgggAAAAggIAAAgAAACAAACIwAAAAIAAAAAAAgCEA=</HashCode>
+      <FileName>Assets\Scripts\Player\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAnimation" Collapsed="true">
+    <Position X="19.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BCRABACERAAAICAAAAAGBAAAEAABAAAJAAAAAAAACEA=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerJump" Collapsed="true">
+    <Position X="21.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AITCAAQAADiAACAAAAACIWAAACAAAAAAAgAIAAAAIEA=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerJump.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NearToSaveAltar" Collapsed="true">
+    <Position X="23" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAABAAAAAAAAAAAAAAEAAAAABAAAAAAAAIAA=</HashCode>
+      <FileName>Assets\Scripts\Player\NearToSaveAltar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaminaPlayer">
+    <Position X="5.5" Y="7.5" Width="2.5" />
+    <Members>
+      <Method Name="Awake" Hidden="true" />
+      <Method Name="Start" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAAIAAADAgQAAEYBAAAEAAAAAAAEEACAEI=</HashCode>
+      <FileName>Assets\Scripts\Player\StaminaPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Inventary" Collapsed="true">
+    <Position X="7.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQQABDAAACQAAAQQACgAiBAAACANAACgEQAAGAg=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\Inventary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InventaryItem" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BCAAAAUAAAAggEQAAAACAASAAAAAAQAEAQAAAAAAEAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\InventaryItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InventarySlot" Collapsed="true">
+    <Position X="21.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAJAAAAABIAAAAAAAAAQIBAgAIAAQAEAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\InventarySlot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InventarySpecialItems" Collapsed="true">
+    <Position X="23" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\InventarySpecialItems.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InventaryUI" Collapsed="true">
+    <Position X="9.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hARAgAhAACgEJAAAQQAAAAABCFRAIAAIAAAAAQAACAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\InventaryUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AttackUpgradeItem" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\Items\AttackUpgradeItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DefenseUpgradeItem" Collapsed="true">
+    <Position X="4.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\Items\DefenseUpgradeItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FireNinjutsu" Collapsed="true">
+    <Position X="6" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\Items\FireNinjutsu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealingNinjutsu" Collapsed="true">
+    <Position X="11.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAACAAAAAAAAAAAAAgAIAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\Items\HealingNinjutsu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealthUpgradeItem" Collapsed="true">
+    <Position X="6.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\Items\HealthUpgradeItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicUpgradeItem" Collapsed="true">
+    <Position X="8" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\Items\MagicUpgradeItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PotionUpgradeItem" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\Items\PotionUpgradeItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaminaUpgradeItem" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\Items\StaminaUpgradeItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemToAdd" Collapsed="true">
+    <Position X="24.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\ItemToAdd.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UpgradeItem" Collapsed="true">
+    <Position X="9" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\UpgradeItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pickups" Collapsed="true">
+    <Position X="5.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQACAAAAAAAAAAAJAAAAEAAAAACAAAAAAQAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Pickups\Pickups.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerStats" Collapsed="true">
+    <Position X="24.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACIQQAAAAAABAAIAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Stats\PlayerStats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UpgradeStats" Collapsed="true">
+    <Position X="19.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAQAAAAAAAAAAAAAAAAAAEAAAABABAAAEAAAAEI=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Stats\UpgradeStats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NPCMovement" Collapsed="true">
+    <Position X="0.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAIQAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Waypoints\NPCMovement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Waypoint" Collapsed="true">
+    <Position X="21.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAACAACAAgAAAAAAAAAAAAAAAAgAAAAAAAQAACAA=</HashCode>
+      <FileName>Assets\Scripts\Waypoints\Waypoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaypointMovement" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAgQAAACAAAAAAAAAAEAAAIQIAAQAAAAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\Waypoints\WaypointMovement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="ExtraInteractionNPC" Collapsed="true">
+    <Position X="19.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\Dialog\NPCDialog.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ItemTypes" Collapsed="true">
+    <Position X="23" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\InventaryItem.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SpecialItems" Collapsed="true">
+    <Position X="26.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\InventaryItem.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="UpgradeItems" Collapsed="true">
+    <Position X="19.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAABAAAEAAAAAAAAAAQAAAAAAABAAAAAAAABEAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\InventaryItem.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="InteractionType" Collapsed="true">
+    <Position X="21.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAABAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\InventarySlot.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MovementDirections" Collapsed="true">
+    <Position X="24.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Waypoints\WaypointMovement.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

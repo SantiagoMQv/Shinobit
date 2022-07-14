@@ -29,15 +29,6 @@ public class StaminaPlayer : MonoBehaviour
         InvokeRepeating(nameof(StaminaRegenerate), 1, 1);
     }
 
-    private void Update()
-    {
-        //Para hacer pruebas con el estamina 
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            UseStamina(40);
-        }
-    }
-
     public void UseStamina(float amount)
     {
         if (CurrentStamina > 0 && CanBeRegenerate)

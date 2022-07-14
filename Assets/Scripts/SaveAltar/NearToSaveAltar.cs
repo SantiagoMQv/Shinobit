@@ -2,19 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerNearToSaveAltar : MonoBehaviour
+public class NearToSaveAltar : MonoBehaviour
 {
-    public bool NearToRespawn { get; private set; }
     private Player player;
-    private void Start()
-    {
-        player = GetComponent<Player>();
-    }
-
-    void Update()
-    {
-
-    }
 
     private void HealPlayerInSaveAltar()
     {
@@ -24,26 +14,29 @@ public class PlayerNearToSaveAltar : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Respawn"))
+        if (collision.gameObject.CompareTag("Player"))
         {
+            player = collision.gameObject.GetComponent<Player>();
             InvokeRepeating("HealPlayerInSaveAltar", 0.5f, 0.5f);
-            NearToRespawn = true;
+            player.setNearToSpawn(true);
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Respawn"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             player.AddAllHealthToken();
+            
         }
         
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Respawn"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            NearToRespawn = false;
+            player.setNearToSpawn(false);
+            player = null;
             CancelInvoke();
         }
     }

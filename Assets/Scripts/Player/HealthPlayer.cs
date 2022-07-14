@@ -29,10 +29,6 @@ public class HealthPlayer : Healthbase
         {
             GetDamage(10);
         }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RestoreHealth(10);
-        }
     }
     public void RestoreHealth(float amount)
     {

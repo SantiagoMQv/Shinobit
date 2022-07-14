@@ -111,7 +111,7 @@ public class InventaryUI : Singleton<InventaryUI>
     {
         if (Inventary.Instance.InventaryItems[index] != null)
         {
-            if (Inventary.Instance.InventaryItems[index].Type == ItemTypes.UpgradeItems && Inventary.Instance.Player.saveAltar.NearToRespawn)
+            if (Inventary.Instance.InventaryItems[index].Type == ItemTypes.UpgradeItems && Inventary.Instance.Player.NearToRespawn)
             {
                 UpgradeItem upgradeItem = (UpgradeItem)Inventary.Instance.InventaryItems[index];
                 string buttonText = "";
