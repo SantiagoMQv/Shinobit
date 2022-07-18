@@ -1,0 +1,67 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum QuizDifficulty
+{
+    Easy,
+    Hard
+}
+
+public enum QuestionType
+{
+    Options,
+    Fill
+}
+
+public enum QuizProgrammingLanguage
+{
+    Cplusplus,
+    Python
+}
+
+[CreateAssetMenu]
+public class Quiz : ScriptableObject
+{
+    [Header("Info")]
+    public string Name;
+    public string ID;
+    public int NumberQuestions;
+    public QuizDifficulty quizDifficulty;
+    public QuizProgrammingLanguage quizProgrammingLanguage;
+    public NPCDialog NPCRelacionated;
+
+    [Header("Questions")]
+    public TestQuestions[] quizQuestions;
+
+    [Header("Description")]
+    [TextArea] public string Description;
+
+    [Header("Rewards")]
+    public int BitsRewards;
+    public QuizRewardItem quizRewardItem;
+
+    [HideInInspector] public int QuestionAnswered;
+    [HideInInspector] public int QuestionRight;
+    [HideInInspector] public bool QuizCompleted;
+    
+
+}
+
+[Serializable]
+public class TestQuestions
+{
+    public QuestionType questionType;
+    public string QuestionText;
+    public Sprite GuideImage;
+    [TextArea] public string CorrentAnswer;
+    [TextArea] public string WrongAnswer1;
+    [TextArea] public string WrongAnswer2;
+}
+
+[Serializable]
+public class QuizRewardItem
+{
+    public InventaryItem Item;
+    public int Amount;
+}

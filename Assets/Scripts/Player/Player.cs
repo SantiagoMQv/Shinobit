@@ -10,9 +10,11 @@ public class Player : Singleton<Player>
     public PlayerJump playerJump { get; set; }
     public UpgradeStats upgradeStats { get; set; }
     public MovementPlayer movementPlayer { get; set; }
+
     public bool Healing { get; private set; }
     public bool NearToRespawn { get; private set; }
-    private void Awake()
+
+    private new void Awake()
     {
         HealthPlayer = GetComponent<HealthPlayer>();
         ManaPlayer = GetComponent<ManaPlayer>();
@@ -32,20 +34,13 @@ public class Player : Singleton<Player>
 
     private void Update()
     {
-        // Uso de HealingNinjutsu
+        
         if(Inventary.Instance.healingNinjutsuItem != null) {
             if (Input.GetKeyDown(KeyCode.P) && !Healing && !playerJump.Jumping && !HealthPlayer.Defeated && Inventary.Instance.healingNinjutsuItem.currentNumTokens > 0 
                 && HealthPlayer.CanBeHealed)
             {
-                RemoveHealthToken();
-                HealthPlayer.RestoreHealth(Inventary.Instance.healingNinjutsuItem.currentHPRestoration);
-                StartCoroutine("HealWaiting");
+                Inventary.Instance.healingNinjutsuItem.UseItem();
             }
-        }
-        
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            AddAllHealthToken();
         }
 
     }
@@ -55,30 +50,12 @@ public class Player : Singleton<Player>
         NearToRespawn = state;
     }
 
+    public void setHealing(bool state)
+    {
+        Healing = state;
+    }
+
     #region HealthToken
-    public void RemoveHealthToken()
-    {
-        if (Inventary.Instance.healingNinjutsuItem.currentNumTokens > 0)
-        {
-            Inventary.Instance.healingNinjutsuItem.currentNumTokens = UIManager.Instance.RemoveHealthTokenUI() - 1;
-        }
-    }
-
-    public void AddAllHealthToken()
-    {
-        if(Inventary.Instance.healingNinjutsuItem != null)
-        {
-            if (Inventary.Instance.healingNinjutsuItem.currentNumTokens < 8)
-            {
-
-                for (int i = Inventary.Instance.healingNinjutsuItem.currentNumTokens; i < Inventary.Instance.healingNinjutsuItem.InitialTokens; i++)
-                {
-                    Inventary.Instance.healingNinjutsuItem.currentNumTokens = UIManager.Instance.AddHealthTokenUI();
-                }
-
-            }
-        }
-    }
 
     IEnumerator HealWaiting()
     {
@@ -87,22 +64,7 @@ public class Player : Singleton<Player>
         Healing = false;
     }
 
-    // Al coger el HealingNinjutsu los niveles actuales de Tokens y curación se inicializan
-    private void PickupHealingNinjutsuItemResponse()
-    {
-        Inventary.Instance.healingNinjutsuItem.currentNumTokens = Inventary.Instance.healingNinjutsuItem.InitialTokens;
-        Inventary.Instance.healingNinjutsuItem.currentHPRestoration = Inventary.Instance.healingNinjutsuItem.InitialHPRestoration;
-    }
-
     #endregion
 
-    private void OnEnable()
-    {
-        Inventary.PickupHealingNinjutsuItemEvent += PickupHealingNinjutsuItemResponse;
-    }
-
-    private void OnDisable()
-    {
-        Inventary.PickupHealingNinjutsuItemEvent -= PickupHealingNinjutsuItemResponse;
-    }
+    
 }

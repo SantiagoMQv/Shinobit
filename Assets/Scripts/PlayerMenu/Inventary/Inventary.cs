@@ -18,12 +18,12 @@ public class Inventary : Singleton<Inventary>
     [SerializeField] private DefenseUpgradeItem defenseUpgradeItem;
     [SerializeField] private HealthUpgradeItem healthUpgradeItem;
     [SerializeField] private MagicUpgradeItem magicUpgradeItem;
-    [SerializeField] private PotionUpgradeItem potionUpgradeItem;
+    [SerializeField] private HealingUpgradeItem potionUpgradeItem;
 
     public Player Player => player;
     public InventaryItem[] InventaryItems => inventaryItems;
     public int SlotNum => slotNum;
-    [HideInInspector] public HealingNinjutsu healingNinjutsuItem;
+    [HideInInspector] public HealingNinjutsuItem healingNinjutsuItem;
 
     public static Action PickupHealingNinjutsuItemEvent;
 
@@ -83,7 +83,7 @@ public class Inventary : Singleton<Inventary>
                 if(itemToAdd.specialItem == SpecialItems.HealingNinjutsu)
                 {
                     specialItems.HealingNinjutsu = true;
-                    healingNinjutsuItem = (HealingNinjutsu) itemToAdd;
+                    healingNinjutsuItem = (HealingNinjutsuItem) itemToAdd;
                     PickupHealingNinjutsuItemEvent?.Invoke();
                 }
             }

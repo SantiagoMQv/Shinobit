@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5cb4775b3a9acd44a5fb5f5dd008492, type: 3}
+  m_Name: Quiz 3
+  m_EditorClassIdentifier: 
+  Name: Estructuras de control [1]
+  ID: test3
+  NumberQuestions: 2
+  quizDifficulty: 0
+  quizProgrammingLanguage: 0
+  NPCRelacionated: {fileID: 11400000, guid: ec9c9fc6af673c146961beff9fd21a7b, type: 2}
+  quizQuestions: []
+  Description: En esta prueba repasaremos las estructuras de control.
+  BitsRewards: 159
+  quizRewardItem:
+    Item: {fileID: 11400000, guid: 3432e6b47f8c94440a46c968276b04f3, type: 2}
+    Amount: 1
+  QuestionAnswered: 0
+  QuestionRight: 0
+  QuizCompleted: 0

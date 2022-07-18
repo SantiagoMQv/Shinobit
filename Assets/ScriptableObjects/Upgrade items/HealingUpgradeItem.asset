@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43011fb64d3288746a8aa0b9e7ba20c1, type: 3}
-  m_Name: PotionUpgradeItem
+  m_Name: HealingUpgradeItem
   m_EditorClassIdentifier: 
-  ID: PotionUpgrade
-  Name: "Miel (Mejora de poci\xF3n)"
+  ID: HealingUpgrade
+  Name: "Miel (Mejora de curaci\xF3n)"
   icon: {fileID: 21300000, guid: da1fcc5b7963f254597530d26ea5b515, type: 3}
   Description: Miel muy nutritiva. Puede usarse para intensificar ciertos hechizos.
     Para usar este objeto es necesario un altar de guardado.

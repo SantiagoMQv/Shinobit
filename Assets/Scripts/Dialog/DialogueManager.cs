@@ -32,7 +32,7 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         if(NPCAvailable != null)
         {
-            if (Input.GetKeyDown(KeyCode.E) && dialogFinished)
+            if (Input.GetKeyDown(KeyCode.E) && dialogFinished && !UIManager.Instance.DisplayingPanel)
             {
                 dialogFinished = false;
                 dialogStarted = true;
@@ -51,14 +51,33 @@ public class DialogueManager : Singleton<DialogueManager>
                 endDialogDisplayed = false;
                 dialogFinished = true;
                 dialogStarted = false;
-                Player.Instance.movementPlayer.SetCanMove(true);
+                if (NPCAvailable.Dialog.IncludeExtraInteraction)
+                {
+                    UIManager.Instance.OpenCloseInteraction(NPCAvailable.Dialog.ExtraInteraction);
+                }
+                else
+                {
+                    Player.Instance.movementPlayer.SetCanMove(true);
+                }
                 return;
             }
             if (dialogStarted)
             {
+
+                if (NPCAvailable.Dialog.EndText.ToString() == "")
+                {
+                    if (animatedDialogEnded)
+                    {
+                        endDialogEnded = true;
+                    }
+                    else
+                    {
+                        spaceKeySecondPressed = true;
+                    }
+                }
+
                 if (animatedDialogEnded)
                 {
-                    
                     ContinueDialog();
                 }
                 else
@@ -127,7 +146,7 @@ public class DialogueManager : Singleton<DialogueManager>
         {
             if (spaceKeySecondPressed)
             {
-                if(endDialogDisplayed)
+                if(endDialogDisplayed || NPCAvailable.Dialog.EndText.ToString() == "")
                 {
                     endDialogEnded = true;
                 }

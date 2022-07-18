@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AttackUpgradeItem
   m_EditorClassIdentifier: 
   ID: AttackNinjutsu
-  Name: Yakitori (Mejora de defensa)
+  Name: Yakitori (Mejora de ataque)
   icon: {fileID: 21300000, guid: 6abff326b647de74c8923da9e3b7c5e1, type: 3}
   Description: Brochetas de pollo muy picantes que avivan la fuerza y furia de quien
     las consume. Para usar este objeto es necesario un altar de guardado.
@@ -25,5 +25,5 @@ MonoBehaviour:
   specialItem: 0
   MaxAccumulation: 10
   Amount: 0
-  bitsToUpgrade: 100
+  bitsToUpgrade: 150
   multiplier: 1.5

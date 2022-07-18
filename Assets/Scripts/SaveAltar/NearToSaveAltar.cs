@@ -26,8 +26,10 @@ public class NearToSaveAltar : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            player.AddAllHealthToken();
-            
+            if (Inventary.Instance.healingNinjutsuItem != null)
+            {
+                Inventary.Instance.healingNinjutsuItem.AddAllHealthToken();
+            }
         }
         
     }

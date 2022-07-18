@@ -9,7 +9,9 @@ public class UIManager : Singleton<UIManager>
     [Header("Panels")]
     [SerializeField] private GameObject panelStats;
     [SerializeField] private GameObject menu;
-    [SerializeField] private GameObject HealthTokenPanel;
+    [SerializeField] private GameObject healthTokenPanel;
+    [SerializeField] private GameObject ninjaCodeGetPanel;
+    [SerializeField] private GameObject ninjaCodePlayerPanel;
 
     [Header("Health Config")]
     [SerializeField] private Image playerHealth;
@@ -54,12 +56,14 @@ public class UIManager : Singleton<UIManager>
     private float timeChangeColorStamina;
 
     private Transform HealthTokenContainer;
+
+    public bool DisplayingPanel { get; private set; }
     private void Start()
     {
         timeChangeColorStamina = 0;
         ColorUtility.TryParseHtmlString("#1B1D1C", out blackColor);
         ColorUtility.TryParseHtmlString("#22652F", out greenColor);
-        HealthTokenContainer = HealthTokenPanel.transform.GetChild(0);
+        HealthTokenContainer = healthTokenPanel.transform.GetChild(0);
     }
 
     void Update()
@@ -72,6 +76,10 @@ public class UIManager : Singleton<UIManager>
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             OpenCloseMenu();
+        }
+        if (Input.GetKeyDown(KeyCode.H) )
+        {
+            OpenCloseNinjaCodePlayerPanel();
         }
         if(Inventary.Instance.specialItems.HealingNinjutsu == true && Inventary.Instance.healingNinjutsuItem != null)
         {
@@ -177,17 +185,67 @@ public class UIManager : Singleton<UIManager>
 
     public void OpenCloseMenu()
     {
+
         menu.SetActive(!menu.activeSelf);
+        if (!menu.activeSelf)
+        {
+            Player.Instance.movementPlayer.SetCanMove(true);
+            DisplayingPanel = false;
+        }
+        else
+        {
+            Player.Instance.movementPlayer.SetCanMove(false);
+            DisplayingPanel = true;
+        }
     }
 
     public void GenerateHealthTokenPanel()
     {
-        HealthTokenPanel.SetActive(true);
+        healthTokenPanel.SetActive(true);
     }
 
     public void HideHealthTokenPanel()
     {
-        HealthTokenPanel.SetActive(false);
+        healthTokenPanel.SetActive(false);
     }
+
+    public void OpenCloseNinjaCodeGetPanel()
+    {
+        ninjaCodeGetPanel.SetActive(!ninjaCodeGetPanel.activeSelf);
+        if (!ninjaCodeGetPanel.activeSelf)
+        {
+            Player.Instance.movementPlayer.SetCanMove(true);
+            DisplayingPanel = false;
+        }
+        else
+        {
+            DisplayingPanel = true;
+        }
+    }
+
+    public void OpenCloseNinjaCodePlayerPanel()
+    {
+        ninjaCodePlayerPanel.SetActive(!ninjaCodePlayerPanel.activeSelf);
+        if (!ninjaCodePlayerPanel.activeSelf)
+        {
+            Player.Instance.movementPlayer.SetCanMove(true);
+            DisplayingPanel = false;
+        }
+        else
+        {
+            DisplayingPanel = true;
+        }
+    }
+
+    public void OpenCloseInteraction(ExtraInteractionNPC interactionType)
+    {
+        switch (interactionType)
+        {
+            case ExtraInteractionNPC.Test:
+                OpenCloseNinjaCodeGetPanel();
+                break;
+        }
+    }
+
     #endregion
 }

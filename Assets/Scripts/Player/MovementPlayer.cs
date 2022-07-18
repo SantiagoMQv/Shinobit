@@ -53,6 +53,12 @@ public class MovementPlayer : MonoBehaviour
                 movementDirection.y = 0f;
             }
         }
+        // Se ha hecho así para mantener el salto funcionando tal y como se pensó.
+        else if(!CanMove && !Player.Instance.playerJump.Jumping)
+        {
+            movementDirection.x = 0f;
+            movementDirection.y = 0f;
+        }
     }
 
     //Usamos FixedUpdate porque trabajamos con un RigiBody2D

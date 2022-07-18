@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="DialogueManager" Collapsed="true">
     <Position X="0.75" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQBAEAAACAAAABAUAAABBAAABAQAAAAAAAQAAAAgIQ=</HashCode>
+      <HashCode>AA8BAEAAACABAABAUAAABBAAABAQAAAAAAAQAAAAgIQ=</HashCode>
       <FileName>Assets\Scripts\Dialog\DialogueManager.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -29,17 +29,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Singleton&lt;T&gt;" Collapsed="true">
-    <Position X="5.25" Y="4.5" Width="1.5" />
+    <Position X="6.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAEA=</HashCode>
-      <FileName>Assets\Scripts\Extrras\Singleton.cs</FileName>
+      <FileName>Assets\Scripts\Extras\Singleton.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ZoneConfiner" Collapsed="true">
     <Position X="23" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\Extrras\ZoneConfiner.cs</FileName>
+      <FileName>Assets\Scripts\Extras\ZoneConfiner.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LevelManager" Collapsed="true">
@@ -99,9 +99,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Player" Collapsed="true">
-    <Position X="26.5" Y="1.5" Width="1.5" />
+    <Position X="11.75" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQgggAAAAggIAAAgAAACAAACIwAAAAIAAAAAAAgCEA=</HashCode>
+      <HashCode>AARAAgAAAAggIAAAgAAAAAAACAwAAAIAAAAAAAAgAEA=</HashCode>
       <FileName>Assets\Scripts\Player\Player.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -112,8 +112,23 @@
       <FileName>Assets\Scripts\Player\PlayerAnimation.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PlayerJump" Collapsed="true">
-    <Position X="21.25" Y="2.5" Width="1.5" />
+  <Class Name="PlayerJump">
+    <Position X="12.75" Y="7.25" Width="2.5" />
+    <Members>
+      <Field Name="bigScale" Hidden="true" />
+      <Field Name="firstTimeJump" Hidden="true" />
+      <Field Name="increaseSizePlayer" Hidden="true" />
+      <Field Name="JumpPlayerEvent" Hidden="true" />
+      <Field Name="movementPlayer" Hidden="true" />
+      <Field Name="normalColor" Hidden="true" />
+      <Field Name="normalScale" Hidden="true" />
+      <Field Name="rigibody2D" Hidden="true" />
+      <Field Name="spriteRenderer" Hidden="true" />
+      <Field Name="staminaJump" Hidden="true" />
+      <Field Name="staminaPlayer" Hidden="true" />
+      <Field Name="timeChangeTransparence" Hidden="true" />
+      <Field Name="transparenceColor" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>AITCAAQAADiAACAAAAACIWAAACAAAAAAAgAIAAAAIEA=</HashCode>
       <FileName>Assets\Scripts\Player\PlayerJump.cs</FileName>
@@ -123,7 +138,7 @@
     <Position X="23" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAABAAAAAAAAAAAAAAEAAAAABAAAAAAAAIAA=</HashCode>
-      <FileName>Assets\Scripts\Player\NearToSaveAltar.cs</FileName>
+      <FileName>Assets\Scripts\SaveAltar\NearToSaveAltar.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StaminaPlayer">
@@ -193,13 +208,6 @@
       <FileName>Assets\Scripts\PlayerMenu\Inventary\Items\FireNinjutsu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HealingNinjutsu" Collapsed="true">
-    <Position X="11.75" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAABAAAAAAAACAAAAAAAAAAAAAgAIAAA=</HashCode>
-      <FileName>Assets\Scripts\PlayerMenu\Inventary\Items\HealingNinjutsu.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="HealthUpgradeItem" Collapsed="true">
     <Position X="6.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
@@ -212,13 +220,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\PlayerMenu\Inventary\Items\MagicUpgradeItem.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="PotionUpgradeItem" Collapsed="true">
-    <Position X="9.75" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\PlayerMenu\Inventary\Items\PotionUpgradeItem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StaminaUpgradeItem" Collapsed="true">
@@ -282,6 +283,24 @@
     <TypeIdentifier>
       <HashCode>BAQAgQAAACAAAAAAAAAAEAAAIQIAAQAAAAAAAAEAAAA=</HashCode>
       <FileName>Assets\Scripts\Waypoints\WaypointMovement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealingUpgradeItem" Collapsed="true">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\Items\HealingUpgradeItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealingNinjutsuItem" Collapsed="true">
+    <Position X="11" Y="2" Width="2.5" />
+    <Members>
+      <Method Name="OnDisable" Hidden="true" />
+      <Method Name="OnEnable" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAggAQAAAAAAABAAAAAAAACAIAAAAAIAAAAAgAICAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerMenu\Inventary\Items\HealingNinjutsuItem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="ExtraInteractionNPC" Collapsed="true">
