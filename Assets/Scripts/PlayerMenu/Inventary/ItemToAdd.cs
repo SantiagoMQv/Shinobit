@@ -26,4 +26,9 @@ public class ItemToAdd : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public InventaryItem getInventaryItemReference()
+    {
+        return inventaryItemReference;
+    }
 }

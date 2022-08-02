@@ -30,6 +30,7 @@ public class Quiz : ScriptableObject
     public QuizDifficulty quizDifficulty;
     public QuizProgrammingLanguage quizProgrammingLanguage;
     public NPCDialog NPCRelacionated;
+    public int PossibleFails;
 
     [Header("Questions")]
     public TestQuestions[] quizQuestions;
@@ -40,7 +41,6 @@ public class Quiz : ScriptableObject
     [Header("Rewards")]
     public int BitsRewards;
     public QuizRewardItem quizRewardItem;
-
     [HideInInspector] public int QuestionAnswered;
     [HideInInspector] public int QuestionRight;
     [HideInInspector] public bool QuizCompleted;
@@ -54,7 +54,7 @@ public class TestQuestions
     public QuestionType questionType;
     public string QuestionText;
     public Sprite GuideImage;
-    [TextArea] public string CorrentAnswer;
+    [TextArea] public string CorrectAnswer;
     [TextArea] public string WrongAnswer1;
     [TextArea] public string WrongAnswer2;
 }
@@ -62,6 +62,6 @@ public class TestQuestions
 [Serializable]
 public class QuizRewardItem
 {
-    public InventaryItem Item;
+    public GameObject Item;
     public int Amount;
 }

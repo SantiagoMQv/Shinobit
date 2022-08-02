@@ -15,31 +15,22 @@ MonoBehaviour:
   Name: Entrada y salida
   ID: test2
   NumberQuestions: 2
-  testDifficulty: 1
-  testProgrammingLanguage: 0
+  quizDifficulty: 0
+  quizProgrammingLanguage: 0
   NPCRelacionated: {fileID: 11400000, guid: 0faba19ec01dc9b40ac6b9ab9c1f3d0f, type: 2}
-  testQuestions:
+  PossibleFails: 2
+  quizQuestions:
   - questionType: 0
-    QuestionText: "\xBFCual es la salida correcta?"
-    GuideImage: {fileID: 0}
-    CorrentAnswer: 18
-    WrongAnswer1: 2
-    WrongAnswer2: '32
-
-'
-  - questionType: 0
-    QuestionText: "\xBFCual es la salida correcta?"
-    GuideImage: {fileID: 0}
-    CorrentAnswer: 1
-    WrongAnswer1: 2
-    WrongAnswer2: '3
-
-'
+    QuestionText: Esto es una prueba
+    GuideImage: {fileID: 21300000, guid: c0242e5afb014544d844e8e9ad23f8cd, type: 3}
+    CorrectAnswer: 12
+    WrongAnswer1: 21
+    WrongAnswer2: 234
   Description: En esta prueba repasaremos la entrada y salida de texto.
   BitsRewards: 50
-  testRewardItem:
-    Item: {fileID: 11400000, guid: 3432e6b47f8c94440a46c968276b04f3, type: 2}
-    Amount: 1
+  quizRewardItem:
+    Item: {fileID: 0}
+    Amount: 0
   QuestionAnswered: 0
   QuestionRight: 0
-  TestCompleted: 0
+  QuizCompleted: 0

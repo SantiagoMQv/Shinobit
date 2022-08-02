@@ -12,6 +12,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject healthTokenPanel;
     [SerializeField] private GameObject ninjaCodeGetPanel;
     [SerializeField] private GameObject ninjaCodePlayerPanel;
+    [SerializeField] private GameObject ninjaCodeQuizPanel;
+    [SerializeField] private GameObject ninjaCodeInfoQuizPanel;
 
     [Header("Health Config")]
     [SerializeField] private Image playerHealth;
@@ -40,6 +42,11 @@ public class UIManager : Singleton<UIManager>
     [Header("Pickups")]
     [SerializeField] private TextMeshProUGUI BitsTMP;
     [SerializeField] private TextMeshProUGUI KeysTMP;
+
+    [Header("FloatingText")]
+    [SerializeField] private Canvas canva;
+    [SerializeField] private Camera cam;
+    [SerializeField] private GameObject FloatingTextPrefab;
 
     private float currentHealth;
     private float maxHealth;
@@ -181,6 +188,14 @@ public class UIManager : Singleton<UIManager>
 
     #endregion
 
+    #region FloatingText
+    public void ShowFloatingText(string text)
+    {
+        GameObject go = Instantiate(FloatingTextPrefab, cam.WorldToScreenPoint(Player.Instance.transform.position), Quaternion.identity, canva.transform);
+        go.GetComponent<Text>().text = text;
+    }
+    #endregion
+
     #region Panels
 
     public void OpenCloseMenu()
@@ -234,9 +249,19 @@ public class UIManager : Singleton<UIManager>
         else
         {
             DisplayingPanel = true;
+            Player.Instance.movementPlayer.SetCanMove(false);
         }
     }
 
+    public void OpenCloseNinjaCodeQuizPanel()
+    {
+        ninjaCodeQuizPanel.SetActive(!ninjaCodeQuizPanel.activeSelf);
+    }
+
+    public void OpenCloseNinjaCodeInfoQuizPanel()
+    {
+        ninjaCodeInfoQuizPanel.SetActive(!ninjaCodeInfoQuizPanel.activeSelf);
+    }
     public void OpenCloseInteraction(ExtraInteractionNPC interactionType)
     {
         switch (interactionType)

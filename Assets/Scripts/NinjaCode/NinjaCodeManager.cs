@@ -9,11 +9,11 @@ public class NinjaCodeManager : Singleton<NinjaCodeManager>
     private List<Quiz> quizAvailableToDo;
 
     [Header("NinjaCodeSlotGetPanel")]
-    [SerializeField] private QuizDescription NinjaCodeSlotPrefab;
+    [SerializeField] private QuizSlot NinjaCodeSlotPrefab;
     [SerializeField] private Transform NinjaCodeSlotContainer;
 
     [Header("NinjaCodeSlotPlayerPanel")]
-    [SerializeField] private QuizDescription NinjaCodeSlotPlayerPrefab;
+    [SerializeField] private QuizSlot NinjaCodeSlotPlayerPrefab;
     [SerializeField] private Transform NinjaCodeSlotPlayerContainer;
 
     private ArrayList currentNinjaCodesLoaded;
@@ -34,8 +34,8 @@ public class NinjaCodeManager : Singleton<NinjaCodeManager>
                 // Cargará solo los test que estén relacionados con el NPC que los carga.
                 if(quizAvailableToGet[i].NPCRelacionated == npcRelationated)
                 {
-                    QuizDescription newNinjaCode = Instantiate(NinjaCodeSlotPrefab, NinjaCodeSlotContainer);
-                    newNinjaCode.SetUpQuizUI(quizAvailableToGet[i]);
+                    QuizSlot newNinjaCode = Instantiate(NinjaCodeSlotPrefab, NinjaCodeSlotContainer);
+                    newNinjaCode.SetUpQuizSlotUI(quizAvailableToGet[i]);
                     currentNinjaCodesLoaded.Add(newNinjaCode);
                 }
             }
@@ -45,7 +45,7 @@ public class NinjaCodeManager : Singleton<NinjaCodeManager>
 
     public void CleanNinjaCodeGetPanel()
     {
-        foreach (QuizDescription ninjaCode in currentNinjaCodesLoaded)
+        foreach (QuizSlot ninjaCode in currentNinjaCodesLoaded)
         {
             Destroy(ninjaCode.gameObject);
             ninjaCode.UnSetQuizUI();
@@ -53,18 +53,14 @@ public class NinjaCodeManager : Singleton<NinjaCodeManager>
         currentNinjaCodesLoaded.Clear();
     }
 
-    private void AddNinjaCodeToComplete(Quiz quizToComplete)
+    public void AddToPlayerPanel(Quiz quizToComplete)
     {
-        QuizDescription newNinjaCode = Instantiate(NinjaCodeSlotPlayerPrefab, NinjaCodeSlotPlayerContainer);
-        newNinjaCode.SetUpQuizUI(quizToComplete);
+        QuizSlot newNinjaCode = Instantiate(NinjaCodeSlotPlayerPrefab, NinjaCodeSlotPlayerContainer);
+        newNinjaCode.SetUpQuizSlotUI(quizToComplete);
         quizAvailableToGet.Remove(quizToComplete);
         quizAvailableToDo.Add(quizToComplete);
     }
-
-    public void AddNinjaCode(Quiz quizToComplete)
-    {
-        AddNinjaCodeToComplete(quizToComplete);
-    }
+    
     
 
 }

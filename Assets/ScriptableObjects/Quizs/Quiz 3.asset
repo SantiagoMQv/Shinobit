@@ -18,11 +18,24 @@ MonoBehaviour:
   quizDifficulty: 0
   quizProgrammingLanguage: 0
   NPCRelacionated: {fileID: 11400000, guid: ec9c9fc6af673c146961beff9fd21a7b, type: 2}
-  quizQuestions: []
+  PossibleFails: 1
+  quizQuestions:
+  - questionType: 0
+    QuestionText: Esto e3s una prueba
+    GuideImage: {fileID: 21300000, guid: c0242e5afb014544d844e8e9ad23f8cd, type: 3}
+    CorrectAnswer: 1
+    WrongAnswer1: 2
+    WrongAnswer2: 3
+  - questionType: 0
+    QuestionText: Esto es una pru6eba
+    GuideImage: {fileID: 21300000, guid: 253d712cca3c7bb429b2488038f98334, type: 3}
+    CorrectAnswer: 3
+    WrongAnswer1: 2
+    WrongAnswer2: 1
   Description: En esta prueba repasaremos las estructuras de control.
   BitsRewards: 159
   quizRewardItem:
-    Item: {fileID: 11400000, guid: 3432e6b47f8c94440a46c968276b04f3, type: 2}
+    Item: {fileID: 4778483609513488409, guid: 69fff6057aae91148b01162b2dd5f1bc, type: 3}
     Amount: 1
   QuestionAnswered: 0
   QuestionRight: 0

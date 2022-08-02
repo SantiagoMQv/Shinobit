@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class QuizDescription : MonoBehaviour
+public class QuizSlot : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI quizNameTMP;
     [SerializeField] private TextMeshProUGUI quizDescriptionTMP;
@@ -11,7 +11,8 @@ public class QuizDescription : MonoBehaviour
     [SerializeField] private TextMeshProUGUI quizReward;
 
     public Quiz QuizLoad { get; set; }
-    public void SetUpQuizUI(Quiz quiz)
+
+    public void SetUpQuizSlotUI(Quiz quiz)
     {
         QuizLoad = quiz;
         quizNameTMP.text = quiz.Name;
@@ -35,12 +36,12 @@ public class QuizDescription : MonoBehaviour
         }
         if (quiz.quizRewardItem.Item != null)
         {
-            quizReward.text = $"-{quiz.BitsRewards} bits" + $"\n-{quiz.quizRewardItem.Item.Name} x {quiz.quizRewardItem.Amount}";
+            InventaryItem item = quiz.quizRewardItem.Item.GetComponent<ItemToAdd>().getInventaryItemReference();
+            quizReward.text = $"-{quiz.BitsRewards} bits" + $"\n-{item.Name} x {quiz.quizRewardItem.Amount}";
         }else
         {
             quizReward.text = $"-{quiz.BitsRewards} bits";
         }
-        
     }
 
     public void UnSetQuizUI()
@@ -48,13 +49,6 @@ public class QuizDescription : MonoBehaviour
         QuizLoad = null;
     }
 
-    public void GetQuiz()
-    {
-        if(QuizLoad != null)
-        {
-            NinjaCodeManager.Instance.AddNinjaCode(QuizLoad);
-            gameObject.SetActive(false);
-        }
-    }
+    
 
 }
