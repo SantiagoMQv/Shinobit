@@ -40,10 +40,7 @@ public class Pickups : Singleton<Pickups>
     public void AddBits(float amount)
     {
         CurrentBits += amount;
-        if (FloatingTextPrefab)
-        {
-            UIManager.Instance.ShowFloatingText(amount.ToString() + " BITS");
-        }
+        UIManager.Instance.ShowFloatingText(amount.ToString() + " BITS");
     }
 
 

@@ -84,7 +84,7 @@ public class UIManager : Singleton<UIManager>
         {
             OpenCloseMenu();
         }
-        if (Input.GetKeyDown(KeyCode.H) )
+        if (Input.GetKeyDown(KeyCode.H) && QuizManager.Instance.quizCompleted)
         {
             OpenCloseNinjaCodePlayerPanel();
         }

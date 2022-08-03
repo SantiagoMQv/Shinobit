@@ -26,10 +26,12 @@ MonoBehaviour:
     CorrectAnswer: 1
     WrongAnswer1: 2
     WrongAnswer2: 3
-  - questionType: 0
+  - questionType: 1
     QuestionText: Esto es una pru6eba
     GuideImage: {fileID: 21300000, guid: 253d712cca3c7bb429b2488038f98334, type: 3}
-    CorrectAnswer: 3
+    CorrectAnswer: 'Hola
+
+      3'
     WrongAnswer1: 2
     WrongAnswer2: 1
   Description: En esta prueba repasaremos las estructuras de control.

@@ -19,6 +19,8 @@ public class QuizManager : Singleton<QuizManager>
     [SerializeField] private TextMeshProUGUI messageAnswer;
     [SerializeField] private GameObject confirmButton;
     [SerializeField] private GameObject nextButton;
+    [SerializeField] private GameObject buttonsGO;
+    [SerializeField] private GameObject fillerGO;
 
     [Header("InfoQuizPanel")]
     [SerializeField] private Image backgroundPanel;
@@ -31,22 +33,23 @@ public class QuizManager : Singleton<QuizManager>
     private int totalQuestions;
     private int rightQuestions;
     private int currentNumQuestion;
-    private bool quizCompleted;
+    public bool quizCompleted;
 
     private QuizSlotPlayerPanel currentSlot;
     private Quiz currentQuiz;
 
-    private List<TextMeshProUGUI> buttons;
+    private List<TextMeshProUGUI> mixButtons;
     private string playerAnswer;
     private GameObject currentButton;
     private bool lostGame;
 
     private void Start()
     {
-        buttons = new List<TextMeshProUGUI>();
-        buttons.Add(button1TMP);
-        buttons.Add(button2TMP);
-        buttons.Add(button3TMP);
+        quizCompleted = true;
+        mixButtons = new List<TextMeshProUGUI>();
+        mixButtons.Add(button1TMP);
+        mixButtons.Add(button2TMP);
+        mixButtons.Add(button3TMP);
     }
 
     public void StartQuiz(Quiz quizToComplete, QuizSlotPlayerPanel slot)
@@ -70,6 +73,7 @@ public class QuizManager : Singleton<QuizManager>
         rightQuestions = 0;
         currentNumQuestion = 0;
         lostGame = false;
+        playerAnswer = null;
     }
     public void ProcessAnswer()
     {
@@ -91,6 +95,7 @@ public class QuizManager : Singleton<QuizManager>
             SetUpFailsQuizUI();
             DisplayWrongMessage();
         }
+        playerAnswer = null;
     }
 
     public void nextQuestion()
@@ -112,17 +117,33 @@ public class QuizManager : Singleton<QuizManager>
         SetUpQuizUI();
     }
 
+    #region FillField
+
+    public void ReadStringInput(String s)
+
+    {
+        playerAnswer = s;
+    }
+
+    #endregion
+
     #region UI
     public void SetUpQuizUI()
     {
+        fillerGO.SetActive(false);
+        buttonsGO.SetActive(false);
         quizQuestionTMP.text = currentQuiz.quizQuestions[currentNumQuestion].QuestionText;
         quizImage.sprite = currentQuiz.quizQuestions[currentNumQuestion].GuideImage;
         if (currentQuiz.quizQuestions[currentNumQuestion].questionType == QuestionType.Options)
         {
-            buttons.Shuffle();
-            buttons[0].text = currentQuiz.quizQuestions[currentNumQuestion].CorrectAnswer;
-            buttons[1].text = currentQuiz.quizQuestions[currentNumQuestion].WrongAnswer1;
-            buttons[2].text = currentQuiz.quizQuestions[currentNumQuestion].WrongAnswer2;
+            buttonsGO.SetActive(true);
+            mixButtons.Shuffle();
+            mixButtons[0].text = currentQuiz.quizQuestions[currentNumQuestion].CorrectAnswer;
+            mixButtons[1].text = currentQuiz.quizQuestions[currentNumQuestion].WrongAnswer1;
+            mixButtons[2].text = currentQuiz.quizQuestions[currentNumQuestion].WrongAnswer2;
+        }else if (currentQuiz.quizQuestions[currentNumQuestion].questionType == QuestionType.Fill)
+        {
+            fillerGO.SetActive(true);
         }
         currentQuestionTMP.text = (currentNumQuestion + 1).ToString();
         totalQuestionTMP.text = $"/{totalQuestions.ToString()}";
@@ -185,7 +206,7 @@ public class QuizManager : Singleton<QuizManager>
     }
     public void InitializeAllButtons()
     {
-        foreach (TextMeshProUGUI button in buttons)
+        foreach (TextMeshProUGUI button in mixButtons)
         {
             GameObject buttonGO = button.transform.parent.gameObject;
             buttonGO.GetComponent<Image>().color = new Color32(43, 43, 43, 255);
@@ -211,9 +232,13 @@ public class QuizManager : Singleton<QuizManager>
     }
     public void ConfirmButton()
     {
-        nextButton.SetActive(true);
-        confirmButton.SetActive(false);
-        ProcessAnswer();
+        if(playerAnswer != null)
+        {
+            nextButton.SetActive(true);
+            confirmButton.SetActive(false);
+            ProcessAnswer();
+        }
+        
     }
     public void NextButton()
     {
