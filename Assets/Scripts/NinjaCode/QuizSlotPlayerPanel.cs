@@ -29,7 +29,11 @@ public class QuizSlotPlayerPanel : QuizSlot
             gameObject.SetActive(false);
             if (QuizLoad.quizRewardItem.Item != null)
             {
-                Instantiate(QuizLoad.quizRewardItem.Item, Player.Instance.transform.position + new Vector3(1,0,0) , QuizLoad.quizRewardItem.Item.transform.rotation);
+                for (int i = 0; i < QuizLoad.quizRewardItem.Amount; i++)
+                {
+                    Instantiate(QuizLoad.quizRewardItem.Item, Player.Instance.transform.position + new Vector3(1, 0, 0), QuizLoad.quizRewardItem.Item.transform.rotation);
+                }
+                
             }
             Pickups.Instance.AddBits(QuizLoad.BitsRewards);
         }
