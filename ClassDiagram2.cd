@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
-  <Class Name="DialogueManager" Collapsed="true">
-    <Position X="0.75" Y="6" Width="1.5" />
+  <Class Name="DialogueManager">
+    <Position X="14.5" Y="6" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AA8BAEAAACABAABAUAAABBAAABAQAAAAAAAQAAAAgIQ=</HashCode>
       <FileName>Assets\Scripts\Dialog\DialogueManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="NPCDialog" Collapsed="true">
-    <Position X="23" Y="1.5" Width="1.5" />
+  <Class Name="NPCDialog">
+    <Position X="20" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAAAAAAAAAAAAAAAAAAAAQAEAAAAAICAAAAAAEAABA=</HashCode>
       <FileName>Assets\Scripts\Dialog\NPCDialog.cs</FileName>
@@ -21,8 +21,8 @@
       <FileName>Assets\Scripts\Dialog\NPCDialog.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="NPCInteraction" Collapsed="true">
-    <Position X="24.75" Y="1.5" Width="1.5" />
+  <Class Name="NPCInteraction">
+    <Position X="22.5" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAACAAIAAAAAAAAAAAAAAAEAAAAAAEAAAAAAAAAA=</HashCode>
       <FileName>Assets\Scripts\Dialog\NPCInteraction.cs</FileName>
@@ -52,7 +52,7 @@
   <Class Name="UIManager" Collapsed="true">
     <Position X="3" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>iCQAAFAYBKAoAAQEgAABIAogApIGEAhAAABgMQAqIQA=</HashCode>
+      <HashCode>mCQABFAYBKBqEAQEgkIBIAoyApIGNAhAAABgMQAqMQA=</HashCode>
       <FileName>Assets\Scripts\Managers\UIManager.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -113,7 +113,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PlayerJump">
-    <Position X="12.75" Y="7.25" Width="2.5" />
+    <Position X="10.5" Y="7.5" Width="2.5" />
     <Members>
       <Field Name="bigScale" Hidden="true" />
       <Field Name="firstTimeJump" Hidden="true" />
@@ -232,7 +232,7 @@
   <Class Name="ItemToAdd" Collapsed="true">
     <Position X="24.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAQAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEEEAAAAAAAAAQAAAAAA=</HashCode>
       <FileName>Assets\Scripts\PlayerMenu\Inventary\ItemToAdd.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -246,7 +246,7 @@
   <Class Name="Pickups" Collapsed="true">
     <Position X="5.25" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAQACAAAAAAAAAAAJAAAAEAAAAACAAAAAAQAAA=</HashCode>
+      <HashCode>AAAAAAAQACAAAAAAAAAAAJAQAAEAAAAACAAAAAAQAAA=</HashCode>
       <FileName>Assets\Scripts\PlayerMenu\Pickups\Pickups.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -294,10 +294,6 @@
   </Class>
   <Class Name="HealingNinjutsuItem" Collapsed="true">
     <Position X="11" Y="2" Width="2.5" />
-    <Members>
-      <Method Name="OnDisable" Hidden="true" />
-      <Method Name="OnEnable" Hidden="true" />
-    </Members>
     <TypeIdentifier>
       <HashCode>AAAggAQAAAAAAABAAAAAAAACAIAAAAAIAAAAAgAICAA=</HashCode>
       <FileName>Assets\Scripts\PlayerMenu\Inventary\Items\HealingNinjutsuItem.cs</FileName>

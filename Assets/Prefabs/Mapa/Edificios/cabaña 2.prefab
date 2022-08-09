@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6267855791567186410}
   - component: {fileID: 6267855791567186408}
-  - component: {fileID: 6267855791567186409}
+  - component: {fileID: 514452261307880980}
   m_Layer: 0
   m_Name: "caba\xF1a 2"
   m_TagString: Untagged
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6267855791567186411}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.82, y: 3.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6267855791567186409
-BoxCollider2D:
+--- !u!60 &514452261307880980
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,7 +98,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03630209, y: 0.0060499907}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -108,6 +108,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.924572, y: 1.9936435}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.1730518, y: 0.534091}
+      - {x: 0.48684692, y: 0.9760902}
+      - {x: -0.5707264, y: 0.98225117}
+      - {x: -1.1849556, y: 0.48262978}
+      - {x: -1.5177517, y: -0.4764068}
+      - {x: -1.4955101, y: -0.7958875}
+      - {x: -1.1800861, y: -0.9863094}
+      - {x: 0.9586601, y: -0.99913454}
+      - {x: 1.4637451, y: -0.7819811}

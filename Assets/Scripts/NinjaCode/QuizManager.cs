@@ -34,6 +34,7 @@ public class QuizManager : Singleton<QuizManager>
     private int rightQuestions;
     private int currentNumQuestion;
     public bool quizCompleted;
+    public int TotalQuizPassed;
 
     private QuizSlotPlayerPanel currentSlot;
     private Quiz currentQuiz;
@@ -45,6 +46,7 @@ public class QuizManager : Singleton<QuizManager>
 
     private void Start()
     {
+        TotalQuizPassed = 0;
         quizCompleted = true;
         mixButtons = new List<TextMeshProUGUI>();
         mixButtons.Add(button1TMP);
@@ -111,6 +113,7 @@ public class QuizManager : Singleton<QuizManager>
         else if ((currentNumQuestion + 1) > totalQuestions)
         {
             quizCompleted = true;
+            TotalQuizPassed++;
             DisplayInfoQuizPanel();
             return;
         }

@@ -38,7 +38,7 @@ MonoBehaviour:
   BitsRewards: 159
   quizRewardItem:
     Item: {fileID: 4778483609513488409, guid: 69fff6057aae91148b01162b2dd5f1bc, type: 3}
-    Amount: 1
+    Amount: 2
   QuestionAnswered: 0
   QuestionRight: 0
   QuizCompleted: 0

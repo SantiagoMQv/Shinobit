@@ -1106,6 +1106,86 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 93245858908490554, guid: 1f298d5723be56c49a532f98cbefca24, type: 3}
   m_PrefabInstance: {fileID: 93245859023151054}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &116190368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 116190369}
+  - component: {fileID: 116190371}
+  - component: {fileID: 116190370}
+  m_Layer: 5
+  m_Name: QuizzesPassedNumber
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &116190369
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116190368}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 907486364}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -9.699951, y: 13.359985}
+  m_SizeDelta: {x: 79.081, y: 50}
+  m_Pivot: {x: 1, y: 0}
+--- !u!114 &116190370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116190368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8588236, g: 0.34901962, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
+    m_FontSize: 53
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 80
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 9
+--- !u!222 &116190371
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116190368}
+  m_CullTransparentMesh: 1
 --- !u!1001 &127201577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1599,8 +1679,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 9.947113}
-  m_SizeDelta: {x: 0, y: -19.8942}
+  m_AnchoredPosition: {x: 0, y: 32.5}
+  m_SizeDelta: {x: 0, y: -65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &169349072
 MonoBehaviour:
@@ -1794,7 +1874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points:
-  - {x: 4.6271386, y: -0.26179236, z: 0}
+  - {x: 4.669739, y: -0.3043921, z: 0}
   - {x: 9.674114, y: -0.32833508, z: 0}
 --- !u!114 &199098870
 MonoBehaviour:
@@ -4085,6 +4165,7 @@ RectTransform:
   - {fileID: 2011832511}
   - {fileID: 1394618768}
   - {fileID: 533165345}
+  - {fileID: 907486364}
   m_Father: {fileID: 1159876779}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7077,6 +7158,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: -11, y: 8, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 7
+      m_TileSpriteIndex: 17
+      m_TileMatrixIndex: 4
+      m_TileColorIndex: 1
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741826
   - first: {x: -10, y: 8, z: 0}
     second:
       serializedVersion: 2
@@ -7413,8 +7504,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 5b6eae47956d6464e9cd642e5d9a0054, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 45bbb09651f1f9846b5c23b99f97076c, type: 2}
   - m_RefCount: 1
@@ -7462,8 +7553,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 56957706, guid: a8c0baa1f5602424e8e1f99f791f1bb6, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1782795925, guid: b6132ebf3a630c74092e2a217331e39a, type: 3}
   - m_RefCount: 1
@@ -7549,7 +7640,7 @@ Tilemap:
       e31: 0
       e32: 4.5904e-41
       e33: 0
-  - m_RefCount: 90
+  - m_RefCount: 91
     m_Data:
       e00: 1
       e01: 0
@@ -7570,7 +7661,7 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 0
     m_Data: {r: 4.7423e-41, g: 4.7423e-41, b: 4.7423e-41, a: 4.7423e-41}
-  - m_RefCount: 90
+  - m_RefCount: 91
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -7644,6 +7735,22 @@ CompositeCollider2D:
         Y: 20000000
       - X: -92500000
         Y: 20000000
+    - - X: -99999900
+        Y: 79999959
+      - X: -99999900
+        Y: 90000041
+      - X: -99999959
+        Y: 90000100
+      - X: -110000041
+        Y: 90000100
+      - X: -110000100
+        Y: 90000041
+      - X: -110000100
+        Y: 79999959
+      - X: -110000041
+        Y: 79999900
+      - X: -99999959
+        Y: 79999900
     - - X: 157500000
         Y: -107500000
       - X: 157500000
@@ -7688,6 +7795,10 @@ CompositeCollider2D:
       - {x: -9.500009, y: 11.874992}
       - {x: -9.75, y: 11.624989}
       - {x: -9.74997, y: 2}
+    - - {x: -10.000026, y: 7.9999905}
+      - {x: -10.000026, y: 9.00001}
+      - {x: -11.00001, y: 8.999974}
+      - {x: -10.999974, y: 7.9999905}
     - - {x: 15.624989, y: -10.875}
       - {x: 15.75, y: -10.749989}
       - {x: 15.749971, y: 0}
@@ -10364,6 +10475,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: 0, y: 0, z: 0, w: 0}
   m_Softness: {x: 0, y: 0}
+--- !u!1 &907486363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 907486364}
+  m_Layer: 5
+  m_Name: InfoPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &907486364
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907486363}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1386785258}
+  - {fileID: 116190369}
+  m_Father: {fileID: 461400693}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 600, y: 750}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &907650308
 GameObject:
   m_ObjectHideFlags: 0
@@ -10827,7 +10976,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1044458758
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12304,7 +12453,7 @@ GameObject:
   - component: {fileID: 1260174523}
   - component: {fileID: 1260174522}
   m_Layer: 0
-  m_Name: Altura
+  m_Name: Elevation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14718,6 +14867,86 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1381819335}
   m_CullTransparentMesh: 1
+--- !u!1 &1386785257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1386785258}
+  - component: {fileID: 1386785260}
+  - component: {fileID: 1386785259}
+  m_Layer: 5
+  m_Name: QuizzesPassed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1386785258
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386785257}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 907486364}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -27, y: 13.359985}
+  m_SizeDelta: {x: 466.93, y: 50}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &1386785259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386785257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6226415, g: 0.30961686, b: 0.09692062, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
+    m_FontSize: 53
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 80
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Pruebas superadas:'
+--- !u!222 &1386785260
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386785257}
+  m_CullTransparentMesh: 1
 --- !u!1 &1394618767
 GameObject:
   m_ObjectHideFlags: 0
@@ -15957,7 +16186,7 @@ GameObject:
   - component: {fileID: 1477085697}
   - component: {fileID: 1477085696}
   m_Layer: 0
-  m_Name: Detalles casas
+  m_Name: HouseDetails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16529,7 +16758,7 @@ GameObject:
   - component: {fileID: 1522419709}
   - component: {fileID: 1522419708}
   m_Layer: 0
-  m_Name: Tree
+  m_Name: Trees
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61581,7 +61810,7 @@ GameObject:
   - component: {fileID: 1862070431}
   - component: {fileID: 1862070433}
   m_Layer: 0
-  m_Name: Hierba destruible
+  m_Name: DestroyableGrass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64192,6 +64421,7 @@ MonoBehaviour:
   StaminaPointsTMP: {fileID: 1409574653}
   BitsTMP: {fileID: 476597600}
   KeysTMP: {fileID: 751695649}
+  quizzesPassedText: {fileID: 116190370}
   canva: {fileID: 1894512745}
   cam: {fileID: 519420031}
   FloatingTextPrefab: {fileID: 1335746527247674503, guid: 978700dd5c898574590c22cc4e8b573f, type: 3}
@@ -65138,6 +65368,7 @@ MonoBehaviour:
   backgroundButton: {fileID: 607582546}
   textButton: {fileID: 454904640}
   quizCompleted: 0
+  TotalQuizPassed: 0
 --- !u!1001 &2073516890
 PrefabInstance:
   m_ObjectHideFlags: 0

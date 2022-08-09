@@ -21,7 +21,7 @@ MonoBehaviour:
   PossibleFails: 1
   quizQuestions:
   - questionType: 0
-    QuestionText: "1- \xBFCu\xE1l es la salida cpoorrecta?"
+    QuestionText: "1- \xBFCu\xE1l es la salida correcta?"
     GuideImage: {fileID: 21300000, guid: b846ca06bf3deca4e81ec32e512fe29f, type: 3}
     CorrectAnswer: 'Hola
 

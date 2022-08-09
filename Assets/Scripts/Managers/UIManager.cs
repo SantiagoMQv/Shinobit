@@ -43,6 +43,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI BitsTMP;
     [SerializeField] private TextMeshProUGUI KeysTMP;
 
+    [Header("Quiz")]
+    [SerializeField] private Text quizzesPassedText;
+
     [Header("FloatingText")]
     [SerializeField] private Canvas canva;
     [SerializeField] private Camera cam;
@@ -240,6 +243,7 @@ public class UIManager : Singleton<UIManager>
 
     public void OpenCloseNinjaCodePlayerPanel()
     {
+        quizzesPassedText.text = QuizManager.Instance.TotalQuizPassed.ToString();
         ninjaCodePlayerPanel.SetActive(!ninjaCodePlayerPanel.activeSelf);
         if (!ninjaCodePlayerPanel.activeSelf)
         {
