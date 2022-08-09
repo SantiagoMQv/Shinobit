@@ -9,7 +9,7 @@ public class NPCInteraction : MonoBehaviour
 
     public NPCDialog Dialog => npcDialog;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -17,8 +17,9 @@ public class NPCInteraction : MonoBehaviour
             npcInteractButton.SetActive(true);
         }
     }
+    
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public virtual void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
