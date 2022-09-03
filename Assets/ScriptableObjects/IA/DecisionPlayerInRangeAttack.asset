@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 196f80adb9a7644478995887141bb6fd, type: 3}
-  m_Name: WalkState
+  m_Script: {fileID: 11500000, guid: a6cf5e64e6a53e84abdb24786a4e4510, type: 3}
+  m_Name: DecisionPlayerInRangeAttack
   m_EditorClassIdentifier: 
-  Actions:
-  - {fileID: 0}
-  Transitions:
-  - Decision: {fileID: 0}
-    TrueState: {fileID: 0}
-    FalseState: {fileID: 0}

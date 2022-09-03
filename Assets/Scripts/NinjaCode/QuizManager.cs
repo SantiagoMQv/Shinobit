@@ -33,7 +33,6 @@ public class QuizManager : Singleton<QuizManager>
     private int totalQuestions;
     private int rightQuestions;
     private int currentNumQuestion;
-    public bool quizCompleted;
     public int TotalQuizPassed;
 
     private QuizSlotPlayerPanel currentSlot;
@@ -43,6 +42,7 @@ public class QuizManager : Singleton<QuizManager>
     private string playerAnswer;
     private GameObject currentButton;
     private bool lostGame;
+    public bool quizCompleted;
 
     private void Start()
     {
@@ -235,7 +235,7 @@ public class QuizManager : Singleton<QuizManager>
     }
     public void ConfirmButton()
     {
-        if(playerAnswer != null)
+        if(playerAnswer != null && !quizCompleted)
         {
             nextButton.SetActive(true);
             confirmButton.SetActive(false);

@@ -46,10 +46,6 @@ public class UIManager : Singleton<UIManager>
     [Header("Quiz")]
     [SerializeField] private Text quizzesPassedText;
 
-    [Header("FloatingText")]
-    [SerializeField] private Canvas canva;
-    [SerializeField] private Camera cam;
-    [SerializeField] private GameObject FloatingTextPrefab;
 
     private float currentHealth;
     private float maxHealth;
@@ -189,14 +185,6 @@ public class UIManager : Singleton<UIManager>
         return HealthTokenContainer.childCount;
     }
 
-    #endregion
-
-    #region FloatingText
-    public void ShowFloatingText(string text)
-    {
-        GameObject go = Instantiate(FloatingTextPrefab, cam.WorldToScreenPoint(Player.Instance.transform.position), Quaternion.identity, canva.transform);
-        go.GetComponent<Text>().text = text;
-    }
     #endregion
 
     #region Panels

@@ -27,7 +27,7 @@ public class HealthPlayer : Healthbase
         //Para hacer pruebas con el daño recibido
         if (Input.GetKeyDown(KeyCode.T))
         {
-            GetDamage(10);
+            GetDamage((float) Math.Round(10.8));
         }
     }
     public void RestoreHealth(float amount)
@@ -60,7 +60,7 @@ public class HealthPlayer : Healthbase
     protected override void DefeatedPlayer()
     {   
         //Lo desactivamos al morir para que no hayan problemas de colisiones
-        boxCollider2D.enabled = false;
+        //boxCollider2D.enabled = false;
         //Si no está vacío, se invoca
         DefeatedPlayerEvent?.Invoke();
         Defeated = true;
@@ -68,7 +68,7 @@ public class HealthPlayer : Healthbase
 
     public void PlayerRestore()
     {
-        boxCollider2D.enabled = true;
+        //boxCollider2D.enabled = true;
         Defeated = false;
         Health = initialHealth;
         UpdateHealthBar(Health, initialHealth); 

@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Coin
   - GoldKey
+  - Obstaculo
+  - WaterEnemy
+  - Water
+  - Enemy
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -13,7 +18,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
@@ -66,6 +71,9 @@ TagManager:
     locked: 0
   - name: Items
     uniqueID: 2130285931
+    locked: 0
+  - name: Tilemap_Water
+    uniqueID: 1564169205
     locked: 0
   - name: Character
     uniqueID: 3557786029

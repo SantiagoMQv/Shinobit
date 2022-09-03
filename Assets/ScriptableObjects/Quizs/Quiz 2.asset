@@ -26,6 +26,12 @@ MonoBehaviour:
     CorrectAnswer: 12
     WrongAnswer1: 21
     WrongAnswer2: 234
+  - questionType: 1
+    QuestionText: Esto es una prueba
+    GuideImage: {fileID: 21300000, guid: c0242e5afb014544d844e8e9ad23f8cd, type: 3}
+    CorrectAnswer: 12
+    WrongAnswer1: 21
+    WrongAnswer2: 234
   Description: En esta prueba repasaremos la entrada y salida de texto.
   BitsRewards: 50
   quizRewardItem:

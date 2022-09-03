@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MovementPlayer : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] private float speedDefault;
+    [HideInInspector] public float speed;
 
     public bool moving => movementDirection.magnitude > 0;
     public bool CanMove { get; private set; }
@@ -19,10 +20,19 @@ public class MovementPlayer : MonoBehaviour
         rigibody2D = GetComponent<Rigidbody2D>();
         CanMove = true;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = speedDefault * 2;
+        }
+        else
+        {
+            speed = speedDefault;
+        }
+
         if (CanMove) { 
             input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
