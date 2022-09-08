@@ -11,20 +11,20 @@ public class MovementPlayer : MonoBehaviour
     public bool CanMove { get; private set; }
     public Vector2 MovementDirection => movementDirection;
 
-    private Rigidbody2D rigibody2D;
+    private Rigidbody2D _rigidbody2D;
     private Vector2 input;
     private Vector2 movementDirection;
 
     void Start()
     {
-        rigibody2D = GetComponent<Rigidbody2D>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
         CanMove = true;
     }
     
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.M))
         {
             speed = speedDefault * 2;
         }
@@ -74,7 +74,7 @@ public class MovementPlayer : MonoBehaviour
     //Usamos FixedUpdate porque trabajamos con un RigiBody2D
     private void FixedUpdate()
     {
-        rigibody2D.MovePosition(rigibody2D.position + movementDirection * speed * Time.fixedDeltaTime);
+        _rigidbody2D.MovePosition(_rigidbody2D.position + movementDirection * speed * Time.fixedDeltaTime);
     }
 
     public void SetCanMove(bool result)

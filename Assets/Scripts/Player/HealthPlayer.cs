@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class HealthPlayer : Healthbase
+public class HealthPlayer : HealthBase
 {
     public static Action DefeatedPlayerEvent;
     public bool CanBeHealed => Health < maxHealth;
@@ -27,7 +27,7 @@ public class HealthPlayer : Healthbase
         //Para hacer pruebas con el daño recibido
         if (Input.GetKeyDown(KeyCode.T))
         {
-            GetDamage((float) Math.Round(10.8));
+            GetDamage((float) Math.Round(10.8), null);
         }
     }
     public void RestoreHealth(float amount)
@@ -48,16 +48,16 @@ public class HealthPlayer : Healthbase
         }
     }
 
-    public override void GetDamage(float amount)
+    public override void GetDamage(float amount, GameObject enemy)
     {
         if (!playerJump.Jumping)
         {
-            base.GetDamage(amount);
+            base.GetDamage(amount, enemy);
         }
         
     }
 
-    protected override void DefeatedPlayer()
+    protected override void DefeatedCharacter()
     {   
         //Lo desactivamos al morir para que no hayan problemas de colisiones
         //boxCollider2D.enabled = false;

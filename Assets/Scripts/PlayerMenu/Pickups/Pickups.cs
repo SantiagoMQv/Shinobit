@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Pickups : Singleton<Pickups>
 {
-    public static System.Action<string, Color> EventFloatingText;
+    public static System.Action<string, Color, GameObject> EventFloatingText;
     public float CurrentBits { get; set; }
     
     public int CurrentGoldKeys { get; set; }
@@ -40,7 +40,7 @@ public class Pickups : Singleton<Pickups>
     public void AddBits(float amount)
     {
         CurrentBits += amount;
-        EventFloatingText?.Invoke(amount.ToString() + " BITS", new Color32(2, 128, 0, 255));
+        EventFloatingText?.Invoke(amount.ToString() + " BITS", new Color32(2, 128, 0, 255), null);
     }
 
 

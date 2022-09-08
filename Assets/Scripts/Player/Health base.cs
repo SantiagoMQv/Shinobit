@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Healthbase : MonoBehaviour
+public class HealthBase : MonoBehaviour
 {
     [SerializeField] protected float initialHealth;
     [SerializeField] protected float maxHealth;
 
-    public static System.Action<string, Color> EventFloatingText;
+    public static System.Action<string, Color, GameObject> EventFloatingText;
     public float Health { get; protected set; }
 
     protected virtual void Start()
@@ -16,7 +16,7 @@ public class Healthbase : MonoBehaviour
     }
 
     
-    public virtual void GetDamage(float amount)
+    public virtual void GetDamage(float amount, GameObject enemyDealingDamage)
     {
 
         if(amount <= 0)
@@ -26,13 +26,13 @@ public class Healthbase : MonoBehaviour
         if(Health > 0)
         {
             Health -= amount;
-            EventFloatingText?.Invoke(amount.ToString(), Color.red);
+            EventFloatingText?.Invoke(amount.ToString(), Color.red, enemyDealingDamage);
             UpdateHealthBar(Health, maxHealth);
             if (Health <= 0)
             {
                 Health = 0;
                 UpdateHealthBar(Health, maxHealth);
-                DefeatedPlayer();
+                DefeatedCharacter();
             }
         }
 
@@ -43,7 +43,7 @@ public class Healthbase : MonoBehaviour
 
     }
 
-    protected virtual void DefeatedPlayer()
+    protected virtual void DefeatedCharacter()
     {
 
     }

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07fad3aaa820e3143b56731b32fc7e2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 28115e0a38d10c34db40990e43e80223, type: 3}
   m_Name: AttackUpgradeItem
   m_EditorClassIdentifier: 
   ID: AttackNinjutsu
@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 6abff326b647de74c8923da9e3b7c5e1, type: 3}
   Description: Brochetas de pollo muy picantes que avivan la fuerza y furia de quien
     las consume. Para usar este objeto es necesario un altar de guardado.
-  Type: 2
+  Type: 1
   IsEquippable: 0
   IsCumulative: 1
   upgradeItem: 1

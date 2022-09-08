@@ -38,6 +38,9 @@ public class IAController : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] private GameObject projectilePrefab;
 
+    [Header("Others")]
+    [SerializeField] private bool WaterEnemy;
+
     [Header("Debug")]
     [SerializeField] private bool showDetection;
     [SerializeField] private bool showAttackAreaRange;
@@ -49,6 +52,7 @@ public class IAController : MonoBehaviour
     private bool attackDone;
     private bool attackDoing;
     private PolygonCollider2D polygonCollider2D;
+    private Rigidbody2D _rigidbody2D;
     private IEnumerator DashCorroutine;
 
     public Transform PlayerReference { get; set; }
@@ -63,6 +67,7 @@ public class IAController : MonoBehaviour
     private void Start()
     {
         polygonCollider2D = GetComponent<PolygonCollider2D>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
         CurrentState = initialState;
         EnemyMovement = GetComponent<EnemyMovement>();
     }
@@ -70,6 +75,10 @@ public class IAController : MonoBehaviour
     private void Update()
     {
         CurrentState.ExecuteState(this);
+
+        // Lo siguiente mantiene al enemigo interactuando con físicas dinámicas, pero lo vuelve kinematic cuando el jugador
+        // se acerca para evitar problemas de colisiones
+        SetKinematicWhenPlayerIsNear();
     }
 
     public void ChangeState(IAState newState)
@@ -78,6 +87,25 @@ public class IAController : MonoBehaviour
         {
             CurrentState = newState;
         }
+    }
+
+    private void SetKinematicWhenPlayerIsNear()
+    {
+        if(PlayerReference != null)
+        {
+            float distanceTarget = Vector3.Distance(transform.position, PlayerReference.position);
+
+            if (distanceTarget <= 1.5f)
+            {
+                _rigidbody2D.isKinematic = true;
+                return;
+            }
+            else
+            {
+                _rigidbody2D.isKinematic = false;
+            }
+        }
+        
     }
 
     public float AttackRangeDeterminated()
@@ -123,10 +151,11 @@ public class IAController : MonoBehaviour
         Vector3 playerPosition = PlayerReference.position;
         Vector3 initialPosition = transform.position;
         Vector3 directionToPlayer = (playerPosition - initialPosition).normalized;
-        GameObject projectile = Instantiate(projectilePrefab, transform.position + directionToPlayer * 0.5f, Quaternion.Euler(directionToPlayer));
+        GameObject projectile = Instantiate(projectilePrefab, transform.position + directionToPlayer * 0.8f, Quaternion.identity);
+        projectile.GetComponent<Projectile>().userType = ProjectileUserType.Enemy;
         projectile.GetComponent<Projectile>().damage = damage;
         projectile.GetComponent<Rigidbody2D>().AddForce(directionToPlayer * speedProjectile, ForceMode2D.Impulse);
-        projectile.transform.eulerAngles = new Vector3(0,0, GetAngleFromVectorFloat(directionToPlayer));
+        projectile.transform.eulerAngles = new Vector3(0,0, Utils.GetAngleFromVectorFloat(directionToPlayer));
         Destroy(projectile, 3f);
     }
 
@@ -213,7 +242,7 @@ public class IAController : MonoBehaviour
             {
                 damageToDo = damage;
             }
-            PlayerReference.GetComponent<HealthPlayer>().GetDamage(damageToDo);
+            PlayerReference.GetComponent<HealthPlayer>().GetDamage(damageToDo, null);
         }
     }
 
@@ -243,18 +272,7 @@ public class IAController : MonoBehaviour
         timeToNextAttack = Time.time + timeBetweenAttacks;
     }
 
-    #region Util
-
-    public static float GetAngleFromVectorFloat(Vector3 dir)
-    {
-        dir = dir.normalized;
-        float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        if (n < 0) n += 360;
-
-        return n;
-    }
-
-    #endregion
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -268,12 +286,15 @@ public class IAController : MonoBehaviour
         {
             StopCoroutine(DashCorroutine);
             StartCoroutine(IECrashedWithObstacle());
-            /*
-            
-            */
             attackDoing = false;
             attackDone = false;
         }
+
+        if (this.WaterEnemy && collision.gameObject.tag == "Water")
+        {
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
+
     }
 
     private void OnDrawGizmos()

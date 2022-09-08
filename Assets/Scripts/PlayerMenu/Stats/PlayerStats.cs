@@ -12,6 +12,18 @@ public class PlayerStats : ScriptableObject
     public float SpellPoints = 1;
     public float StaminaPoints = 1;
 
+    public void AddBonusForWeapon(Weapon weapon)
+    {
+        Damage += weapon.attack;
+        Defense += weapon.defense;
+    }
+
+    public void RemoveBonusForWeapon(Weapon weapon)
+    {
+        Damage -= weapon.attack;
+        Defense -= weapon.defense;
+    }
+
     public void ResetValues()
     {
         Damage = 1;

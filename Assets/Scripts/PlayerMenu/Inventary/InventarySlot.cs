@@ -59,4 +59,22 @@ public class InventarySlot : MonoBehaviour
             SlotInteractionEvent?.Invoke(InteractionType.UseEquip, Index);
         }
     }
+
+    public void RemoveItemSlot()
+    {
+        if (Inventary.Instance.InventaryItems[Index] != null)
+        {
+            SlotInteractionEvent?.Invoke(InteractionType.Remove, Index);
+        }
+    }
+
+    public void EquipWeaponContainer1()
+    {
+        Inventary.Instance.EquipWeaponContainer1(Index);
+    }
+
+    public void EquipWeaponContainer2()
+    {
+        Inventary.Instance.EquipWeaponContainer2(Index);
+    }
 }

@@ -8,6 +8,7 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private string layerWalk;
     [SerializeField] private string layerJump;
     [SerializeField] private string layerSpell;
+    [SerializeField] private string layerAttack;
 
     private Animator animator;
     private MovementPlayer movementPlayer;
@@ -58,14 +59,22 @@ public class PlayerAnimation : MonoBehaviour
             }
             else
             {
-                if (movementPlayer.moving)
+                if (!player.combatPlayer.Attacking)
                 {
-                    ActivateLayer(layerWalk);
+                    if (movementPlayer.moving)
+                    {
+                        ActivateLayer(layerWalk);
+                    }
+                    else
+                    {
+                        ActivateLayer(layerIdle);
+                    }
                 }
                 else
                 {
-                    ActivateLayer(layerIdle);
+                    ActivateLayer(layerAttack);
                 }
+                
             }
             
         }
@@ -83,7 +92,7 @@ public class PlayerAnimation : MonoBehaviour
     }
 
 
-    private void DefeatedPlayerRequest()
+    private void DefeatedPlayerResponse()
     {
         //if (animator.GetLayerWeight(animator.GetLayerIndex(layerIdle)) == 1) //Esto es porque la animacion de defeated está en layerIdle
         //{
@@ -95,13 +104,13 @@ public class PlayerAnimation : MonoBehaviour
     //Son necesarios los siguientes métodos para que una clase se pueda sobrescribir a un evento
     private void OnEnable()
     {
-        HealthPlayer.DefeatedPlayerEvent += DefeatedPlayerRequest;
+        HealthPlayer.DefeatedPlayerEvent += DefeatedPlayerResponse;
 
     }
 
     private void OnDisable()
     {
-        HealthPlayer.DefeatedPlayerEvent -= DefeatedPlayerRequest;
+        HealthPlayer.DefeatedPlayerEvent -= DefeatedPlayerResponse;
     }
 
 }

@@ -7,7 +7,6 @@ public class Inventary : Singleton<Inventary>
 {
     [SerializeField] private Player player;
     [SerializeField] private int slotNum;
-    [SerializeField] public InventarySpecialItems specialItems;
 
     [Header("Items")]
     [SerializeField] private InventaryItem[] inventaryItems;
@@ -24,6 +23,7 @@ public class Inventary : Singleton<Inventary>
     public InventaryItem[] InventaryItems => inventaryItems;
     public int SlotNum => slotNum;
     [HideInInspector] public HealingNinjutsuItem healingNinjutsuItem;
+    [HideInInspector] public WeaponItem SpearWeaponItem;
 
     public static Action PickupHealingNinjutsuItemEvent;
 
@@ -82,9 +82,12 @@ public class Inventary : Singleton<Inventary>
             {
                 if(itemToAdd.specialItem == SpecialItems.HealingNinjutsu)
                 {
-                    specialItems.HealingNinjutsu = true;
                     healingNinjutsuItem = (HealingNinjutsuItem) itemToAdd;
                     PickupHealingNinjutsuItemEvent?.Invoke();
+                }else if (itemToAdd.specialItem == SpecialItems.SpearWeapon)
+                {
+                    SpearWeaponItem = (WeaponItem) itemToAdd;
+                    Player.Instance.combatPlayer.EquipSpearWeapon(SpearWeaponItem);
                 }
             }
         }
@@ -136,11 +139,20 @@ public class Inventary : Singleton<Inventary>
         }
     }
 
-    private void UseItem(int index)
+    private void RemoveEquippedItem(int index)
+    {
+
+        if (inventaryItems[index] != null && inventaryItems[index].Type == ItemType.Weapon)
+        {
+            inventaryItems[index].RemoveItem();
+        }
+    }
+
+    private void UseEquipItem(int index)
     {
         if(inventaryItems[index] != null)
         {
-            if (inventaryItems[index].Type == ItemTypes.UpgradeItems)
+            if (inventaryItems[index].Type == ItemType.UpgradeItem)
             {
                 if (inventaryItems[index].UseItem())
                 {
@@ -151,8 +163,20 @@ public class Inventary : Singleton<Inventary>
                     InventaryUI.Instance.UpdateInventaryDescription(index);
                     InventaryUI.Instance.UpdateButtons(index);
                 }
+            }else if (inventaryItems[index].Type == ItemType.Weapon) // En este caso no se "usará", sino que se "equipará"
+            {
+                InventaryUI.Instance.OpenCloseWhereEquipPanel();
             }
         }
+    }
+
+    public void EquipWeaponContainer1(int index)
+    {
+        inventaryItems[index].EquipWeaponContainer1();
+    }
+    public void EquipWeaponContainer2(int index)
+    {
+        inventaryItems[index].EquipWeaponContainer2();
     }
 
     private UpgradeItem ChooseUpgradeItem(UpgradeItems type)
@@ -189,9 +213,10 @@ public class Inventary : Singleton<Inventary>
         switch (type)
         {
             case InteractionType.UseEquip:
-                UseItem(index);
+                UseEquipItem(index);
                 break;
             case InteractionType.Remove:
+                RemoveEquippedItem(index);
                 break;
         }
     }

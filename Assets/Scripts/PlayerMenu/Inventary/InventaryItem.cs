@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public enum ItemTypes
+public enum ItemType
 {
-    Weapons,
-    Ninjutsus,
-    UpgradeItems
+    Weapon,
+    UpgradeItem
 }
 
 public enum SpecialItems
 {
     None,
-    HealingNinjutsu
+    HealingNinjutsu,
+    SpearWeapon
 }
 
 public enum UpgradeItems
@@ -33,7 +33,7 @@ public class InventaryItem : ScriptableObject
     [TextArea] public string Description;
 
     [Header("Information")]
-    public ItemTypes Type;
+    public ItemType Type;
     public bool IsEquippable;
     public bool IsCumulative;
     public UpgradeItems upgradeItem;
@@ -56,7 +56,11 @@ public class InventaryItem : ScriptableObject
         return true;
     }
 
-    public virtual bool EquipItem()
+    public virtual bool EquipWeaponContainer1()
+    {
+        return true;
+    }
+    public virtual bool EquipWeaponContainer2()
     {
         return true;
     }

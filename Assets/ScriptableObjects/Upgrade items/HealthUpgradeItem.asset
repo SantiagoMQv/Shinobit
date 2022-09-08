@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c0e82cffea8aa443896799dd41c1624, type: 3}
+  m_Script: {fileID: 11500000, guid: a7036304f2a83b04db6f1235bac7ff35, type: 3}
   m_Name: HealthUpgradeItem
   m_EditorClassIdentifier: 
   ID: HealthUpgrade
@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: a91b0b33d5951d04880b7e32d3878fc3, type: 3}
   Description: Carne de alta calidad que mejora la salud de quien la come. Para usar
     este objeto es necesario un altar de guardado.
-  Type: 2
+  Type: 1
   IsEquippable: 0
   IsCumulative: 1
   upgradeItem: 4

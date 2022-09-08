@@ -11,6 +11,7 @@ TagManager:
   - Water
   - Enemy
   - Projectile
+  - Position
   layers:
   - Default
   - TransparentFX
@@ -77,6 +78,9 @@ TagManager:
     locked: 0
   - name: Character
     uniqueID: 3557786029
+    locked: 0
+  - name: Projectile
+    uniqueID: 3211377591
     locked: 0
   - name: Tilemap_Elevation
     uniqueID: 61115875

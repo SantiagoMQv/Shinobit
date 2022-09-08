@@ -87,7 +87,7 @@ public class UIManager : Singleton<UIManager>
         {
             OpenCloseNinjaCodePlayerPanel();
         }
-        if(Inventary.Instance.specialItems.HealingNinjutsu == true && Inventary.Instance.healingNinjutsuItem != null)
+        if(Inventary.Instance.healingNinjutsuItem != null && Inventary.Instance.healingNinjutsuItem != null)
         {
             GenerateHealthTokenPanel();
         }

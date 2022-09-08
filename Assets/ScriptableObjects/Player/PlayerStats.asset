@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e329053e817d63144a7a4808f8a2e01e, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  Damage: 2
+  Damage: 5
   Defense: 1
   Potion: 5
   HealthPoints: 1

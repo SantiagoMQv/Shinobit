@@ -6,10 +6,11 @@ public class Player : Singleton<Player>
 {
     public HealthPlayer HealthPlayer { get; private set; }
     public ManaPlayer ManaPlayer { get; private set; }
-    public PlayerAnimation playerAnimation { get; set; }
-    public PlayerJump playerJump { get; set; }
-    public UpgradeStats upgradeStats { get; set; }
-    public MovementPlayer movementPlayer { get; set; }
+    public PlayerAnimation playerAnimation { get; private set; }
+    public PlayerJump playerJump { get; private set; }
+    public UpgradeStats upgradeStats { get; private set; }
+    public MovementPlayer movementPlayer { get; private set; }
+    public CombatPlayer combatPlayer { get; private set; }
 
     public bool Healing { get; private set; }
     public bool NearToRespawn { get; private set; }
@@ -22,6 +23,7 @@ public class Player : Singleton<Player>
         playerJump = GetComponent<PlayerJump>();
         upgradeStats = GetComponent<UpgradeStats>();
         movementPlayer = GetComponent<MovementPlayer>();
+        combatPlayer = GetComponent<CombatPlayer>();
     }
 
 
@@ -37,11 +39,12 @@ public class Player : Singleton<Player>
         
         if(Inventary.Instance.healingNinjutsuItem != null) {
             if (Input.GetKeyDown(KeyCode.P) && !Healing && !playerJump.Jumping && !HealthPlayer.Defeated && Inventary.Instance.healingNinjutsuItem.currentNumTokens > 0 
-                && HealthPlayer.CanBeHealed)
+                && HealthPlayer.CanBeHealed && !combatPlayer.Attacking)
             {
                 Inventary.Instance.healingNinjutsuItem.UseItem();
             }
-        }
+        }   
+
 
     }
 

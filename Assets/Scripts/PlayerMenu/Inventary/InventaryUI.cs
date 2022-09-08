@@ -24,6 +24,9 @@ public class InventaryUI : Singleton<InventaryUI>
     [SerializeField] private InventarySlot slotPrefab;
     [SerializeField] private Transform container;
 
+    [Header("Weapons")]
+    [SerializeField] private GameObject whereEquipPanel;
+
     public InventarySlot selectedSlot { get; private set; }
     List<InventarySlot> availableSlot = new List<InventarySlot>();
 
@@ -111,7 +114,7 @@ public class InventaryUI : Singleton<InventaryUI>
     {
         if (Inventary.Instance.InventaryItems[index] != null)
         {
-            if (Inventary.Instance.InventaryItems[index].Type == ItemTypes.UpgradeItems && Inventary.Instance.Player.NearToRespawn)
+            if (Inventary.Instance.InventaryItems[index].Type == ItemType.UpgradeItem && Inventary.Instance.Player.NearToRespawn)
             {
                 UpgradeItem upgradeItem = (UpgradeItem)Inventary.Instance.InventaryItems[index];
                 string buttonText = "";
@@ -140,7 +143,7 @@ public class InventaryUI : Singleton<InventaryUI>
                 buttonEquipUse.GetComponent<Image>().color = Color.green;
 
                 verticalLayoutGroup.spacing = -16.6f;
-                if (Inventary.Instance.InventaryItems[index].Type == ItemTypes.UpgradeItems)
+                if (Inventary.Instance.InventaryItems[index].Type == ItemType.UpgradeItem)
                 {
                     ModifyButtons("USAR", false, false, false);
                 }
@@ -148,7 +151,7 @@ public class InventaryUI : Singleton<InventaryUI>
                 {
                     ModifyButtons("", false, false, false);
                 }
-                else if (Inventary.Instance.InventaryItems[index].Type == ItemTypes.Ninjutsus)
+                else if (Inventary.Instance.InventaryItems[index].Type == ItemType.Weapon)
                 {
                     ModifyButtons("EQUIPAR", true, false, true);
                 }
@@ -166,12 +169,47 @@ public class InventaryUI : Singleton<InventaryUI>
 
     public void UseEquipItem()
     {
-        if(selectedSlot != null)
+        if (selectedSlot != null)
         {
             selectedSlot.UseEquipItemSlot();
             selectedSlot.SelectSlot();
         }
     }
+
+    public void OpenCloseWhereEquipPanel()
+    {
+        whereEquipPanel.SetActive(true);
+    }
+
+    public void EquipWeaponContainer1()
+    {
+        if (selectedSlot != null)
+        {
+            selectedSlot.EquipWeaponContainer1();
+            selectedSlot.SelectSlot();
+        }
+        whereEquipPanel.SetActive(false);
+    }
+
+    public void EquipWeaponContainer2()
+    {
+        if (selectedSlot != null)
+        {
+            selectedSlot.EquipWeaponContainer2();
+            selectedSlot.SelectSlot();
+        }
+        whereEquipPanel.SetActive(false);
+    }
+
+    public void RemoveItem()
+    {
+        if (selectedSlot != null)
+        {
+            selectedSlot.RemoveItemSlot();
+            selectedSlot.SelectSlot();
+        }
+    }
+
     #endregion
 
     #region Events
