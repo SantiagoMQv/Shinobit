@@ -38,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -15.609985, y: 5.5099945}
+  m_AnchoredPosition: {x: -15.609985, y: 5.51001}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3258320750075988957
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3258320750075988959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.0000026226044, y: -0.0000006556511}
-  m_SizeDelta: {x: 1, y: 1}
+  m_SizeDelta: {x: 7.11, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &4593222018096137668
 MeshRenderer:
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.004825115, g: 0.5, b: 0, a: 1}
+  m_Color: {r: 0.19869626, g: 0.082102165, b: 0.4245283, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -240,7 +240,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10
+  m_Text: Escudo activado
 --- !u!95 &4763429469315350672
 Animator:
   serializedVersion: 4

@@ -10,8 +10,9 @@ TagManager:
   - WaterEnemy
   - Water
   - Enemy
-  - Projectile
+  - ShurikenWeapon
   - Position
+  - FloatingText
   layers:
   - Default
   - TransparentFX
@@ -75,6 +76,9 @@ TagManager:
     locked: 0
   - name: Tilemap_Water
     uniqueID: 1564169205
+    locked: 0
+  - name: Weapon
+    uniqueID: 2805561731
     locked: 0
   - name: Character
     uniqueID: 3557786029

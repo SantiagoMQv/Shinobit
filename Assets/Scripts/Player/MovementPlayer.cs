@@ -24,7 +24,7 @@ public class MovementPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.M))
+        if (Input.GetKey(KeyCode.B))
         {
             speed = speedDefault * 2;
         }

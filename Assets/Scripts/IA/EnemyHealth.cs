@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyHealth : HealthBase
 {
-    [SerializeField] private EnemyHealthBar HealthBarPrefab;
+    [SerializeField] private MiniHealthBar HealthBarPrefab;
     [SerializeField] private Transform HealthBarPosition;
 
-    private EnemyHealthBar enemyHealthBar;
+    private MiniHealthBar enemyHealthBar;
 
 
     private void Awake()

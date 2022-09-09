@@ -52,7 +52,15 @@ public class HealthPlayer : HealthBase
     {
         if (!playerJump.Jumping)
         {
-            base.GetDamage(amount, enemy);
+
+            if (GetComponent<ShieldHealthPlayer>().enabled)
+            {
+                GetComponent<ShieldHealthPlayer>().GetDamage(amount, enemy);
+            }
+            else
+            {
+                base.GetDamage(amount, enemy);
+            }
         }
         
     }

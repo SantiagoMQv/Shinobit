@@ -26,15 +26,12 @@ public class SpearAttack : MonoBehaviour
         float attackTransition = 0;
         while (attackTransition <= 1)
         {
-            // Formula que permite que el enemigo vaya de la posición inicial hacia la posición del personaje y luego regrese a su posición inicial
             attackTransition += Time.deltaTime * 10;
-            float interpolation = (-Mathf.Pow(attackTransition, 2) + attackTransition) * 4;
 
-            transform.position = Vector3.Lerp(initialPosition, newPositionAttack, interpolation);
+            transform.position = Vector3.Lerp(initialPosition, newPositionAttack, attackTransition);
             yield return null; // Permite esperar 1 frame
         }
 
-        //attackDone = false;
 
     }
 

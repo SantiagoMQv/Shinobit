@@ -10,7 +10,9 @@ public enum SpecialItems
 {
     None,
     HealingNinjutsu,
-    SpearWeapon
+    SpearWeapon,
+    ShurikenWeapon,
+    ShieldNinjutsu
 }
 
 public enum UpgradeItems

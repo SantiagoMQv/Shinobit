@@ -43,8 +43,8 @@ public class Player : Singleton<Player>
             {
                 Inventary.Instance.healingNinjutsuItem.UseItem();
             }
-        }   
-
+        }
+        
 
     }
 

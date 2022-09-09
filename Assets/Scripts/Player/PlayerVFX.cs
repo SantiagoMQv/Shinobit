@@ -30,7 +30,6 @@ public class PlayerVFX : MonoBehaviour
             
         }
         GameObject newTextGO = pooler.ObtainInstance();
-        Debug.Log(newTextGO);
         FloatingText floatingText = newTextGO.GetComponent<FloatingText>();
         floatingText.SetUpText(text, color);
         newTextGO.transform.SetParent(canvasTextPosition);
@@ -42,21 +41,39 @@ public class PlayerVFX : MonoBehaviour
         
     }
 
+    private IEnumerator IECountdown(string text, Color color)
+    {
+        StartCoroutine(IEShowFloatingText("3", color, null));
+        yield return new WaitForSeconds(1);
+        StartCoroutine(IEShowFloatingText("2", color, null));
+        yield return new WaitForSeconds(1);
+        StartCoroutine(IEShowFloatingText("1", color, null));
+        yield return new WaitForSeconds(1);
+        StartCoroutine(IEShowFloatingText(text, color, null));
+    }
+
     private void ResponseFloatingText(string text, Color color, GameObject enemy)
     {
         StartCoroutine(IEShowFloatingText(text, color, enemy));
+    }
+
+    private void CountdownResponse(string text, Color color)
+    {
+        StartCoroutine(IECountdown(text, color));
     }
 
     private void OnEnable()
     {
         HealthBase.EventFloatingText += ResponseFloatingText;
         Pickups.EventFloatingText += ResponseFloatingText;
+        CombatPlayer.FloatingTextCountdownEvent += CountdownResponse;
     }
 
     private void OnDisable()
     {
         HealthBase.EventFloatingText -= ResponseFloatingText;
         Pickups.EventFloatingText -= ResponseFloatingText;
+        CombatPlayer.FloatingTextCountdownEvent += CountdownResponse;
     }
 
 }

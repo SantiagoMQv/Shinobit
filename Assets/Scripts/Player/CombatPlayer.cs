@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using System;
 
 public class CombatPlayer : MonoBehaviour
 {
@@ -11,29 +12,45 @@ public class CombatPlayer : MonoBehaviour
     [Header("Pooler")]
     [SerializeField] private ObjectPooler pooler1;
     [SerializeField] private ObjectPooler pooler2;
+    [SerializeField] private ObjectPooler shurikenPooler;
 
     [Header("Attack")]
     [SerializeField] private Transform[] attackPositions;
     [SerializeField] private GameObject spearWeaponPrefab;
+    [SerializeField] private GameObject shieldNinjutsuVFXPrefab;
+
+    public static Action<string, Color> FloatingTextCountdownEvent;
 
     private int indexAttackDirection;
     private ManaPlayer manaPlayer;
     private float timeToNextAttack1;
     private float timeToNextAttack2;
 
-    // Arma especial (no equipable)
+    // Arma especial: Lanza (no equipable)
     private float timeToNextSpearAttack;
     private float timeBetweenAttacksSpearWeapon;
     private SpearAttack equippedSpearWeapon;
 
+    // Arma especial: Shuriken (no equipable)
+    private float timeToNextShurikenAttack;
+    private Weapon equippedShurikenWeapon;
+    private Player player;
+
+    // Arma especial: Escudo (no equipable)
+    private ShieldNinjutsuItem shieldNinjutsuItem;
+    private float timeToNextShieldNinjutsu;
+    private bool shieldNinjutsuCountdownDone;
+    private GameObject shieldNinjutsuVFX;
+
     public Weapon EquippedWeapon1 { get; private set; }
     public Weapon EquippedWeapon2 { get; private set; }
     public EnemySelection TargetEnemy { get; private set; }
-
     public bool Attacking { get; set; }
+    public GameObject ShieldNinjutsuVFX => shieldNinjutsuVFX;
 
     private void Awake()
     {
+        player = Player.Instance;
         manaPlayer = GetComponent<ManaPlayer>();
         Attacking = false;
     }
@@ -66,6 +83,17 @@ public class CombatPlayer : MonoBehaviour
                 }
             }
         }
+        if (Time.time > timeToNextShurikenAttack && !Attacking)
+        {
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                if (equippedShurikenWeapon != null)
+                {
+                    UseShurikenWeapon();
+                    timeToNextSpearAttack = Time.time + equippedShurikenWeapon.timeBetweenAttacks;
+                }
+            }
+        }
 
         if (Time.time > timeToNextSpearAttack && !Attacking)
         {
@@ -79,6 +107,43 @@ public class CombatPlayer : MonoBehaviour
             }
         }
 
+        CountdownShieldNinjutsu();
+        if (Time.time > timeToNextShieldNinjutsu && !Attacking)
+        {
+            if (Input.GetKeyDown(KeyCode.N) && !player.Healing && !player.playerJump.Jumping && !player.HealthPlayer.Defeated)
+            {
+                if (shieldNinjutsuItem != null)
+                {
+                    shieldNinjutsuItem.UseItem();
+                    shieldNinjutsuVFX.SetActive(true);
+                    timeToNextShieldNinjutsu = Time.time + shieldNinjutsuItem.reuseTime;
+                    shieldNinjutsuCountdownDone = false;
+                }
+            }
+        }
+
+    }
+
+    private void CountdownShieldNinjutsu()
+    {
+        if (shieldNinjutsuItem != null)
+        {
+            if (timeToNextShieldNinjutsu - Time.time <= 3 && !shieldNinjutsuCountdownDone)
+            {
+                StartCoroutine(IEDeactivateShieldNinjutsu());
+                FloatingTextCountdownEvent?.Invoke("Escudo", new Color32(51, 21, 108, 255));
+                shieldNinjutsuCountdownDone = true;
+            }
+        }
+    }
+
+    private IEnumerator IEDeactivateShieldNinjutsu()
+    {
+        yield return new WaitForSeconds(3);
+        ShieldHealthPlayer shieldHealthPlayer = GetComponent<ShieldHealthPlayer>();
+        shieldHealthPlayer.ShieldHealthBar.gameObject.transform.parent.gameObject.SetActive(false);
+        shieldHealthPlayer.enabled = false;
+        shieldNinjutsuVFX.SetActive(false);
     }
 
     private void UseSpearWeapon()
@@ -90,11 +155,6 @@ public class CombatPlayer : MonoBehaviour
         equippedSpearWeapon.transform.position = initialPosition;
         equippedSpearWeapon.InitializeSpearAttack(initialPosition, newPositionAttack);
         
-    }
-
-    public Vector3 actualPositionAttack()
-    {
-        return attackPositions[indexAttackDirection].position;
     }
 
     public Vector3 CalculateInitialPositionAttack()
@@ -146,9 +206,10 @@ public class CombatPlayer : MonoBehaviour
     }
     private IEnumerator IESetSpearAttackCondition()
     {
-        
+        Attacking = true;
         yield return new WaitForSeconds(0.4f);
         equippedSpearWeapon.gameObject.SetActive(false);
+        Attacking = false;
     }
 
     private void UseWeapon1()
@@ -157,14 +218,14 @@ public class CombatPlayer : MonoBehaviour
         {
             if(manaPlayer.CurrentMana >= EquippedWeapon1.manaRequired)
             {
-                StartCoroutine(IESetAttackCondition());
+                StartCoroutine(IESetAttackCondition(EquippedWeapon1.timeBetweenAttacks));
 
                 GameObject newProjectile = pooler1.ObtainInstance();
                 newProjectile.transform.localPosition = attackPositions[indexAttackDirection].position;
 
                 Projectile projectile = newProjectile.GetComponent<Projectile>();
                 projectile.userType = ProjectileUserType.Player;
-                projectile.InitializeProjectile(TargetEnemy, indexAttackDirection, EquippedWeapon1.speed, EquippedWeapon1.ProjectileTimeLife);
+                projectile.InitializeProjectile(TargetEnemy, indexAttackDirection, EquippedWeapon1.speed, EquippedWeapon1.ProjectileTimeLife, ProjectileUserType.Player);
                 newProjectile.SetActive(true);
                 manaPlayer.UseMana(EquippedWeapon1.manaRequired);
             }
@@ -177,15 +238,31 @@ public class CombatPlayer : MonoBehaviour
         {
             if (manaPlayer.CurrentMana >= EquippedWeapon2.manaRequired)
             {
-                StartCoroutine(IESetAttackCondition());
+                StartCoroutine(IESetAttackCondition(EquippedWeapon2.timeBetweenAttacks));
 
                 GameObject newProjectile = pooler2.ObtainInstance();
                 newProjectile.transform.localPosition = attackPositions[indexAttackDirection].position;
                 Projectile projectile = newProjectile.GetComponent<Projectile>();
-                projectile.userType = ProjectileUserType.Player;
-                projectile.InitializeProjectile(TargetEnemy, indexAttackDirection, EquippedWeapon2.speed, EquippedWeapon2.ProjectileTimeLife);
+                projectile.InitializeProjectile(TargetEnemy, indexAttackDirection, EquippedWeapon2.speed, EquippedWeapon2.ProjectileTimeLife, ProjectileUserType.Player);
                 newProjectile.SetActive(true);
                 manaPlayer.UseMana(EquippedWeapon2.manaRequired);
+            }
+        }
+    }
+    private void UseShurikenWeapon()
+    {
+        if (equippedShurikenWeapon != null)
+        {
+            if (manaPlayer.CurrentMana >= equippedShurikenWeapon.manaRequired)
+            {
+                StartCoroutine(IESetAttackCondition(equippedShurikenWeapon.timeBetweenAttacks));
+
+                GameObject newProjectile = shurikenPooler.ObtainInstance();
+                newProjectile.transform.localPosition = attackPositions[indexAttackDirection].position;
+                Projectile projectile = newProjectile.GetComponent<Projectile>();
+                projectile.InitializeProjectile(TargetEnemy, indexAttackDirection, equippedShurikenWeapon.speed, equippedShurikenWeapon.ProjectileTimeLife, ProjectileUserType.Player);
+                newProjectile.SetActive(true);
+                manaPlayer.UseMana(equippedShurikenWeapon.manaRequired);
             }
         }
     }
@@ -195,10 +272,10 @@ public class CombatPlayer : MonoBehaviour
         return stats.Damage;
     }
 
-    private IEnumerator IESetAttackCondition()
+    private IEnumerator IESetAttackCondition(float waitTime)
     {
         Attacking = true;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(waitTime);
         Attacking = false;
     }
 
@@ -229,6 +306,22 @@ public class CombatPlayer : MonoBehaviour
         equippedSpearWeapon.transform.SetParent(this.gameObject.transform);
         equippedSpearWeapon.gameObject.SetActive(false);
         stats.AddBonusForWeapon(weaponToEquip.Weapon);
+    }
+
+    public void EquipShurikenWeapon(WeaponItem weaponToEquip)
+    {
+        equippedShurikenWeapon = weaponToEquip.Weapon;
+        shurikenPooler.CreatePooler(weaponToEquip.Weapon.ProjectilePrefab.gameObject);
+        stats.AddBonusForWeapon(weaponToEquip.Weapon);
+    }
+
+    public void EquipShieldNinjutsu(ShieldNinjutsuItem shield)
+    {
+        shieldNinjutsuItem = shield;
+        shieldNinjutsuVFX = Instantiate(shieldNinjutsuVFXPrefab, transform.position, Quaternion.identity);
+        shieldNinjutsuVFX.transform.SetParent(transform);
+        shieldNinjutsuVFX.SetActive(false);
+        shieldNinjutsuCountdownDone = true;
     }
 
     public void RemoveWeapon(WeaponItem weaponToRemove)

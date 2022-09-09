@@ -29,11 +29,7 @@ public class ManaPlayer : MonoBehaviour
 
     private void Update()
     {
-        //Para hacer pruebas con el mana 
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            UseMana(10);
-        }
+
     }
 
     public void UseMana(float amount)
@@ -41,6 +37,7 @@ public class ManaPlayer : MonoBehaviour
         if(CurrentMana > amount)
         {
             CurrentMana -= amount;
+            
             UpdateManaBar();
 
         }
@@ -51,6 +48,10 @@ public class ManaPlayer : MonoBehaviour
         if(healthPlayer.Health > 0 && CurrentMana < maxMana)
         {
             CurrentMana += regenerationPerSecond;
+            if (CurrentMana > maxMana)
+            {
+                CurrentMana = maxMana;
+            }
             UpdateManaBar();
         }
     }

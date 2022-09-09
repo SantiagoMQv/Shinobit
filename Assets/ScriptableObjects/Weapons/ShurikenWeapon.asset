@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89592cf03c319af42843c0e168c35bf6, type: 3}
-  m_Name: FireNinjutsu
+  m_Name: ShurikenWeapon
   m_EditorClassIdentifier: 
-  WeaponIcon: {fileID: 21300000, guid: 8397f4d2a403d144bb7ccc6dcc6ab71d, type: 3}
+  WeaponIcon: {fileID: -1106142167, guid: 78776f1266ff3b84c947ac3de6538dc2, type: 3}
   type: 0
-  timeBetweenAttacks: 1
-  ProjectilePrefab: {fileID: -490208997008662916, guid: b7e49abf2dd8141498ec69a9f595e32a, type: 3}
-  manaRequired: 15
+  timeBetweenAttacks: 0.5
+  ProjectilePrefab: {fileID: 4907995938441906717, guid: a928267a40bebf74a80a5a54c59b88a4, type: 3}
+  manaRequired: 20
   speed: 10
   ProjectileTimeLife: 3
   attack: 0

@@ -24,6 +24,7 @@ public class Inventary : Singleton<Inventary>
     public int SlotNum => slotNum;
     [HideInInspector] public HealingNinjutsuItem healingNinjutsuItem;
     [HideInInspector] public WeaponItem SpearWeaponItem;
+    [HideInInspector] public WeaponItem ShurikenWeaponItem;
 
     public static Action PickupHealingNinjutsuItemEvent;
 
@@ -88,6 +89,16 @@ public class Inventary : Singleton<Inventary>
                 {
                     SpearWeaponItem = (WeaponItem) itemToAdd;
                     Player.Instance.combatPlayer.EquipSpearWeapon(SpearWeaponItem);
+                }
+                else if (itemToAdd.specialItem == SpecialItems.ShurikenWeapon)
+                {
+                    ShurikenWeaponItem = (WeaponItem)itemToAdd;
+                    Player.Instance.combatPlayer.EquipShurikenWeapon(ShurikenWeaponItem);
+                }
+                else if (itemToAdd.specialItem == SpecialItems.ShieldNinjutsu)
+                {
+                    ShieldNinjutsuItem shield = (ShieldNinjutsuItem)itemToAdd;
+                    Player.Instance.combatPlayer.EquipShieldNinjutsu(shield);
                 }
             }
         }

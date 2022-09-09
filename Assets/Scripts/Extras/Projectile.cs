@@ -83,10 +83,11 @@ public class Projectile : MonoBehaviour
         return shotDirection;
     }
 
-    public void InitializeProjectile(EnemySelection enemy, int indexShotDirection, float speedWeapon, float projectileTimeLife)
+    public void InitializeProjectile(EnemySelection enemy, int indexShotDirection, float speedWeapon, float projectileTimeLife, ProjectileUserType user)
     {
         speed = speedWeapon;
         timeLife = Time.time + projectileTimeLife;
+        userType = user;
         if (enemy != null) // Si se está apuntando a un enemigo
         {
             enemyTarget = enemy;
