@@ -10,6 +10,8 @@ public class StaminaUpgradeItem : UpgradeItem
         if (Pickups.Instance.CurrentBits >= bitsToUpgrade)
         {
             Inventary.Instance.Player.upgradeStats.UpgradeStamina();
+            bitsToUpgrade *= multiplier;
+            Mathf.Round(bitsToUpgrade);
             return true;
         }
         return false;

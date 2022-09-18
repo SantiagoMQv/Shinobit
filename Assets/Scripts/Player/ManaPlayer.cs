@@ -12,6 +12,7 @@ public class ManaPlayer : MonoBehaviour
 
     private HealthPlayer healthPlayer;
 
+    public float TotalMana => maxMana + ((Player.Instance.Stats.SpellPoints - 1) * 15);
 
     private void Awake()
     {
@@ -20,16 +21,16 @@ public class ManaPlayer : MonoBehaviour
 
     void Start()
     {
-        CurrentMana = initialMana;
+        CurrentMana = TotalMana;
         UpdateManaBar();
 
         //Este método se invoca las veces que yo quiera por segundo
         InvokeRepeating(nameof(ManaRegenerate), 1, 1);
     }
 
-    private void Update()
+    public void UpgradeMana()
     {
-
+        UpdateManaBar();
     }
 
     public void UseMana(float amount)
@@ -45,12 +46,12 @@ public class ManaPlayer : MonoBehaviour
 
     private void ManaRegenerate()
     {
-        if(healthPlayer.Health > 0 && CurrentMana < maxMana)
+        if(healthPlayer.Health > 0 && CurrentMana < TotalMana)
         {
             CurrentMana += regenerationPerSecond;
-            if (CurrentMana > maxMana)
+            if (CurrentMana > TotalMana)
             {
-                CurrentMana = maxMana;
+                CurrentMana = TotalMana;
             }
             UpdateManaBar();
         }
@@ -58,12 +59,12 @@ public class ManaPlayer : MonoBehaviour
 
     public void ManaRestore()
     {
-        CurrentMana = initialMana;
+        CurrentMana = TotalMana;
         UpdateManaBar();
     }
 
     protected void UpdateManaBar()
     {
-        UIManager.Instance.UpdatePlayerMana(CurrentMana, maxMana);
+        UIManager.Instance.UpdatePlayerMana(CurrentMana, TotalMana);
     }
 }

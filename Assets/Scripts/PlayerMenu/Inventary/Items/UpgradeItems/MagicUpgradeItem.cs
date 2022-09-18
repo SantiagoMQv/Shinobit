@@ -11,6 +11,7 @@ public class MagicUpgradeItem : UpgradeItem
         {
             Inventary.Instance.Player.upgradeStats.UpgradeSpell();
             bitsToUpgrade *= multiplier;
+            Mathf.Round(bitsToUpgrade);
             return true;
         }
         return false;

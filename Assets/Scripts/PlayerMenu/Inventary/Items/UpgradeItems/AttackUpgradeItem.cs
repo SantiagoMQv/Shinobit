@@ -11,6 +11,7 @@ public class AttackUpgradeItem : UpgradeItem
         {
             Inventary.Instance.Player.upgradeStats.UpgradeDamage();
             bitsToUpgrade *= multiplier;
+            Mathf.Round(bitsToUpgrade);
             return true;
         }
         return false;

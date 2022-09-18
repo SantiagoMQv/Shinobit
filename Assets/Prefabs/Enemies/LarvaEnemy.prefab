@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 703574498346474882}
   - component: {fileID: 3158649324634357707}
   - component: {fileID: 8605559128339553781}
+  - component: {fileID: 4535009850243250376}
   m_Layer: 0
   m_Name: LarvaEnemy
   m_TagString: Enemy
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -737181267
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: 361401251, guid: ad9512364d99feb45a769e9c2acaa7ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -265,6 +266,25 @@ MonoBehaviour:
   maxHealth: 20
   HealthBarPrefab: {fileID: 2098209824374970437, guid: 276f2431d3249ea4e8b3e1efbbeaaf3d, type: 3}
   HealthBarPosition: {fileID: 1585117006466804776}
+--- !u!114 &4535009850243250376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703574498346474906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0fbc461d4e69e4bbdae8304d9e1260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableLoot:
+  - PrefabItem: {fileID: 5496638664418834847, guid: 8938c84c33c9e764499c93a2ac0976f5, type: 3}
+    dropChance: 90.9
+  - PrefabItem: {fileID: 8668272155645899728, guid: fb43d5754bf5a964c98192298bcceca3, type: 3}
+    dropChance: 50.6
+  - PrefabItem: {fileID: 3691777363616499714, guid: 5e6d18ccbda0d084a8abbb2b088e8547, type: 3}
+    dropChance: 15.1
 --- !u!1 &2083690503592047317
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +423,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -737181267
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 453cb6312fe97c841ae5853a20b7d0d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

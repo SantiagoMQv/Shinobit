@@ -13,11 +13,13 @@ TagManager:
   - ShurikenWeapon
   - Position
   - FloatingText
+  - Projectile
+  - SpearWeapon
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Weapon
   - Water
   - UI
   - Player
@@ -53,29 +55,29 @@ TagManager:
   - name: Tilemap_Ground
     uniqueID: 2064898069
     locked: 0
-  - name: Tilemap_Limit
-    uniqueID: 2523786179
+  - name: Tilemap_Water
+    uniqueID: 1564169205
     locked: 0
   - name: Tilemap_Trees
     uniqueID: 1600731131
     locked: 0
+  - name: Tilemap_Limit
+    uniqueID: 2523786179
+    locked: 0
   - name: Tilemap_House
     uniqueID: 4270087927
     locked: 0
-  - name: Tilemap_HauseDetails
+  - name: Tilemap_Details
     uniqueID: 4248883653
     locked: 0
   - name: Tilemap_Props
     uniqueID: 2556648803
     locked: 0
-  - name: Tilemap_DestroyableGrass
+  - name: Tilemap_Destroyable
     uniqueID: 585624647
     locked: 0
   - name: Items
     uniqueID: 2130285931
-    locked: 0
-  - name: Tilemap_Water
-    uniqueID: 1564169205
     locked: 0
   - name: Weapon
     uniqueID: 2805561731
@@ -88,6 +90,9 @@ TagManager:
     locked: 0
   - name: Tilemap_Elevation
     uniqueID: 61115875
+    locked: 0
+  - name: Tilemap_Elevation_block
+    uniqueID: 1352385315
     locked: 0
   - name: UI
     uniqueID: 47991101

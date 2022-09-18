@@ -11,6 +11,7 @@ public class HealingUpgradeItem : UpgradeItem
         {
             Inventary.Instance.Player.upgradeStats.UpgradePotion();
             bitsToUpgrade *= multiplier;
+            Mathf.Round(bitsToUpgrade);
             return true;
         }
         return false;

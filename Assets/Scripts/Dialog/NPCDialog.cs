@@ -4,7 +4,8 @@ using UnityEngine;
 public enum ExtraInteractionNPC
 {
     None,
-    Test,
+    Quiz,
+    OpenChest
 }
 
 [CreateAssetMenu]

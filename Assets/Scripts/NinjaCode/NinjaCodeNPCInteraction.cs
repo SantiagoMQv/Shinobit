@@ -17,7 +17,7 @@ public class NinjaCodeNPCInteraction : NPCInteraction
         base.OnTriggerEnter2D(collision);
         if (collision.CompareTag("Player"))
         {
-            if(npcInteraction.Dialog.IncludeExtraInteraction && npcInteraction.Dialog.ExtraInteraction == ExtraInteractionNPC.Test)
+            if(npcInteraction.Dialog.IncludeExtraInteraction && npcInteraction.Dialog.ExtraInteraction == ExtraInteractionNPC.Quiz)
             {
                 NinjaCodeManager.Instance.LoadNinjaCodeSlotInGetPanel(npcInteraction.Dialog);
             }
@@ -29,7 +29,7 @@ public class NinjaCodeNPCInteraction : NPCInteraction
         base.OnTriggerExit2D(collision);
         if (collision.CompareTag("Player"))
         {
-            if (npcInteraction.Dialog.IncludeExtraInteraction && npcInteraction.Dialog.ExtraInteraction == ExtraInteractionNPC.Test)
+            if (npcInteraction.Dialog.IncludeExtraInteraction && npcInteraction.Dialog.ExtraInteraction == ExtraInteractionNPC.Quiz)
             {
                 NinjaCodeManager.Instance.CleanNinjaCodeGetPanel();
             }

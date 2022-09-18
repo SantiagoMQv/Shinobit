@@ -11,6 +11,7 @@ public class HealthUpgradeItem : UpgradeItem
         {
             Inventary.Instance.Player.upgradeStats.UpgradeHealth();
             bitsToUpgrade *= multiplier;
+            Mathf.Round(bitsToUpgrade);
             return true;
         }
         return false;

@@ -53,7 +53,19 @@ public class DialogueManager : Singleton<DialogueManager>
                 dialogStarted = false;
                 if (NPCAvailable.Dialog.IncludeExtraInteraction)
                 {
-                    UIManager.Instance.OpenCloseInteraction(NPCAvailable.Dialog.ExtraInteraction);
+                    if (NPCAvailable.Dialog.ExtraInteraction == ExtraInteractionNPC.Quiz) // Para las que necesitan UI
+                    {
+                        UIManager.Instance.OpenCloseInteraction(NPCAvailable.Dialog.ExtraInteraction);
+                    }
+                    else // No necesitan UI
+                    {
+                        if (NPCAvailable.Dialog.ExtraInteraction == ExtraInteractionNPC.OpenChest)
+                        {
+                            NPCAvailable.Chest.OpenChest();
+                            Player.Instance.movementPlayer.SetCanMove(true);
+                        }
+                    }
+                    
                 }
                 else
                 {

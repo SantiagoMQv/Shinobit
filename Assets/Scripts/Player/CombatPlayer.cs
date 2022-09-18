@@ -42,10 +42,16 @@ public class CombatPlayer : MonoBehaviour
     private bool shieldNinjutsuCountdownDone;
     private GameObject shieldNinjutsuVFX;
 
+    // Arma especial: Curación (no equipable)
+    private HealingNinjutsuItem healingNinjutsuItem;
+    private int NumTokens;
+    private float HPRestoration;
+
     public Weapon EquippedWeapon1 { get; private set; }
     public Weapon EquippedWeapon2 { get; private set; }
     public EnemySelection TargetEnemy { get; private set; }
-    public bool Attacking { get; set; }
+    public bool Attacking { get; private set; }
+    public bool Healing { get; private set; }
     public GameObject ShieldNinjutsuVFX => shieldNinjutsuVFX;
 
     private void Awake()
@@ -53,6 +59,7 @@ public class CombatPlayer : MonoBehaviour
         player = Player.Instance;
         manaPlayer = GetComponent<ManaPlayer>();
         Attacking = false;
+        Healing = false;
     }
 
     private void Update()
@@ -110,7 +117,7 @@ public class CombatPlayer : MonoBehaviour
         CountdownShieldNinjutsu();
         if (Time.time > timeToNextShieldNinjutsu && !Attacking)
         {
-            if (Input.GetKeyDown(KeyCode.N) && !player.Healing && !player.playerJump.Jumping && !player.HealthPlayer.Defeated)
+            if (Input.GetKeyDown(KeyCode.N) && !Healing && !player.playerJump.Jumping && !player.HealthPlayer.Defeated)
             {
                 if (shieldNinjutsuItem != null)
                 {
@@ -119,6 +126,15 @@ public class CombatPlayer : MonoBehaviour
                     timeToNextShieldNinjutsu = Time.time + shieldNinjutsuItem.reuseTime;
                     shieldNinjutsuCountdownDone = false;
                 }
+            }
+        }
+
+        if (healingNinjutsuItem != null)
+        {
+            if (Input.GetKeyDown(KeyCode.P) && !Healing && !player.playerJump.Jumping && !player.HealthPlayer.Defeated && NumTokens > 0
+                && player.HealthPlayer.CanBeHealed && !Attacking)
+            {
+                healingNinjutsuItem.UseItem();
             }
         }
 
@@ -267,6 +283,50 @@ public class CombatPlayer : MonoBehaviour
         }
     }
 
+    #region HealingNinjutsu
+
+    public float GetHpHPRestoration()
+    {
+        return HPRestoration;
+    }
+
+    public void RemoveHealthToken()
+    {
+        if (NumTokens > 0)
+        {
+            NumTokens = UIManager.Instance.RemoveHealthTokenUI() - 1;
+        }
+    }
+
+    public void AddAllHealthToken()
+    {
+        if (healingNinjutsuItem != null)
+        {
+            if (NumTokens < 8)
+            {
+
+                for (int i = NumTokens; i < stats.Potion; i++)
+                {
+                    NumTokens = UIManager.Instance.AddHealthTokenUI();
+                }
+
+            }
+        }
+    }
+
+    IEnumerator HealWaiting()
+    {
+        Healing = true;
+        yield return new WaitForSeconds(1f);
+        Healing = false;
+    }
+
+    public void setHealing(bool state)
+    {
+        Healing = state;
+    }
+
+    #endregion
     public float GetDamage()
     {
         return stats.Damage;
@@ -278,6 +338,8 @@ public class CombatPlayer : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         Attacking = false;
     }
+
+    #region Equip
 
     public void EquipWeapon1(WeaponItem weaponToEquip)
     {
@@ -323,6 +385,15 @@ public class CombatPlayer : MonoBehaviour
         shieldNinjutsuVFX.SetActive(false);
         shieldNinjutsuCountdownDone = true;
     }
+    public void EquipHealingNinjutsu(HealingNinjutsuItem healingNinjutsu)
+    {
+        healingNinjutsuItem = healingNinjutsu;
+        NumTokens = 0;
+        HPRestoration = healingNinjutsu.InitialHPRestoration;
+        UIManager.Instance.GenerateHealthTokenPanel();
+        AddAllHealthToken();
+    }
+    #endregion
 
     public void RemoveWeapon(WeaponItem weaponToRemove)
     {

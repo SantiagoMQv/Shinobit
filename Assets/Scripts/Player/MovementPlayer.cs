@@ -79,7 +79,6 @@ public class MovementPlayer : MonoBehaviour
 
     public void SetCanMove(bool result)
     {
-
         CanMove = result;
     }
 }

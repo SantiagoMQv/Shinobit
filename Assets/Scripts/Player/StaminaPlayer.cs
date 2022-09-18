@@ -13,6 +13,7 @@ public class StaminaPlayer : MonoBehaviour
     private HealthPlayer healthPlayer;
     private PlayerJump playerJump;
     public bool CanBeRegenerate { get; private set; }
+    public float TotalStamina => maxStamina + ((Player.Instance.Stats.StaminaPoints - 1) * 15);
     private void Awake()
     {
         healthPlayer = GetComponent<HealthPlayer>();
@@ -21,12 +22,16 @@ public class StaminaPlayer : MonoBehaviour
     void Start()
     {
 
-        CurrentStamina = initialStamina;
+        CurrentStamina = TotalStamina;
         CanBeRegenerate = true;
         UpdateStaminaBar();
 
         //Este método se invoca las veces que yo quiera por segundo
         InvokeRepeating(nameof(StaminaRegenerate), 1, 1);
+    }
+    public void UpgradeStamina()
+    {
+        UpdateStaminaBar();
     }
 
     public void UseStamina(float amount)
@@ -81,12 +86,12 @@ public class StaminaPlayer : MonoBehaviour
 
     private void StaminaRegenerate()
     {
-        if (healthPlayer.Health > 0 && CurrentStamina < maxStamina && CanBeRegenerate)
+        if (healthPlayer.Health > 0 && CurrentStamina < TotalStamina && CanBeRegenerate)
         {
             CurrentStamina += regenerationPerSecond;
-            if(CurrentStamina > maxStamina)
+            if(CurrentStamina > TotalStamina)
             {
-                CurrentStamina = maxStamina;
+                CurrentStamina = TotalStamina;
             }
             UpdateStaminaBar();
         }
@@ -94,13 +99,13 @@ public class StaminaPlayer : MonoBehaviour
 
     public void StaminaRestore()
     {
-        CurrentStamina = initialStamina;
+        CurrentStamina = TotalStamina;
         UpdateStaminaBar();
     }
 
     protected void UpdateStaminaBar()
     {
-        UIManager.Instance.UpdatePlayerStamina(CurrentStamina, maxStamina);
+        UIManager.Instance.UpdatePlayerStamina(CurrentStamina, TotalStamina);
     }
 
     protected void UpdateColorBarStaminaToBlack()

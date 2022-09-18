@@ -24,6 +24,7 @@ public enum QuizProgrammingLanguage
 public class Quiz : ScriptableObject
 {
     [Header("Info")]
+    
     public string Name;
     public string ID;
     public int NumberQuestions;
@@ -44,7 +45,7 @@ public class Quiz : ScriptableObject
     [HideInInspector] public int QuestionAnswered;
     [HideInInspector] public int QuestionRight;
     [HideInInspector] public bool QuizCompleted;
-    
+    [HideInInspector] public bool QuizPickedUp;
 
 }
 

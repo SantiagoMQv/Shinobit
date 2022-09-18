@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 5
   Defense: 1
-  Potion: 5
+  Potion: 3
   HealthPoints: 1
-  SpellPoints: 3
+  SpellPoints: 1
   StaminaPoints: 1

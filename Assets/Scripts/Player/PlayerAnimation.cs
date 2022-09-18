@@ -53,7 +53,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (!playerJump.Jumping)
         {
-            if (player.Healing)
+            if (player.combatPlayer.Healing)
             {
                 ActivateLayer(layerSpell);
             }

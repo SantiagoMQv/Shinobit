@@ -5,12 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Stats")]
 public class PlayerStats : ScriptableObject
 {
-    public float Damage = 1;
-    public float Defense = 1;
-    public float Potion = 1;
-    public float HealthPoints = 1;
-    public float SpellPoints = 1;
-    public float StaminaPoints = 1;
+    public int Damage = 1;
+    public int Defense = 1;
+    public int Potion = 1;
+    public int HealthPoints = 1;
+    public int SpellPoints = 1;
+    public int StaminaPoints = 1;
 
     public void AddBonusForWeapon(Weapon weapon)
     {
@@ -26,9 +26,9 @@ public class PlayerStats : ScriptableObject
 
     public void ResetValues()
     {
-        Damage = 1;
+        Damage = 5;
         Defense = 1;
-        Potion = 1;
+        Potion = 3;
         HealthPoints = 1;
         SpellPoints = 1;
         StaminaPoints = 1;

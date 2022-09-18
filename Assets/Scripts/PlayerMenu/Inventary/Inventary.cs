@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Inventary : Singleton<Inventary>
+public class Inventary : Singleton<Inventary>, ISaveGame
 {
     [SerializeField] private Player player;
     [SerializeField] private int slotNum;
@@ -22,19 +22,19 @@ public class Inventary : Singleton<Inventary>
     public Player Player => player;
     public InventaryItem[] InventaryItems => inventaryItems;
     public int SlotNum => slotNum;
-    [HideInInspector] public HealingNinjutsuItem healingNinjutsuItem;
-    [HideInInspector] public WeaponItem SpearWeaponItem;
-    [HideInInspector] public WeaponItem ShurikenWeaponItem;
 
-    public static Action PickupHealingNinjutsuItemEvent;
-
-    private void Start()
+    private InventaryData inventaryData;
+    protected override void Awake()
     {
+        base.Awake();
         inventaryItems = new InventaryItem[slotNum];
+        inventaryData = GetComponent<InventaryData>();
     }
+
 
     public void AddItem(InventaryItem itemToAdd, int amount)
     {
+
         if(itemToAdd == null)
         {
             return;
@@ -83,16 +83,16 @@ public class Inventary : Singleton<Inventary>
             {
                 if(itemToAdd.specialItem == SpecialItems.HealingNinjutsu)
                 {
-                    healingNinjutsuItem = (HealingNinjutsuItem) itemToAdd;
-                    PickupHealingNinjutsuItemEvent?.Invoke();
+                    HealingNinjutsuItem healingNinjutsuItem = (HealingNinjutsuItem) itemToAdd;
+                    Player.Instance.combatPlayer.EquipHealingNinjutsu(healingNinjutsuItem);
                 }else if (itemToAdd.specialItem == SpecialItems.SpearWeapon)
                 {
-                    SpearWeaponItem = (WeaponItem) itemToAdd;
+                    WeaponItem SpearWeaponItem = (WeaponItem) itemToAdd;
                     Player.Instance.combatPlayer.EquipSpearWeapon(SpearWeaponItem);
                 }
                 else if (itemToAdd.specialItem == SpecialItems.ShurikenWeapon)
                 {
-                    ShurikenWeaponItem = (WeaponItem)itemToAdd;
+                    WeaponItem ShurikenWeaponItem = (WeaponItem)itemToAdd;
                     Player.Instance.combatPlayer.EquipShurikenWeapon(ShurikenWeaponItem);
                 }
                 else if (itemToAdd.specialItem == SpecialItems.ShieldNinjutsu)
@@ -123,10 +123,12 @@ public class Inventary : Singleton<Inventary>
 
     private void AddItemInAvailableSlot(InventaryItem itemToAdd, int amount)
     {
+        
         for (int i = 0; i < inventaryItems.Length; i++)
         {
             if (inventaryItems[i] == null)
             {
+                
                 inventaryItems[i] = itemToAdd.CopyItem();
                 inventaryItems[i].Amount = amount;
                 InventaryUI.Instance.DrawnItemInInventary(itemToAdd, amount, i);
@@ -241,6 +243,16 @@ public class Inventary : Singleton<Inventary>
     private void OnDisable()
     {
         InventarySlot.SlotInteractionEvent -= SlotInteractionResponse;
+    }
+
+    public void LoadData(GameData data)
+    {
+        inventaryData.loadInventaryData(data);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        inventaryData.saveInventaryData(ref data);
     }
 
     #endregion

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HealthUpgradeItem
   m_EditorClassIdentifier: 
   ID: HealthUpgrade
-  Name: Carne (Mejora de ataque)
+  Name: Carne (Mejora de vida)
   icon: {fileID: 21300000, guid: a91b0b33d5951d04880b7e32d3878fc3, type: 3}
   Description: Carne de alta calidad que mejora la salud de quien la come. Para usar
     este objeto es necesario un altar de guardado.

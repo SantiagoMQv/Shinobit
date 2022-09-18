@@ -6,8 +6,9 @@ public class NPCInteraction : MonoBehaviour
 {
     [SerializeField] private GameObject npcInteractButton;
     [SerializeField] private NPCDialog npcDialog;
-
+    [SerializeField] private Chest chest;
     public NPCDialog Dialog => npcDialog;
+    public Chest Chest => chest;
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {

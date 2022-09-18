@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class HealthPlayer : HealthBase
 {
+
     public static Action DefeatedPlayerEvent;
     public bool CanBeHealed => Health < maxHealth;
     public bool Defeated { get; private set; }
@@ -10,26 +11,37 @@ public class HealthPlayer : HealthBase
     private BoxCollider2D boxCollider2D;
     private PlayerJump playerJump;
 
+    public float TotalHealth => maxHealth + ((Player.Instance.Stats.HealthPoints - 1) * 15);
+
     private void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
         playerJump = GetComponent<PlayerJump>();
+        Defeated = false;
     }
 
     protected override void Start()
     {
         base.Start();
+        Health = TotalHealth;
+        maxHealth = TotalHealth;
+        //Debug.Log(maxHealth);
         UpdateHealthBar(Health, maxHealth);
     }
 
     private void Update()
     {
-        //Para hacer pruebas con el daño recibido
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Defeated)
         {
-            GetDamage((float) Math.Round(10.8), null);
+            Player.Instance.movementPlayer.SetCanMove(false);
         }
     }
+
+    public void UpgradeHealth()
+    {
+        UpdateHealthBar(Health, TotalHealth);
+    }
+
     public void RestoreHealth(float amount)
     {
         if (Defeated)
@@ -66,20 +78,22 @@ public class HealthPlayer : HealthBase
     }
 
     protected override void DefeatedCharacter()
-    {   
+    {
         //Lo desactivamos al morir para que no hayan problemas de colisiones
         //boxCollider2D.enabled = false;
-        //Si no está vacío, se invoca
+
+        DeathManager.Instance.OpenDeathPanel();
         DefeatedPlayerEvent?.Invoke();
         Defeated = true;
+
     }
 
     public void PlayerRestore()
     {
         //boxCollider2D.enabled = true;
         Defeated = false;
-        Health = initialHealth;
-        UpdateHealthBar(Health, initialHealth); 
+        Health = maxHealth;
+        UpdateHealthBar(Health, maxHealth); 
     }
 
     protected override void UpdateHealthBar(float currentHealth, float maxHealth)

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9063788544177764332}
   m_Layer: 0
   m_Name: PlantSpike
-  m_TagString: Projectile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1083589705
-  m_SortingLayer: 11
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: -1097182992, guid: c92aaaca61f64f24f84d3358276ad9fd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -170,4 +170,3 @@ MonoBehaviour:
   speed: 5
   damage: 5
   userType: 0
-  indexShotDirection: 0

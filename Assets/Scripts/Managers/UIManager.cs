@@ -87,14 +87,7 @@ public class UIManager : Singleton<UIManager>
         {
             OpenCloseNinjaCodePlayerPanel();
         }
-        if(Inventary.Instance.healingNinjutsuItem != null && Inventary.Instance.healingNinjutsuItem != null)
-        {
-            GenerateHealthTokenPanel();
-        }
-        else
-        {
-            HideHealthTokenPanel();
-        }
+
     }
 
     #region PlayerInfo
@@ -231,7 +224,7 @@ public class UIManager : Singleton<UIManager>
 
     public void OpenCloseNinjaCodePlayerPanel()
     {
-        quizzesPassedText.text = QuizManager.Instance.TotalQuizPassed.ToString();
+        quizzesPassedText.text =  NinjaCodeManager.Instance.TotalQuizCompleted.ToString();
         ninjaCodePlayerPanel.SetActive(!ninjaCodePlayerPanel.activeSelf);
         if (!ninjaCodePlayerPanel.activeSelf)
         {
@@ -258,7 +251,7 @@ public class UIManager : Singleton<UIManager>
     {
         switch (interactionType)
         {
-            case ExtraInteractionNPC.Test:
+            case ExtraInteractionNPC.Quiz:
                 OpenCloseNinjaCodeGetPanel();
                 break;
         }

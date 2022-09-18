@@ -23,6 +23,6 @@ public class Weapon : ScriptableObject
     public float ProjectileTimeLife;
 
     [Header("Stats")]
-    public float attack;
-    public float defense;
+    public int attack;
+    public int defense;
 }

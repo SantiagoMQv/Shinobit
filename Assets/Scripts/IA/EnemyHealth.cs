@@ -36,6 +36,16 @@ public class EnemyHealth : HealthBase
 
     protected override void DefeatedCharacter()
     {
+        LootEnemy loot = GetComponent<LootEnemy>();
+        Vector3 RandomizeIntensity = new Vector3(1f, 1f, 1f);
+        foreach (DropEnemyItem item in loot.SelectedLoot)
+        {
+            Vector3 itemPosition = transform.position + new Vector3(Random.Range(-RandomizeIntensity.x, RandomizeIntensity.x),
+                                                                    Random.Range(-RandomizeIntensity.y, RandomizeIntensity.y),
+                                                                    Random.Range(-RandomizeIntensity.z, RandomizeIntensity.z));
+
+            Instantiate(item.PrefabItem, itemPosition, Quaternion.identity);
+        }
         // Se elimina de la escena así para que de tiempo a "salvar" los FloatingText que quedasen adheridos al enemigo.
         this.gameObject.SetActive(false);
         Destroy(this.gameObject, 5);

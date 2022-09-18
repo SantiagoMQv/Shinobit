@@ -18,4 +18,4 @@ MonoBehaviour:
   ExtraInteraction: 1
   BeginText: "\xA1Buenas! Revisa las pruebas disponibles a continuaci\xF3n."
   Conversation: []
-  EndText: 
+  EndText: "\xA1Aqu\xED las tienes!"

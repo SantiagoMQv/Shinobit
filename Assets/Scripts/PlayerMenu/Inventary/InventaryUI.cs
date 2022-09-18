@@ -28,11 +28,12 @@ public class InventaryUI : Singleton<InventaryUI>
     [SerializeField] private GameObject whereEquipPanel;
 
     public InventarySlot selectedSlot { get; private set; }
-    List<InventarySlot> availableSlot = new List<InventarySlot>();
+    private List<InventarySlot> availableSlot;
 
-
-    void Start()
+    protected override void Awake()
     {
+        base.Awake();
+        availableSlot = new List<InventarySlot>();
         InitializeInventary();
     }
 

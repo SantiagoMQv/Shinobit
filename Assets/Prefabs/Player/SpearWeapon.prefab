@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4594080272980388742}
   - component: {fileID: 569035915779455163}
   - component: {fileID: -4977733573392286361}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SpearWeapon
-  m_TagString: Untagged
+  m_TagString: SpearWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,7 +133,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &-4977733573392286361
 MonoBehaviour:
   m_ObjectHideFlags: 0

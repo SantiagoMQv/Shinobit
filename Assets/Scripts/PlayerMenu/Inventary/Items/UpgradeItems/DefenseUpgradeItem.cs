@@ -11,6 +11,7 @@ public class DefenseUpgradeItem : UpgradeItem
         {
             Inventary.Instance.Player.upgradeStats.UpgradeDefense();
             bitsToUpgrade *= multiplier;
+            Mathf.Round(bitsToUpgrade);
             return true;
         }
         return false;
