@@ -46,6 +46,7 @@ public class SettingsMenu : Singleton<SettingsMenu>, ISaveGame
             case 1:
                 programmingLanguage = QuizProgrammingLanguage.Python;
                 break;
+
         }
     }
 

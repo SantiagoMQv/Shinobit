@@ -81,7 +81,7 @@ public class HealthPlayer : HealthBase
     {
         //Lo desactivamos al morir para que no hayan problemas de colisiones
         //boxCollider2D.enabled = false;
-
+        
         DeathManager.Instance.OpenDeathPanel();
         DefeatedPlayerEvent?.Invoke();
         Defeated = true;

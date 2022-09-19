@@ -128,7 +128,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.42}
+  m_Offset: {x: 0, y: -0.16}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -139,7 +139,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.74, y: 1.31}
+  m_Size: {x: 1.74, y: 1.81}
   m_EdgeRadius: 0
 --- !u!114 &7392838428804556125
 MonoBehaviour:
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chestInteractButton: {fileID: 7392838429352251507}
   openedChest: {fileID: 1399207552, guid: b141998340fe69449b534acdc60dbed0, type: 3}
-  id: 
+  id: 8a6a91ed-7379-4793-b664-71c38bdc162d
 --- !u!114 &7392838428804556097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,15 +169,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableLoot:
-  - id: 
-    Name: "Ninjutsu de curaci\xF3n"
+  - id: a5635ded-7751-46cf-a181-ff4ad0715aff
+    Name: Lanza
     Amount: 1
-    Item: {fileID: 11400000, guid: 232a941d8757ac94b8172829128a67e2, type: 2}
+    Item: {fileID: 11400000, guid: 887f138b7d60aad4e992d22474384ca0, type: 2}
     pickedUpItem: 0
     dropChance: 100
-  - id: 
+  - id: cf3e74b2-433a-498c-b725-a212f774f70c
     Name: Bits
-    Amount: 100
+    Amount: 50
     Item: {fileID: 0}
     pickedUpItem: 0
     dropChance: 100

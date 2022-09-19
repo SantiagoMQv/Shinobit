@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System;
 
 public class DeathManager : Singleton<DeathManager>
 {
     [SerializeField] private GameObject deathPanel;
     [SerializeField] private Player player;
 
+    public static Action ReviveLoadSceneAction;
     public void OpenDeathPanel()
     {
         deathPanel.SetActive(true);
@@ -20,7 +23,9 @@ public class DeathManager : Singleton<DeathManager>
     public void ReviveButton()
     {
         SaveManager.Instance.LoadGame();
-        player.PlayerRestore();
+        ReviveLoadSceneAction?.Invoke();
+        SceneManager.LoadScene(Player.Instance.respawnSceneIndex);
+       
 
     }
 }

@@ -72,6 +72,7 @@ public class Player : Singleton<Player>, ISaveGame
 
     public void PlayerRestore()
     {
+        Player.Instance.movementPlayer.SetCanMove(true);
         DeathManager.Instance.CloseDeathPanel();
         HealthPlayer.PlayerRestore();
         ManaPlayer.ManaRestore();

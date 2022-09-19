@@ -9,15 +9,22 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject newGamePanel;
 
-    [SerializeField] private Button ContinueButton;
+    [SerializeField] private Button continueButton;
+
+    [SerializeField] private TMP_Dropdown programmingLanguageDropdown;
 
     private void Update()
     {
         if (!SaveManager.Instance.ExistSaveGameFile())
         {
-            ContinueButton.interactable = false;
-            ContinueButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, 100);
+            continueButton.interactable = false;
+            continueButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, 100);
         }
+    }
+
+    public void OpenSettingsPanel()
+    {
+        SettingsMenu.Instance.SetProgrammingLanguage(programmingLanguageDropdown.value);
     }
 
     public void NewGameButton()

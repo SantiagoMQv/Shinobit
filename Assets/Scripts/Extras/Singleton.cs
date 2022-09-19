@@ -33,7 +33,7 @@ public class Singleton<T> : MonoBehaviour where T : Component
         if (instance != null && instance != Inventary.instance)
         {
             Debug.LogWarning("Hay dos instancias de " + instance.ToString() + ", se borrará la instancia repetida...");
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
         instance = this as T;
         

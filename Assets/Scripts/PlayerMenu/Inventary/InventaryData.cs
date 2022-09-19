@@ -15,8 +15,8 @@ public class InventaryData : MonoBehaviour
     }
     public void loadInventaryData(GameData data)
     {
-        
-        if(data.itemData == null)
+        Inventary.Instance.InitializeInventaryItems();
+        if (data.itemData == null)
         {
             initializeItemData(ref data.itemData);
         }

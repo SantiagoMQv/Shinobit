@@ -43,8 +43,7 @@ public class InventaryItem : ScriptableObject
     public SpecialItems specialItem;
     public int MaxAccumulation;
 
-    [HideInInspector] public int Amount; // HideInInspector lo oculta del inspector
-
+    [HideInInspector] public int Amount;
 
     // Necesario para que al añadir items al inventario, se añadan clones y no el ScriptableObject original
     public InventaryItem CopyItem()
@@ -70,4 +69,5 @@ public class InventaryItem : ScriptableObject
     {
         return true;
     }
+
 }

@@ -31,6 +31,10 @@ public class Inventary : Singleton<Inventary>, ISaveGame
         inventaryData = GetComponent<InventaryData>();
     }
 
+    public void InitializeInventaryItems()
+    {
+        inventaryItems = new InventaryItem[slotNum];
+    }
 
     public void AddItem(InventaryItem itemToAdd, int amount)
     {

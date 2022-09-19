@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuPanel;
+    [SerializeField] private GameObject controlsPanel;
 
+    public static Action ReturnToMainMenuAction;
     public static bool GameIsPaused = false;
 
 
@@ -40,10 +43,20 @@ public class PauseMenu : MonoBehaviour
     }
     public void ShowControls()
     {
-
+        controlsPanel.SetActive(true);
     }
+
+    public void CloseControls()
+    {
+        controlsPanel.SetActive(false);
+    }
+
     public void ReturnMainMenu()
     {
+        SceneManager.LoadSceneAsync(0);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        ReturnToMainMenuAction?.Invoke();
 
     }
 }

@@ -41,7 +41,7 @@ public class DialogueManager : Singleton<DialogueManager>
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (endDialogEnded)
             {
