@@ -17,7 +17,8 @@ public enum QuestionType
 public enum QuizProgrammingLanguage
 {
     Cplusplus,
-    Python
+    Python,
+    NuevoLenguaje
 }
 
 [CreateAssetMenu]

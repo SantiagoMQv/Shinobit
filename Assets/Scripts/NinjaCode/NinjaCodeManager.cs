@@ -17,7 +17,7 @@ public class NinjaCodeManager : Singleton<NinjaCodeManager>, ISaveGame
     [SerializeField] private QuizSlot NinjaCodeSlotPlayerPrefab;
     [SerializeField] private Transform NinjaCodeSlotPlayerContainer;
 
-    private ArrayList currentNinjaCodesLoaded;
+    private List<QuizSlot> currentNinjaCodesLoaded;
     private List<Quiz> allQuiz;
 
     private int totalQuizsCompleted;
@@ -31,7 +31,7 @@ public class NinjaCodeManager : Singleton<NinjaCodeManager>, ISaveGame
 
     public void LoadNinjaCodeSlotInGetPanel(NPCDialog npcRelationated)
     {
-        currentNinjaCodesLoaded = new ArrayList();
+        currentNinjaCodesLoaded = new List<QuizSlot>();
         for (int i = 0; i < quizAvailableToGet.Count; i++)
         {
             // Solo se mostrarán los que sean del lenguaje que se haya configurado en settings

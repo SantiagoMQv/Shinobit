@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 987475654641423067}
   - component: {fileID: 987475654641423064}
   m_Layer: 0
-  m_Name: palanca
+  m_Name: Palanca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

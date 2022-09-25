@@ -15,6 +15,7 @@ TagManager:
   - FloatingText
   - Projectile
   - SpearWeapon
+  - Chest
   layers:
   - Default
   - TransparentFX

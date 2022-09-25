@@ -38,16 +38,16 @@ public class SettingsMenu : Singleton<SettingsMenu>, ISaveGame
 
     public void SetProgrammingLanguage(int languageIndex)
     {
-        switch (languageIndex)
+        int i = 0;
+        foreach (QuizProgrammingLanguage language in System.Enum.GetValues(typeof(QuizProgrammingLanguage)))
         {
-            case 0:
-                programmingLanguage = QuizProgrammingLanguage.Cplusplus;
-                break;
-            case 1:
-                programmingLanguage = QuizProgrammingLanguage.Python;
-                break;
-
+            if (i == languageIndex)
+            {
+                programmingLanguage = language;
+            }
+            i++;
         }
+        SaveManager.Instance.SaveDataOnlyForProgrammingLanguageOption();
     }
 
     public void LoadData(GameData data)

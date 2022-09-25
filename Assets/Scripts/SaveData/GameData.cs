@@ -11,7 +11,7 @@ public class GameData
     public float currentBits;
     public int currentGoldKeys;
 
-    public Dictionary<string, bool> chestOpened;
+    public ChestData[] chestData;
     public Dictionary<string, bool> pickedUpLoot;
 
     public PlayerStatsData playerStatsData;
@@ -26,7 +26,7 @@ public class GameData
     {
         respawnPosition = Vector3.zero;
         respawnSceneIndex = 1;
-        chestOpened = new Dictionary<string, bool>();
+
         pickedUpLoot = new Dictionary<string, bool>();
         playerStatsData = new PlayerStatsData();
         totalQuizsCompleted = 0;

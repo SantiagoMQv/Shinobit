@@ -24,7 +24,6 @@ public class SaveManager : Singleton<SaveManager>
     {
         
         base.Awake();
-        
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
     }
 
@@ -37,17 +36,17 @@ public class SaveManager : Singleton<SaveManager>
     }
     public void LoadGame()
     {
-        if(dataHandler.Load() != null)
+        
+        if (dataHandler.Load() != null)
         {
             // Se carga data de un fichero usando el dataHandler
             this.gameData = dataHandler.Load();
         }
-        
 
         // Crea un new game si el data es nulo y hemos configurado que se inicialice con propositos de debugging
-        if(this.gameData == null && initializeDataIfNull)
+        if (this.gameData == null && initializeDataIfNull)
         {
-            NewGame();
+            //NewGame();
         }
 
         if(this.gameData == null)
@@ -55,9 +54,13 @@ public class SaveManager : Singleton<SaveManager>
             Debug.LogError("Se necesita un archivo de guardado para cargar la partida...");
             return;
         }
-
+        if(this.gameData.chestData == null || this.gameData.chestData.Length == 0)
+        {
+            InitializeChestData();
+        }
         foreach (ISaveGame saveGameObj in saveGameObjects)
         {
+            
             saveGameObj.LoadData(gameData);
         }
     }
@@ -66,6 +69,10 @@ public class SaveManager : Singleton<SaveManager>
         if(this.gameData == null)
         {
             Debug.LogWarning("No se han encontrado datos del juego, se necesita empezar una partida nueva.");
+        }
+        if (this.gameData.chestData == null || this.gameData.chestData.Length == 0)
+        {
+            InitializeChestData();
         }
         foreach (ISaveGame saveGameObj in saveGameObjects)
         {
@@ -98,11 +105,28 @@ public class SaveManager : Singleton<SaveManager>
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         
-        this.saveGameObjects = FindAllSaveGameObjects();
+        this.saveGameObjects = FindAllSaveGameObjects();      
         LoadGame();
 
     }
 
+    private void InitializeChestData()
+    {
+        gameData.chestData = new ChestData[FindObjectsOfType<Chest>().Length];
+        int i= 0;
+        foreach (Chest chest in FindObjectsOfType<Chest>())
+        {
+            gameData.chestData[i] = new ChestData(chest.getID());
+            gameData.chestData[i].openedChestBool = chest.getOpenedChestBool();
+            i++;
+        }
+    }
+
+    public void SaveDataOnlyForProgrammingLanguageOption()
+    {
+        SettingsMenu.Instance.SaveData(ref gameData);
+        SaveGame();
+    }
 
     private void OnEnable()
     {

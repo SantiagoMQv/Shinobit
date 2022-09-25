@@ -16,6 +16,11 @@ public class NPCInteraction : MonoBehaviour
         {
             DialogueManager.Instance.NPCAvailable = this;
             npcInteractButton.SetActive(true);
+
+            if (Dialog.IncludeExtraInteraction && Dialog.ExtraInteraction == ExtraInteractionNPC.Quiz)
+            {
+                NinjaCodeManager.Instance.LoadNinjaCodeSlotInGetPanel(Dialog);
+            }
         }
     }
     
@@ -26,6 +31,11 @@ public class NPCInteraction : MonoBehaviour
         {
             DialogueManager.Instance.NPCAvailable = null;
             npcInteractButton.SetActive(false);
+
+            if (Dialog.IncludeExtraInteraction && Dialog.ExtraInteraction == ExtraInteractionNPC.Quiz)
+            {
+                NinjaCodeManager.Instance.CleanNinjaCodeGetPanel();
+            }
         }
     }
 

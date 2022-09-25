@@ -24,6 +24,21 @@ public class MainMenu : MonoBehaviour
 
     public void OpenSettingsPanel()
     {
+        if (programmingLanguageDropdown.options.Count  != System.Enum.GetValues(typeof(QuizProgrammingLanguage)).Length)
+        {
+            foreach (QuizProgrammingLanguage language in System.Enum.GetValues(typeof(QuizProgrammingLanguage)))
+            {
+                if (language.ToString() == QuizProgrammingLanguage.Cplusplus.ToString())
+                {
+                    programmingLanguageDropdown.options.Add(new TMP_Dropdown.OptionData("C++"));
+                }
+                else
+                {
+                    programmingLanguageDropdown.options.Add(new TMP_Dropdown.OptionData(language.ToString()));
+                }
+            }
+        }
+        
         SettingsMenu.Instance.SetProgrammingLanguage(programmingLanguageDropdown.value);
     }
 

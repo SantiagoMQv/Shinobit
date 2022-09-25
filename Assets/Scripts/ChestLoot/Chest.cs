@@ -7,6 +7,7 @@ public class Chest : MonoBehaviour, ISaveGame
     [SerializeField] private GameObject chestInteractButton;
     [SerializeField] private Sprite openedChest;
     [SerializeField] private string id;
+    [SerializeField] private bool openedChestBool;
 
     // Permite desde el editor generar un ID identificativo que permitirá gestionar el guardado de datos para este objeto
     [ContextMenu("Generar guid para ID")]
@@ -15,13 +16,29 @@ public class Chest : MonoBehaviour, ISaveGame
         id = System.Guid.NewGuid().ToString();
     }
 
-    private bool openedChestBool;
+
     private bool playerNear;
+
+    public string getID()
+    {
+        return id;
+    }
+
+    public bool getOpenedChestBool()
+    {
+        return openedChestBool;
+    }
 
     private void Awake()
     {
-        openedChestBool = false;
+       
+
         playerNear = false;
+        if (openedChestBool)
+        {
+            OpenChest();
+        }
+       
     }
     private void Update()
     {
@@ -30,7 +47,10 @@ public class Chest : MonoBehaviour, ISaveGame
             Loot loot = GetComponent<Loot>();
             LootManager.Instance.ShowLootPanel(loot);
         }
+
     }
+
+
     public void OpenChest()
     {
         openedChestBool = true;
@@ -39,23 +59,31 @@ public class Chest : MonoBehaviour, ISaveGame
 
     public void LoadData(GameData data)
     {
-        data.chestOpened.TryGetValue(id, out openedChestBool);
-        if (openedChestBool)
+        foreach (ChestData chest in data.chestData)
         {
-            OpenChest();
+            if (chest.ID == id)
+            {
+                openedChestBool = chest.openedChestBool;
+            }
         }
     }
 
     public void SaveData(ref GameData data)
     {
-        if (data.chestOpened.ContainsKey(id)){
-            data.chestOpened.Remove(id);
+        foreach (ChestData chest in data.chestData)
+        {
+            if (chest.ID == id)
+            {
+                chest.openedChestBool = openedChestBool;
+            }
         }
-        data.chestOpened.Add(id, openedChestBool);
     }
+
+    
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (openedChestBool)
         {
             if (collision.CompareTag("Player"))

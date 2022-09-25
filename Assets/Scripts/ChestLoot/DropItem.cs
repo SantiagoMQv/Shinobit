@@ -12,7 +12,7 @@ public class DropItem
     public string Name;
     public int Amount;
     public InventaryItem Item;
-    public bool pickedUpItem;
+    [HideInInspector] public bool pickedUpItem;
 
     [Header("Drop")]
     [Range(0, 100)] public float dropChance;
