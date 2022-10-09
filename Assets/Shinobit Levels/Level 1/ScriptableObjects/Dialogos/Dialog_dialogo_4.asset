@@ -19,7 +19,6 @@ MonoBehaviour:
   BeginText: "\xA1Datar\u014D, me alegra verte! Recuerda que el inventario es una
     parte fundamental para un Ninja, podr\xE1s acceder a \xE9l pulsando la tecla
     TAB."
-  Conversation:
-  - Sentence: 
+  Conversation: []
   EndText: "Ah\xED podr\xE1s consultar informaci\xF3n importante de los objetos que
     consigas."

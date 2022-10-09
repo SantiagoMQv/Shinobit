@@ -59,9 +59,12 @@ public class SelectionManager : MonoBehaviour
                         distance = curDistance;
                     }
                 }
-
-                SelectedEnemy = closestEnemy.GetComponent<EnemySelection>();
-                EnemySelectedEvent?.Invoke(SelectedEnemy);
+                if(closestEnemy != null)
+                {
+                    SelectedEnemy = closestEnemy.GetComponent<EnemySelection>();
+                    EnemySelectedEvent?.Invoke(SelectedEnemy);
+                }
+                
             }
             else
             {

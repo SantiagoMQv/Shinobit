@@ -64,12 +64,19 @@ public class UIManager : Singleton<UIManager>
     private Transform HealthTokenContainer;
 
     public bool DisplayingPanel { get; private set; }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        HealthTokenContainer = healthTokenPanel.transform.GetChild(0);
+    }
+
     private void Start()
     {
         timeChangeColorStamina = 0;
         ColorUtility.TryParseHtmlString("#1B1D1C", out blackColor);
         ColorUtility.TryParseHtmlString("#22652F", out greenColor);
-        HealthTokenContainer = healthTokenPanel.transform.GetChild(0);
+        
     }
 
     void Update()

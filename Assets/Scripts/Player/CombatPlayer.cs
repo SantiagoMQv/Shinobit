@@ -64,22 +64,41 @@ public class CombatPlayer : MonoBehaviour
 
     private void Update()
     {
+        if (!player.playerJump.Jumping && !Attacking)
+        {
+            AttackSlot1();
+            AttackSlot2();
+            AttackShuriken();
+            AttackSpear();
+            UseShield();
+            UseHealingNinjutsu();
+        }
+
+        CountdownShieldNinjutsu();
 
         GetShotDirection();
+    }
 
-        if(Time.time > timeToNextAttack1 && !Attacking)
+    #region Attacks And Uses
+
+    private void AttackSlot1()
+    {
+        if (Time.time > timeToNextAttack1 )
         {
             if (Input.GetKeyDown(KeyCode.K))
             {
-                if(EquippedWeapon1 != null)
+                if (EquippedWeapon1 != null)
                 {
                     UseWeapon1();
                     timeToNextAttack1 = Time.time + EquippedWeapon1.timeBetweenAttacks;
                 }
             }
         }
+    }
 
-        if (Time.time > timeToNextAttack2 && !Attacking)
+    private void AttackSlot2()
+    {
+        if (Time.time > timeToNextAttack2 )
         {
             if (Input.GetKeyDown(KeyCode.L))
             {
@@ -90,7 +109,10 @@ public class CombatPlayer : MonoBehaviour
                 }
             }
         }
-        if (Time.time > timeToNextShurikenAttack && !Attacking)
+    }
+    private void AttackShuriken()
+    {
+        if (Time.time > timeToNextShurikenAttack )
         {
             if (Input.GetKeyDown(KeyCode.M))
             {
@@ -101,8 +123,11 @@ public class CombatPlayer : MonoBehaviour
                 }
             }
         }
+    }
 
-        if (Time.time > timeToNextSpearAttack && !Attacking)
+    private void AttackSpear()
+    {
+        if (Time.time > timeToNextSpearAttack)
         {
             if (Input.GetKeyDown(KeyCode.J))
             {
@@ -113,9 +138,10 @@ public class CombatPlayer : MonoBehaviour
                 }
             }
         }
-
-        CountdownShieldNinjutsu();
-        if (Time.time > timeToNextShieldNinjutsu && !Attacking)
+    }
+    private void UseShield()
+    {
+        if (Time.time > timeToNextShieldNinjutsu )
         {
             if (Input.GetKeyDown(KeyCode.N) && !Healing && !player.playerJump.Jumping && !player.HealthPlayer.Defeated)
             {
@@ -128,17 +154,19 @@ public class CombatPlayer : MonoBehaviour
                 }
             }
         }
-
+    }
+    private void UseHealingNinjutsu()
+    {
         if (healingNinjutsuItem != null)
         {
-            if (Input.GetKeyDown(KeyCode.P) && !Healing && !player.playerJump.Jumping && !player.HealthPlayer.Defeated && NumTokens > 0
-                && player.HealthPlayer.CanBeHealed && !Attacking)
+            if (Input.GetKeyDown(KeyCode.P) && !Healing  && !player.HealthPlayer.Defeated && NumTokens > 0 && player.HealthPlayer.CanBeHealed )
             {
                 healingNinjutsuItem.UseItem();
             }
         }
-
     }
+
+    #endregion
 
     private void CountdownShieldNinjutsu()
     {

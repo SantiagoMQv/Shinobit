@@ -63,9 +63,13 @@ public class Chest : MonoBehaviour, ISaveGame
         {
             if (chest.ID == id)
             {
-                openedChestBool = chest.openedChestBool;
+                if (chest.openedChestBool)
+                {
+                    OpenChest();
+                }
             }
         }
+
     }
 
     public void SaveData(ref GameData data)

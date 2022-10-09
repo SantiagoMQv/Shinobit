@@ -22,6 +22,8 @@ public class GameData
 
     public QuizProgrammingLanguage programmingLanguage;
 
+    //public DestroyableElementData[] destroyableElementData;
+    public Dictionary<string, bool> destroyableElements;
     public GameData()
     {
         respawnPosition = Vector3.zero;
@@ -31,6 +33,7 @@ public class GameData
         playerStatsData = new PlayerStatsData();
         totalQuizsCompleted = 0;
         programmingLanguage = QuizProgrammingLanguage.Cplusplus;
+        destroyableElements = new Dictionary<string, bool>();
     }
 
 }

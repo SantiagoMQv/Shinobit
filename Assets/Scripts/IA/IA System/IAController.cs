@@ -63,6 +63,7 @@ public class IAController : MonoBehaviour
     public AttackTypes AttackType => attackType;
     public float SpeedMovement => speedMovement;
     public LayerMask PlayerLayerMask => playerLayerMask;
+    public bool AttackDoing => attackDoing;
 
     private void Start()
     {
@@ -186,6 +187,7 @@ public class IAController : MonoBehaviour
 
     private IEnumerator IEDash()
     {
+        yield return new WaitForSeconds(0.5f);
         Vector3 playerPosition = PlayerReference.position;
         Vector3 initialPosition = transform.position;
         Vector3 directionToPlayer = (playerPosition - initialPosition).normalized;
@@ -194,7 +196,7 @@ public class IAController : MonoBehaviour
         attackDoing = true;
         //polygonCollider2D.enabled = false;
 
-        yield return new WaitForSeconds(0.5f);
+        
         float attackTransition = 0;
         while (attackTransition <= 1)
         {

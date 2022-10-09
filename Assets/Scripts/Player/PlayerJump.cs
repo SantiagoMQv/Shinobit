@@ -7,6 +7,7 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private float staminaJump;
 
     private MovementPlayer movementPlayer;
+    private CombatPlayer combatPlayer;
     public static Action JumpPlayerEvent;
     private Rigidbody2D rigibody2D;
     private SpriteRenderer spriteRenderer;
@@ -29,6 +30,7 @@ public class PlayerJump : MonoBehaviour
         staminaPlayer = GetComponent<StaminaPlayer>();
         rigibody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        combatPlayer = GetComponent<CombatPlayer>();
     }
 
     private void Start()

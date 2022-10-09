@@ -5,7 +5,8 @@ public enum ExtraInteractionNPC
 {
     None,
     Quiz,
-    OpenChest
+    OpenChest,
+    DestroyElement
 }
 
 [CreateAssetMenu]

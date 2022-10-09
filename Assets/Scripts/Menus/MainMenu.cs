@@ -13,6 +13,11 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private TMP_Dropdown programmingLanguageDropdown;
 
+    private void Start()
+    {
+        SceneLoadManager.Instance.ActivateMainMenuTransition();
+    }
+
     private void Update()
     {
         if (!SaveManager.Instance.ExistSaveGameFile())
@@ -57,12 +62,12 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
         SaveManager.Instance.NewGame();
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneLoadManager.Instance.LoadNextScene();
     }
 
     public void ContinueGame()
     {
-        SceneManager.LoadSceneAsync(SaveManager.Instance.RespawnSceneIndex);
+        SceneLoadManager.Instance.LoadDeterminatedScene(SaveManager.Instance.RespawnSceneIndex);
     }
 
     public void QuitGame()

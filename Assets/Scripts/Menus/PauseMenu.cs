@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !SceneLoadManager.Instance.TransitionLoading)
         {
             if (GameIsPaused)
             {
@@ -53,7 +53,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ReturnMainMenu()
     {
-        SceneManager.LoadSceneAsync(0);
+        SceneLoadManager.Instance.LoadDeterminatedScene(0);
         Time.timeScale = 1f;
         GameIsPaused = false;
         ReturnToMainMenuAction?.Invoke();

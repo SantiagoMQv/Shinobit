@@ -19,18 +19,44 @@ public class DialogueManager : Singleton<DialogueManager>
     private bool endDialogEnded;
     private bool dialogFinished;
     private bool dialogStarted;
-    private bool spaceKeySecondPressed;
+    private bool skipAnimation;
+
     private void Start()
     {
         dialogSequence = new Queue<string>();
         dialogFinished = true;
-        spaceKeySecondPressed = false;
+        skipAnimation = false;
         dialogStarted = false;
     }
 
     private void Update()
     {
-        if(NPCAvailable != null)
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (endDialogEnded)
+            {
+                OpenCloseDialogPanel(false);
+                InitializeVariables();
+                CheckExtraInteraction();
+                return;
+            }
+            if (dialogStarted)
+            {
+
+                if (animatedDialogEnded)
+                {
+                    ContinueDialog();
+                }
+                else
+                {
+                    skipAnimation = true;
+                }
+            }
+            
+
+        }
+
+        if (NPCAvailable != null)
         {
             if (Input.GetKeyDown(KeyCode.E) && dialogFinished && !UIManager.Instance.DisplayingPanel)
             {
@@ -41,66 +67,43 @@ public class DialogueManager : Singleton<DialogueManager>
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+    }
+
+    private void InitializeVariables()
+    {
+        skipAnimation = false;
+        endDialogEnded = false;
+        endDialogDisplayed = false;
+        dialogFinished = true;
+        dialogStarted = false;
+    }
+
+    private void CheckExtraInteraction()
+    {
+        if (NPCAvailable.Dialog.IncludeExtraInteraction)
         {
-            if (endDialogEnded)
+            if (NPCAvailable.Dialog.ExtraInteraction == ExtraInteractionNPC.Quiz) // Para las que necesitan UI
             {
-                OpenCloseDialogPanel(false);
-                spaceKeySecondPressed = false;
-                endDialogEnded = false;
-                endDialogDisplayed = false;
-                dialogFinished = true;
-                dialogStarted = false;
-                if (NPCAvailable.Dialog.IncludeExtraInteraction)
-                {
-                    if (NPCAvailable.Dialog.ExtraInteraction == ExtraInteractionNPC.Quiz) // Para las que necesitan UI
-                    {
-                        UIManager.Instance.OpenCloseInteraction(NPCAvailable.Dialog.ExtraInteraction);
-                    }
-                    else // No necesitan UI
-                    {
-                        if (NPCAvailable.Dialog.ExtraInteraction == ExtraInteractionNPC.OpenChest)
-                        {
-                            NPCAvailable.Chest.OpenChest();
-                            Player.Instance.movementPlayer.SetCanMove(true);
-                        }
-                    }
-                    
-                }
-                else
-                {
-                    Player.Instance.movementPlayer.SetCanMove(true);
-                }
-                return;
+                UIManager.Instance.OpenCloseInteraction(NPCAvailable.Dialog.ExtraInteraction);
             }
-            if (dialogStarted)
+            else // No necesitan UI
             {
-
-                if (NPCAvailable.Dialog.EndText.ToString() == "")
+                if (NPCAvailable.Dialog.ExtraInteraction == ExtraInteractionNPC.OpenChest)
                 {
-                    if (animatedDialogEnded)
-                    {
-                        endDialogEnded = true;
-                    }
-                    else
-                    {
-                        spaceKeySecondPressed = true;
-                    }
+                    NPCAvailable.Chest.OpenChest();
                 }
-
-                if (animatedDialogEnded)
+                else if (NPCAvailable.Dialog.ExtraInteraction == ExtraInteractionNPC.DestroyElement)
                 {
-                    ContinueDialog();
+                    NPCAvailable.ElementToDestroy.DestoyElement();
                 }
-                else
-                {
-                    spaceKeySecondPressed = true;
-                }
+                Player.Instance.movementPlayer.SetCanMove(true);
             }
-            
 
         }
-
+        else
+        {
+            Player.Instance.movementPlayer.SetCanMove(true);
+        }
     }
 
     public void OpenCloseDialogPanel(bool state)
@@ -156,7 +159,7 @@ public class DialogueManager : Singleton<DialogueManager>
         char[] letters = sentence.ToCharArray();
         for (int i = 0; i < letters.Length; i++)
         {
-            if (spaceKeySecondPressed)
+            if (skipAnimation)
             {
                 if(endDialogDisplayed || NPCAvailable.Dialog.EndText.ToString() == "")
                 {
@@ -165,7 +168,7 @@ public class DialogueManager : Singleton<DialogueManager>
                 npcConversationTMP.text = "";
                 npcConversationTMP.text = sentence;
                 animatedDialogEnded = true;
-                spaceKeySecondPressed = false;
+                skipAnimation = false;
                 yield break;
             }
             npcConversationTMP.text += letters[i];

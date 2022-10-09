@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class Player : Singleton<Player>, ISaveGame
 {
     [SerializeField] private PlayerStats stats;
@@ -20,6 +20,7 @@ public class Player : Singleton<Player>, ISaveGame
 
     [HideInInspector] public Vector3 respawnPosition;
     [HideInInspector] public int respawnSceneIndex;
+
 
     private new void Awake()
     {

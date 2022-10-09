@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovementPlayer : MonoBehaviour
 {
     [SerializeField] private float speedDefault;
+    [SerializeField] private bool movementx2Debug;
     [HideInInspector] public float speed;
 
     public bool moving => movementDirection.magnitude > 0;
@@ -24,7 +25,7 @@ public class MovementPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.B))
+        if (Input.GetKey(KeyCode.B) && movementx2Debug)
         {
             speed = speedDefault * 2;
         }

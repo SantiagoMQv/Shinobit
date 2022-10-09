@@ -82,7 +82,6 @@ public class SaveManager : Singleton<SaveManager>
 
         dataHandler.Save(gameData);
         Debug.Log("Guardando partida...");
-        //Debug.Log(gameData.playerPosition);
     }
 
     public void UpdateSaveGameObjects()

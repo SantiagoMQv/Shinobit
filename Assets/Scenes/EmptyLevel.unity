@@ -755,6 +755,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a1f4c77ec0fb34ab9cdadd4d643181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+  respawnPosition: {x: 0, y: 0, z: 0}
+  respawnSceneIndex: 0
 --- !u!114 &99780886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,6 +890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedDefault: 5
+  movementx2Debug: 0
   speed: 0
 --- !u!114 &99780895
 MonoBehaviour:
@@ -3183,7 +3187,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1564169205
-  m_SortingLayer: 9
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -6130,7 +6134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f7e2bee1789f046b2eb6021cadbf6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FloatingTextPrefab: {fileID: 1335746527247674503, guid: 978700dd5c898574590c22cc4e8b573f, type: 3}
 --- !u!114 &567082850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6177,9 +6180,6 @@ MonoBehaviour:
   healthUpgradeItem: {fileID: 11400000, guid: eb5e292828d62ba45a1a5341fc5c86ac, type: 2}
   magicUpgradeItem: {fileID: 11400000, guid: 53e3daa0827e5fd4c804d160f92844d5, type: 2}
   potionUpgradeItem: {fileID: 11400000, guid: b4d8893f328aad246b62f6ae4847a33d, type: 2}
-  healingNinjutsuItem: {fileID: 0}
-  SpearWeaponItem: {fileID: 0}
-  ShurikenWeaponItem: {fileID: 0}
 --- !u!1 &588988329
 GameObject:
   m_ObjectHideFlags: 0
@@ -7968,7 +7968,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -46083643
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -9924,7 +9924,6 @@ MonoBehaviour:
   descriptionTMP: {fileID: 1222256440}
   backgroundButton: {fileID: 2072215561}
   textButton: {fileID: 451859522}
-  TotalQuizPassed: 0
   quizCompleted: 0
 --- !u!4 &984163549
 Transform:
@@ -11173,7 +11172,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 585624647
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -12998,7 +12997,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1738318493
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -13378,7 +13377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32ba6fa77d503e41a221dfd47b16af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reappearancePoint: {fileID: 0}
+  deathPanel: {fileID: 0}
   player: {fileID: 99780885}
 --- !u!1 &1392356488
 GameObject:
@@ -17406,7 +17405,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1771181117
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

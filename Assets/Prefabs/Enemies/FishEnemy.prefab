@@ -263,7 +263,7 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  damage: 5
+  damage: 8
   timeBetweenAttacks: 1.5
   attackType: 2
   projectilePrefab: {fileID: 0}
@@ -316,11 +316,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableLoot:
   - PrefabItem: {fileID: 5496638664418834847, guid: 8938c84c33c9e764499c93a2ac0976f5, type: 3}
-    dropChance: 90.9
+    dropChance: 61.5
   - PrefabItem: {fileID: 8668272155645899728, guid: fb43d5754bf5a964c98192298bcceca3, type: 3}
-    dropChance: 50.6
+    dropChance: 14
   - PrefabItem: {fileID: 3691777363616499714, guid: 5e6d18ccbda0d084a8abbb2b088e8547, type: 3}
-    dropChance: 15.1
+    dropChance: 5.3
 --- !u!1 &5266050021087482224
 GameObject:
   m_ObjectHideFlags: 0

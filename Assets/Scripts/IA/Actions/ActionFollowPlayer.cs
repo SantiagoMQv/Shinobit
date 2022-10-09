@@ -17,7 +17,7 @@ public class ActionFollowPlayer : IAAction
             Vector3 DirToPlayer = controller.PlayerReference.position - controller.transform.position;
             Vector3 direction = DirToPlayer.normalized;
             float distance = DirToPlayer.magnitude;
-            if(distance >= 1.3f)
+            if(distance >= 1f)
             {
                 controller.transform.Translate(direction * controller.SpeedMovement * Time.deltaTime);
             }

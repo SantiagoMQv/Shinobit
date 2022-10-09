@@ -74,4 +74,5 @@ public class SaveAltar : MonoBehaviour
             PlayerUndetected();
         }
     }
+
 }

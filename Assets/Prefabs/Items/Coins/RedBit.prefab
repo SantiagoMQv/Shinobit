@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2130285931
-  m_SortingLayer: 8
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -571759235, guid: 4317720a4cdc003458e2d493d061e913, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventaryItemReference: {fileID: 0}
-  amountToAdd: 50
+  amountToAdd: 5
 --- !u!60 &5496638664418834785
 PolygonCollider2D:
   m_ObjectHideFlags: 0
