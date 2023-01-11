@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66dcd65cf37d2e24cba2a8a910fe2f75, type: 3}
+  m_Name: Dialog_historia_3
+  m_EditorClassIdentifier: 
+  Name: "Oj\u012Bnteru"
+  Icon: {fileID: 21300000, guid: f58b54567ecc929409b641b73cb1d346, type: 3}
+  IncludeExtraInteraction: 1
+  ExtraInteraction: 3
+  BeginText: "Estas mazmorras te conducir\xE1n a tu destino, lo est\xE1s haciendo
+    muy bien."
+  Conversation:
+  - Sentence: "M\xE1s adelante te encontrar\xE1s un item que te ayudar\xE1 a progresar
+      en tu aventura, \xFAsalo para accionar la palanca que hay en la siguiente habitaci\xF3n."
+  - Sentence: "Ten en cuenta que tambi\xE9n podr\xE1s usarlo para combatir. "
+  EndText: "\xA1Mucho \xE1nimo Datar\u014D, eres nuestra \xFAnica esperanza!"

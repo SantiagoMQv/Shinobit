@@ -479,7 +479,7 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  damage: 5
+  damage: 7
   timeBetweenAttacks: 1.5
   attackType: 3
   projectilePrefab: {fileID: 4410215613926473598, guid: e8afd2eafd29faa428448a02452f4c4e, type: 3}

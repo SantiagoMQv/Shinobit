@@ -217,7 +217,7 @@ MonoBehaviour:
   DefaultState: {fileID: 11400000, guid: 40202601545cdbe499348a3401ec0f76, type: 2}
   detectionRange: 5
   attackAreaRange: 0
-  meleeRange: 1
+  meleeRange: 1.4
   dashRange: 0
   projectileRange: 0
   speedMelee: 1
@@ -262,8 +262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232933773d41d7a4a99694a1914d7321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 20
-  maxHealth: 20
+  initialHealth: 7
+  maxHealth: 7
   HealthBarPrefab: {fileID: 2098209824374970437, guid: 276f2431d3249ea4e8b3e1efbbeaaf3d, type: 3}
   HealthBarPosition: {fileID: 1585117006466804776}
 --- !u!114 &4535009850243250376
@@ -282,7 +282,7 @@ MonoBehaviour:
   - PrefabItem: {fileID: 5496638664418834847, guid: 8938c84c33c9e764499c93a2ac0976f5, type: 3}
     dropChance: 57
   - PrefabItem: {fileID: 8668272155645899728, guid: fb43d5754bf5a964c98192298bcceca3, type: 3}
-    dropChance: 13.6
+    dropChance: 12.1
   - PrefabItem: {fileID: 3691777363616499714, guid: 5e6d18ccbda0d084a8abbb2b088e8547, type: 3}
     dropChance: 5.3
 --- !u!1 &2083690503592047317

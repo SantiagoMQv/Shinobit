@@ -3,20 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum LeverInteraction
 {
-    OpenChest
+    OpenChest,
+    DestroyElement
 }
 public class Lever : MonoBehaviour
 {
     [SerializeField] private Sprite actionatedLeverSprite;
     [SerializeField] private LeverInteraction leverInteraction;
+    [Header("Optional -> ExtraInteraction: OpenChest")]
     [SerializeField] private Chest chest;
+    [Header("Optional -> ExtraInteraction: DestroyElement")]
+    [SerializeField] private DestroyableElement element;
+    
     private bool actionated;
 
-    private void Update()
+    private void LeverAction()
     {
-        if (leverInteraction == LeverInteraction.OpenChest && actionated)
+        if (leverInteraction == LeverInteraction.OpenChest && !actionated)
         {
             chest.OpenChest();
+        }
+        else if (leverInteraction == LeverInteraction.DestroyElement && !actionated)
+        {
+            element.DestoyElement();
         }
     }
 
@@ -24,6 +33,7 @@ public class Lever : MonoBehaviour
     {
         if (collision.CompareTag("ShurikenWeapon") || collision.CompareTag("SpearWeapon"))
         {
+            LeverAction();
             actionated = true;
             GetComponent<SpriteRenderer>().sprite = actionatedLeverSprite;
         }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5cb4775b3a9acd44a5fb5f5dd008492, type: 3}
-  m_Name: quiz1
+  m_Name: Quiz1
   m_EditorClassIdentifier: 
   Name: 
   ID: 

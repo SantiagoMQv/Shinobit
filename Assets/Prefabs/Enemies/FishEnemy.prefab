@@ -298,8 +298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232933773d41d7a4a99694a1914d7321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 20
-  maxHealth: 20
+  initialHealth: 11
+  maxHealth: 11
   HealthBarPrefab: {fileID: 2098209824374970437, guid: 276f2431d3249ea4e8b3e1efbbeaaf3d, type: 3}
   HealthBarPosition: {fileID: 7703986390905952477}
 --- !u!114 &2423983755059522459

@@ -185,8 +185,6 @@ MonoBehaviour:
   points:
   - {x: -0.6306963, y: 1.8372416, z: 0}
   - {x: 2.3719597, y: 1.7823987, z: 0}
-  - {x: 2.5227795, y: -3.400267, z: 0}
-  - {x: -0.72667027, y: -3.3454237, z: 0}
 --- !u!114 &49442279135445135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,27 +213,27 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 5a073ea7023a3824fb419ae7da6a8fdb, type: 2}
   initialState: {fileID: 11400000, guid: c9319d618bb0ef844afe461d7a70ffdd, type: 2}
   DefaultState: {fileID: 11400000, guid: 40202601545cdbe499348a3401ec0f76, type: 2}
-  detectionRange: 4.97
+  detectionRange: 5.46
   attackAreaRange: 0
-  meleeRange: 0
+  meleeRange: 1.61
   dashRange: 2.99
   projectileRange: 0
-  speedMelee: 0
+  speedMelee: 2
   speedDash: 2
   speedProjectile: 0
-  speedMovement: 4
+  speedMovement: 7
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
   damage: 4
   timeBetweenAttacks: 1.5
-  attackType: 2
+  attackType: 1
   projectilePrefab: {fileID: 0}
   WaterEnemy: 0
   showDetection: 1
   showAttackAreaRange: 0
-  showMeeleRange: 0
-  showDashRange: 1
+  showMeeleRange: 1
+  showDashRange: 0
   showProjectileRange: 0
 --- !u!114 &2502304750661116634
 MonoBehaviour:
@@ -262,8 +260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232933773d41d7a4a99694a1914d7321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 20
-  maxHealth: 20
+  initialHealth: 5
+  maxHealth: 5
   HealthBarPrefab: {fileID: 2098209824374970437, guid: 276f2431d3249ea4e8b3e1efbbeaaf3d, type: 3}
   HealthBarPosition: {fileID: 2059070535095316793}
 --- !u!114 &4000227074602395097
@@ -280,11 +278,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableLoot:
   - PrefabItem: {fileID: 5496638664418834847, guid: 8938c84c33c9e764499c93a2ac0976f5, type: 3}
-    dropChance: 57
+    dropChance: 24.5
   - PrefabItem: {fileID: 8668272155645899728, guid: fb43d5754bf5a964c98192298bcceca3, type: 3}
-    dropChance: 13.6
+    dropChance: 3.4
   - PrefabItem: {fileID: 3691777363616499714, guid: 5e6d18ccbda0d084a8abbb2b088e8547, type: 3}
-    dropChance: 5.3
+    dropChance: 0.8
 --- !u!1 &1551207788162805700
 GameObject:
   m_ObjectHideFlags: 0

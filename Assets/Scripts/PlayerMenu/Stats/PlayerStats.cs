@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-//Sirve para indicar a Unity que se puede crear en el menú
+//Sirve para indicar a Unity que se puede crear en el menï¿½
 [CreateAssetMenu(menuName = "Stats")]
 public class PlayerStats : ScriptableObject
 {

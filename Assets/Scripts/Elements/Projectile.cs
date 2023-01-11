@@ -88,7 +88,7 @@ public class Projectile : MonoBehaviour
         speed = speedWeapon;
         timeLife = Time.time + projectileTimeLife;
         userType = user;
-        if (enemy != null) // Si se está apuntando a un enemigo
+        if (enemy != null) // Si se estï¿½ apuntando a un enemigo
         {
             enemyTarget = enemy;
             direction = (enemyTarget.transform.position - transform.position);
@@ -113,7 +113,7 @@ public class Projectile : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy" && userType == ProjectileUserType.Player)
         {
-            collision.gameObject.GetComponent<EnemyHealth>().GetDamage(Player.Instance.combatPlayer.GetDamage(), collision.gameObject);
+            collision.gameObject.GetComponent<EnemyHealth>().GetDamage(damage + (Player.Instance.combatPlayer.GetDamage() - 5), collision.gameObject);
             this.gameObject.SetActive(false);
         }
 

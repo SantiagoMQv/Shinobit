@@ -17,8 +17,9 @@ public class NPCInteraction : MonoBehaviour
     [Header("Optional -> CheckRequirements: TotalQuizCompleted")]
     [SerializeField] private NPCDialog npcDialogMissingRequirements;
     [SerializeField] private int totalQuizCompletedRequirement;
+    [SerializeField] private bool debugNotAplicateCheckRequeriments;
 
-    public NPCDialog Dialog;
+    [HideInInspector] public NPCDialog Dialog;
 
     public NPCDialog DialogMissingRequirements => npcDialogMissingRequirements;
     public Chest Chest => chest;
@@ -36,7 +37,7 @@ public class NPCInteraction : MonoBehaviour
 
     public void SetUpDialog()
     {
-        if (DialogMissingRequirements != null)
+        if (DialogMissingRequirements != null && !debugNotAplicateCheckRequeriments)
         {
             if (TotalQuizCompletedRequirement <= NinjaCodeManager.Instance.TotalQuizCompleted)
             {
