@@ -37,80 +37,109 @@ public class Inventary : Singleton<Inventary>, ISaveGame
     }
 
     public void AddItem(InventaryItem itemToAdd, int amount)
+{
+    if (itemToAdd == null)
     {
+        return;
+    }
 
-        if(itemToAdd == null)
+    if (itemToAdd.IsCumulative)
+    {
+        AddCumulativeItem(itemToAdd, amount);
+    }
+    else
+    {
+        AddNonCumulativeItem(itemToAdd, amount);
+    }
+}
+
+private void AddCumulativeItem(InventaryItem itemToAdd, int amount)
+{
+    List<int> indexs = ExistCheck(itemToAdd.ID);
+    if (indexs.Count > 0)
+    {
+        for (int i = 0; i < indexs.Count; i++)
         {
-            return;
-        }
-        // En caso de existir slots con el item que se quiere a�adir
-        List<int> indexs = ExistCheck(itemToAdd.ID);
-        if (itemToAdd.IsCumulative)
-        {
-            if(indexs.Count > 0)
+            if (inventaryItems[indexs[i]].Amount < itemToAdd.MaxAccumulation)
             {
-                for (int i = 0; i < indexs.Count; i++)
+                inventaryItems[indexs[i]].Amount += amount;
+                if (inventaryItems[indexs[i]].Amount > itemToAdd.MaxAccumulation)
                 {
-                    if(inventaryItems[indexs[i]].Amount < itemToAdd.MaxAccumulation)
-                    {
-                        inventaryItems[indexs[i]].Amount += amount;
-                        if (inventaryItems[indexs[i]].Amount > itemToAdd.MaxAccumulation)
-                        {
-                            int differenceAmount = inventaryItems[indexs[i]].Amount - itemToAdd.MaxAccumulation;
-                            inventaryItems[indexs[i]].Amount = itemToAdd.MaxAccumulation;
-                            AddItem(itemToAdd, differenceAmount);
-                        }
-                        InventaryUI.Instance.DrawnItemInInventary(itemToAdd, inventaryItems[indexs[i]].Amount, indexs[i]);
-                        return;
-                    }
+                    int differenceAmount = inventaryItems[indexs[i]].Amount - itemToAdd.MaxAccumulation;
+                    inventaryItems[indexs[i]].Amount = itemToAdd.MaxAccumulation;
+                    AddItem(itemToAdd, differenceAmount);
                 }
-            }
-        }
-
-        // En caso de no existir slots con el item que se quiere añadir
-        if(amount <= 0)
-        {
-            return;
-        }
-
-        if(amount > itemToAdd.MaxAccumulation)
-        {
-            AddItemInAvailableSlot(itemToAdd, itemToAdd.MaxAccumulation);
-            amount -= itemToAdd.MaxAccumulation;
-            AddItem(itemToAdd, amount);
-        }
-        else
-        {
-            AddItemInAvailableSlot(itemToAdd, amount);
-            //Si es un objeto especial, no es acumulable y solo se obtendrá una vez, por lo que solo existe este caso.
-            if(itemToAdd.IsSpecialItem)
-            {
-                if(itemToAdd.specialItem == SpecialItems.HealingNinjutsu)
-                {
-                    HealingNinjutsuItem healingNinjutsuItem = (HealingNinjutsuItem) itemToAdd;
-                    Player.Instance.combatPlayer.EquipHealingNinjutsu(healingNinjutsuItem);
-                    UIManager.Instance.AddHealingNinjutsuToGrid();
-                }else if (itemToAdd.specialItem == SpecialItems.SpearWeapon)
-                {
-                    WeaponItem SpearWeaponItem = (WeaponItem) itemToAdd;
-                    Player.Instance.combatPlayer.EquipSpearWeapon(SpearWeaponItem);
-                    UIManager.Instance.AddSpearToGrid();
-                }
-                else if (itemToAdd.specialItem == SpecialItems.ShurikenWeapon)
-                {
-                    WeaponItem ShurikenWeaponItem = (WeaponItem)itemToAdd;
-                    Player.Instance.combatPlayer.EquipShurikenWeapon(ShurikenWeaponItem);
-                    UIManager.Instance.AddSpearToGrid();
-                }
-                else if (itemToAdd.specialItem == SpecialItems.ShieldNinjutsu)
-                {
-                    ShieldNinjutsuItem shield = (ShieldNinjutsuItem)itemToAdd;
-                    Player.Instance.combatPlayer.EquipShieldNinjutsu(shield);
-                    UIManager.Instance.AddShieldNinjutsuToGrid();
-                }
+                UpdateInventaryUI(itemToAdd, inventaryItems[indexs[i]].Amount, indexs[i]);
+                return;
             }
         }
     }
+
+    if (amount <= 0)
+    {
+        return;
+    }
+
+    if (amount > itemToAdd.MaxAccumulation)
+    {
+        AddItemInAvailableSlot(itemToAdd, itemToAdd.MaxAccumulation);
+        amount -= itemToAdd.MaxAccumulation;
+        AddItem(itemToAdd, amount);
+    }
+    else
+    {
+        AddItemInAvailableSlot(itemToAdd, amount);
+    }
+}
+
+private void AddNonCumulativeItem(InventaryItem itemToAdd, int amount)
+{
+    if (amount <= 0)
+    {
+        return;
+    }
+
+    if (amount > 1)
+    {
+        amount = 1;
+    }
+
+    AddItemInAvailableSlot(itemToAdd, amount);
+    HandleSpecialItem(itemToAdd);
+}
+
+private void HandleSpecialItem(InventaryItem itemToAdd)
+{
+    switch (itemToAdd.specialItem)
+    {
+        case SpecialItems.HealingNinjutsu:
+            HealingNinjutsuItem healingNinjutsuItem = (HealingNinjutsuItem)itemToAdd;
+            Player.Instance.combatPlayer.EquipHealingNinjutsu(healingNinjutsuItem);
+            UIManager.Instance.AddHealingNinjutsuToGrid();
+            break;
+        case SpecialItems.SpearWeapon:
+            WeaponItem SpearWeaponItem = (WeaponItem)itemToAdd;
+            Player.Instance.combatPlayer.EquipSpearWeapon(SpearWeaponItem);
+            UIManager.Instance.AddSpearToGrid();
+            break;
+        case SpecialItems.ShurikenWeapon:
+            WeaponItem ShurikenWeaponItem = (WeaponItem)itemToAdd;
+            Player.Instance.combatPlayer.EquipShurikenWeapon(ShurikenWeaponItem);
+            UIManager.Instance.AddShurikenToGrid();
+            break;
+        case SpecialItems.ShieldNinjutsu:
+            ShieldNinjutsuItem shield = (ShieldNinjutsuItem)itemToAdd;
+            Player.Instance.combatPlayer.EquipShieldNinjutsu(shield);
+            UIManager.Instance.AddShieldNinjutsuToGrid();
+            break;
+    }
+}
+
+private void UpdateInventaryUI(InventaryItem itemToAdd, int amount, int index)
+{
+    InventaryUI.Instance.DrawnItemInInventary(itemToAdd, amount, index);
+}
+
 
     //Devuelve la lista de los index del inventario donde hay un objeto con el mismo 'itemID'
     private List<int> ExistCheck(string itemID)

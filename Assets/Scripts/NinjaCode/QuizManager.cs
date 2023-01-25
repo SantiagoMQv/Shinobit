@@ -100,7 +100,7 @@ public class QuizManager : Singleton<QuizManager>
         playerAnswer = null;
     }
 
-    public void nextQuestion()
+    private void nextQuestion()
     {
         messageAnswer.gameObject.SetActive(false);
         InitializeAllButtons();
@@ -110,7 +110,7 @@ public class QuizManager : Singleton<QuizManager>
             DisplayInfoQuizPanel();
             return;
         }
-        else if ((currentNumQuestion + 1) > totalQuestions)
+        if ((currentNumQuestion + 1) > totalQuestions)
         {
             currentQuiz.QuizCompleted = true;
             quizCompleted = true;
