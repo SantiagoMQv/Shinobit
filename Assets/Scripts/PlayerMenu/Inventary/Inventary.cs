@@ -43,7 +43,7 @@ public class Inventary : Singleton<Inventary>, ISaveGame
         {
             return;
         }
-        // En caso de existir slots con el item que se quiere añadir
+        // En caso de existir slots con el item que se quiere aï¿½adir
         List<int> indexs = ExistCheck(itemToAdd.ID);
         if (itemToAdd.IsCumulative)
         {
@@ -67,7 +67,7 @@ public class Inventary : Singleton<Inventary>, ISaveGame
             }
         }
 
-        // En caso de no existir slots con el item que se quiere añadir
+        // En caso de no existir slots con el item que se quiere aÃ±adir
         if(amount <= 0)
         {
             return;
@@ -82,27 +82,31 @@ public class Inventary : Singleton<Inventary>, ISaveGame
         else
         {
             AddItemInAvailableSlot(itemToAdd, amount);
-            //Si es un objeto especial, no es acumulable y solo se obtendrá una vez, por lo que solo existe este caso.
+            //Si es un objeto especial, no es acumulable y solo se obtendrÃ¡ una vez, por lo que solo existe este caso.
             if(itemToAdd.IsSpecialItem)
             {
                 if(itemToAdd.specialItem == SpecialItems.HealingNinjutsu)
                 {
                     HealingNinjutsuItem healingNinjutsuItem = (HealingNinjutsuItem) itemToAdd;
                     Player.Instance.combatPlayer.EquipHealingNinjutsu(healingNinjutsuItem);
+                    UIManager.Instance.AddHealingNinjutsuToGrid();
                 }else if (itemToAdd.specialItem == SpecialItems.SpearWeapon)
                 {
                     WeaponItem SpearWeaponItem = (WeaponItem) itemToAdd;
                     Player.Instance.combatPlayer.EquipSpearWeapon(SpearWeaponItem);
+                    UIManager.Instance.AddSpearToGrid();
                 }
                 else if (itemToAdd.specialItem == SpecialItems.ShurikenWeapon)
                 {
                     WeaponItem ShurikenWeaponItem = (WeaponItem)itemToAdd;
                     Player.Instance.combatPlayer.EquipShurikenWeapon(ShurikenWeaponItem);
+                    UIManager.Instance.AddSpearToGrid();
                 }
                 else if (itemToAdd.specialItem == SpecialItems.ShieldNinjutsu)
                 {
                     ShieldNinjutsuItem shield = (ShieldNinjutsuItem)itemToAdd;
                     Player.Instance.combatPlayer.EquipShieldNinjutsu(shield);
+                    UIManager.Instance.AddShieldNinjutsuToGrid();
                 }
             }
         }
@@ -180,7 +184,7 @@ public class Inventary : Singleton<Inventary>, ISaveGame
                     InventaryUI.Instance.UpdateInventaryDescription(index);
                     InventaryUI.Instance.UpdateButtons(index);
                 }
-            }else if (inventaryItems[index].Type == ItemType.Weapon) // En este caso no se "usará", sino que se "equipará"
+            }else if (inventaryItems[index].Type == ItemType.Weapon) // En este caso no se "usarï¿½", sino que se "equiparï¿½"
             {
                 InventaryUI.Instance.OpenCloseWhereEquipPanel();
             }

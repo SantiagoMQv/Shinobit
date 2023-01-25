@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5cb4775b3a9acd44a5fb5f5dd008492, type: 3}
+  m_Name: Quiz 2
+  m_EditorClassIdentifier: 
+  Name: Definir variables y OI [2]
+  ID: test2
+  NumberQuestions: 3
+  quizDifficulty: 0
+  quizProgrammingLanguage: 0
+  NPCRelacionated: {fileID: 11400000, guid: 136b09fc1d2d6ba47b5476dd83579868, type: 2}
+  PossibleFails: 1
+  quizQuestions:
+  - questionType: 0
+    QuestionText: "1 - \xBFCu\xE1l es la salida del siguiente c\xF3digo?"
+    GuideImage: {fileID: 21300000, guid: 4993e1d8ffd34bd4a93bbe108aabc3a5, type: 3}
+    CorrectAnswer: 'h7
+
+      3'
+    WrongAnswer1: h73
+    WrongAnswer2: '77
+
+      3'
+  - questionType: 0
+    QuestionText: "2- \xBFCu\xE1l es la salida del siguiente c\xF3digo?"
+    GuideImage: {fileID: 21300000, guid: c96d808bf603dbe4d950dc14146ce029, type: 3}
+    CorrectAnswer: 1 2 3
+    WrongAnswer1: 123
+    WrongAnswer2: '1
+
+      2
+
+      3'
+  - questionType: 0
+    QuestionText: "3- Si se ingresa el n\xFAmero 42 y el caracter 'h', \xBFc\xFAal
+      ser\xEDa la salida?:"
+    GuideImage: {fileID: 21300000, guid: ee9d68cc8cf04d94dab515785c1d985b, type: 3}
+    CorrectAnswer: 'h
+
+      42'
+    WrongAnswer1: 42 h
+    WrongAnswer2: '42
+
+      h'
+  Description: "Esta prueba evaluar\xE1 tus conocimientos sobre la definici\xF3n
+    de variables y sentencias de entrada y salida. "
+  BitsRewards: 75
+  quizRewardItem:
+    Item: {fileID: 0}
+    Amount: 0
+  QuestionAnswered: 0
+  QuestionRight: 0
+  QuizCompleted: 0
+  QuizPickedUp: 1

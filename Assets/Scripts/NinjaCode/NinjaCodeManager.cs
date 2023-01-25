@@ -29,16 +29,16 @@ public class NinjaCodeManager : Singleton<NinjaCodeManager>, ISaveGame
         quizAvailableToDo = new List<Quiz>();
     }
 
-    public void LoadNinjaCodeSlotInGetPanel(NPCDialog npcRelationated)
+    public void LoadNinjaCodeSlotInGetPanel(NPCDialog npcRelated)
     {
         currentNinjaCodesLoaded = new List<QuizSlot>();
         for (int i = 0; i < quizAvailableToGet.Count; i++)
         {
-            // Solo se mostrarán los que sean del lenguaje que se haya configurado en settings
+            // Solo se mostrarÃ¡n los que sean del lenguaje que se haya configurado en settings
             if(SettingsMenu.Instance.programmingLanguage == quizAvailableToGet[i].quizProgrammingLanguage)
             {
-                // Cargará solo los test que estén relacionados con el NPC que los carga.
-                if(quizAvailableToGet[i].NPCRelacionated == npcRelationated)
+                // CargarÃ¡ solo los test que estÃ©n relacionados con el NPC que los carga.
+                if(quizAvailableToGet[i].NPCRelacionated == npcRelated)
                 {
                     QuizSlot newNinjaCode = Instantiate(NinjaCodeSlotPrefab, NinjaCodeSlotContainer);
                     newNinjaCode.SetUpQuizSlotUI(quizAvailableToGet[i]);
@@ -78,7 +78,7 @@ public class NinjaCodeManager : Singleton<NinjaCodeManager>, ISaveGame
     {
         if (data.quizData == null)
         {
-            initializeQuizData(ref data.quizData);
+            initializeQuizData(out data.quizData);
         }
         List<Quiz> quizToRemove = new List<Quiz>();
         foreach (Quiz quiz in new List<Quiz>(quizAvailableToGet))
@@ -105,7 +105,7 @@ public class NinjaCodeManager : Singleton<NinjaCodeManager>, ISaveGame
     {
         if (data.quizData == null)
         {
-            initializeQuizData(ref data.quizData);
+            initializeQuizData(out data.quizData);
         }
 
         List<Quiz> allQuiz = getAllQuiz();
@@ -130,7 +130,7 @@ public class NinjaCodeManager : Singleton<NinjaCodeManager>, ISaveGame
         return newList;
     }
 
-    private void initializeQuizData(ref QuizData[] quizData)
+    private void initializeQuizData(out QuizData[] quizData)
     {
         quizData = new QuizData[getAllQuiz().Count];
         for (int i = 0; i < quizData.Length; i++)

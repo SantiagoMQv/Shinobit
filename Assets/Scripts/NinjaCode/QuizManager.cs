@@ -56,6 +56,7 @@ public class QuizManager : Singleton<QuizManager>
     public void StartQuiz(Quiz quizToComplete, QuizSlotPlayerPanel slot)
     {
         UIManager.Instance.OpenCloseNinjaCodeQuizPanel();
+        Time.timeScale = 0f;
         currentQuiz = quizToComplete;
         currentSlot = slot;
         InitializeValues();
@@ -135,6 +136,7 @@ public class QuizManager : Singleton<QuizManager>
     {
         fillerGO.SetActive(false);
         buttonsGO.SetActive(false);
+        fillerGO.GetComponent<TMP_InputField>().text = "";
         quizQuestionTMP.text = currentQuiz.quizQuestions[currentNumQuestion].QuestionText;
         quizImage.sprite = currentQuiz.quizQuestions[currentNumQuestion].GuideImage;
         if (currentQuiz.quizQuestions[currentNumQuestion].questionType == QuestionType.Options)
@@ -163,9 +165,9 @@ public class QuizManager : Singleton<QuizManager>
         if (quizCompleted)
         {
             backgroundPanel.color = new Color32(154, 255, 153, 255);
-            titleTMP.text = "¡VICTORIA!";
+            titleTMP.text = "Â¡VICTORIA!";
             titleTMP.color = new Color32(11, 84, 16, 255);
-            descriptionTMP.text = "¡Felicidades! Has obtenido:\n";
+            descriptionTMP.text = "Â¡Felicidades! Has obtenido:\n";
             if (currentQuiz.quizRewardItem.Item != null)
             {
                 InventaryItem item = currentQuiz.quizRewardItem.Item.GetComponent<ItemToAdd>().getInventaryItemReference();
@@ -183,9 +185,9 @@ public class QuizManager : Singleton<QuizManager>
         else
         {
             backgroundPanel.color = new Color32(255, 153, 161, 255);
-            titleTMP.text = "¡DERROTA!";
+            titleTMP.text = "Â¡DERROTA!";
             titleTMP.color = new Color32(84, 21, 11, 255);
-            descriptionTMP.text = "No has podido completar el reto :(\nSigue intentándolo para poder reclamar las recompensas y seguir progresando.";
+            descriptionTMP.text = "No has podido completar el reto :(\nSigue intentÃ¡ndolo para poder reclamar las recompensas y seguir progresando.";
             descriptionTMP.margin = new Vector4(0, 0, 0, 0);
             backgroundButton.color = new Color32(84, 21, 11, 255);
             textButton.color = new Color32(255, 153, 161, 255);
@@ -196,14 +198,14 @@ public class QuizManager : Singleton<QuizManager>
     public void DisplayCorrectMessage()
     {
         messageAnswer.gameObject.SetActive(true);
-        messageAnswer.text = "¡Respuesta correcta!";
+        messageAnswer.text = "Â¡Respuesta correcta!";
         messageAnswer.color = new Color32(0, 161, 12, 255);
         currentButton.GetComponent<Image>().color = new Color32(32, 255, 43, 255);
     }
     public void DisplayWrongMessage()
     {
         messageAnswer.gameObject.SetActive(true);
-        messageAnswer.text = "¡Incorrecto!";
+        messageAnswer.text = "Â¡Incorrecto!";
         messageAnswer.color = new Color32(255, 0, 37, 255);
         currentButton.GetComponent<Image>().color = new Color32(255, 32, 58, 255);
     }
@@ -259,6 +261,7 @@ public class QuizManager : Singleton<QuizManager>
         {
             currentSlot.FailedQuiz();
         }
+        Time.timeScale = 1f;
         UIManager.Instance.OpenCloseNinjaCodeInfoQuizPanel();
     }
     #endregion
@@ -276,9 +279,7 @@ static class ExtensionsClass
         {
             n--;
             int k = rng.Next(n + 1);
-            T value = list[k];
-            list[k] = list[n];
-            list[n] = value;
+            (list[k], list[n]) = (list[n], list[k]);
         }
     }
 }

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66dcd65cf37d2e24cba2a8a910fe2f75, type: 3}
+  m_Name: Dialog_dialogo_3
+  m_EditorClassIdentifier: 
+  Name: Poryu
+  Icon: {fileID: 21300000, guid: b38ef6ee8d4dfde48b8c7f50a381b52f, type: 3}
+  IncludeExtraInteraction: 1
+  ExtraInteraction: 2
+  BeginText: Revisa el cofre que hay cerca, dentro he dejado unos bits.
+  Conversation:
+  - Sentence: No sabemos bien su origen, solo que las bestias corruptas lo dejan
+      caer al ser derrotadas.
+  EndText: "Te recomiendo reunir suficientes, estoy seguro que de una u otra manera
+    te har\xE1n falta en alg\xFAn momento."

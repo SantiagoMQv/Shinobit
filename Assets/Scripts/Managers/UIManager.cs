@@ -46,7 +46,13 @@ public class UIManager : Singleton<UIManager>
     [Header("Quiz")]
     [SerializeField] private Text quizzesPassedText;
 
-
+    [Header("ItemsGUI")]
+    [SerializeField] private GameObject spearGUI;
+    [SerializeField] private GameObject healingNinjutsuGUI;
+    [SerializeField] private GameObject shurikenGUI;
+    [SerializeField] private GameObject shieldNinjutsuGUI;
+    [SerializeField] private GameObject gridItemsGUI;
+    
     private float currentHealth;
     private float maxHealth;
 
@@ -168,6 +174,9 @@ public class UIManager : Singleton<UIManager>
         colorToBlack = false;
         //backgroundStamina.color = greenColor;
     }
+    
+    
+    
     #endregion
 
     #region HealthToken
@@ -248,6 +257,7 @@ public class UIManager : Singleton<UIManager>
     public void OpenCloseNinjaCodeQuizPanel()
     {
         ninjaCodeQuizPanel.SetActive(!ninjaCodeQuizPanel.activeSelf);
+        Time.timeScale = !ninjaCodeQuizPanel.activeSelf ? 1 : 0;
     }
 
     public void OpenCloseNinjaCodeInfoQuizPanel()
@@ -263,6 +273,31 @@ public class UIManager : Singleton<UIManager>
                 break;
         }
     }
+
+    #endregion
+
+    #region ItemsGUI
+    
+    public void AddSpearToGrid()
+    {
+        Instantiate(spearGUI, gridItemsGUI.transform, true);
+    }
+    
+    public void AddHealingNinjutsuToGrid()
+    {
+        Instantiate(healingNinjutsuGUI, gridItemsGUI.transform, true);
+    }
+    
+    public void AddShurikenToGrid()
+    {
+        Instantiate(shurikenGUI, gridItemsGUI.transform, true);
+    }
+    
+    public void AddShieldNinjutsuToGrid()
+    {
+        Instantiate(shieldNinjutsuGUI, gridItemsGUI.transform, true);
+    }
+    
 
     #endregion
 }

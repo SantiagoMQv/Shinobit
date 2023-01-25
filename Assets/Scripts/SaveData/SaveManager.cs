@@ -27,9 +27,36 @@ public class SaveManager : Singleton<SaveManager>
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
     }
 
+    private void RestartAllQuiz()
+    {
+        Quiz[] quizzes = Resources.LoadAll<Quiz>("");
+        foreach (Quiz quiz in quizzes)
+        {
+            quiz.QuizPickedUp = false;
+            quiz.QuizCompleted = false;
+        }
+    }
+    
+    private void RestartAllUpgradeItems()
+    {
+        AttackUpgradeItem[] items = Resources.LoadAll<AttackUpgradeItem>("");
+        
+        foreach (AttackUpgradeItem item in items)
+        {
+            item.bitsToUpgrade = 100;
+        }
+    }
+
+    private void RestartScriptableObjects()
+    {
+        RestartAllQuiz();
+        RestartAllUpgradeItems();
+    }
+    
     public void NewGame()
     {
         this.gameData = new GameData();
+        RestartScriptableObjects();
         SaveGame();
         LoadGame();
         Debug.Log("Creando nueva partida...");
@@ -70,7 +97,9 @@ public class SaveManager : Singleton<SaveManager>
         {
             Debug.LogWarning("No se han encontrado datos del juego, se necesita empezar una partida nueva.");
         }
-        if (this.gameData.chestData == null || this.gameData.chestData.Length == 0)
+
+        var data = this.gameData;
+        if (data != null && (data.chestData == null || data.chestData.Length == 0))
         {
             InitializeChestData();
         }

@@ -45,8 +45,8 @@ public class Quiz : ScriptableObject
     public QuizRewardItem quizRewardItem;
     [HideInInspector] public int QuestionAnswered;
     [HideInInspector] public int QuestionRight;
-    [HideInInspector] public bool QuizCompleted;
-    [HideInInspector] public bool QuizPickedUp;
+     public bool QuizCompleted;
+     public bool QuizPickedUp;
 
 }
 

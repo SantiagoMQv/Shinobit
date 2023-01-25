@@ -8,7 +8,7 @@ public class DestroyableElement : MonoBehaviour, ISaveGame
 
     private bool elementDestroyed;
 
-    // Permite desde el editor generar un ID identificativo que permitir· gestionar el guardado de datos para este objeto
+    // Permite desde el editor generar un ID identificativo que permitir√° gestionar el guardado de datos para este objeto
     [ContextMenu("Generar guid para ID")]
     private void GenerateGuid()
     {

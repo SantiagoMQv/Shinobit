@@ -42,7 +42,7 @@ public class CombatPlayer : MonoBehaviour
     private bool shieldNinjutsuCountdownDone;
     private GameObject shieldNinjutsuVFX;
 
-    // Arma especial: Curaci�n (no equipable)
+    // Arma especial: Curación (no equipable)
     private HealingNinjutsuItem healingNinjutsuItem;
     private int NumTokens;
     private float HPRestoration;

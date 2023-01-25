@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467fa6fd92556aa48889caac737e486e, type: 3}
+  m_Name: FireNinjutsuItem
+  m_EditorClassIdentifier: 
+  ID: FireNinjutsu
+  Name: Ninjutsu de fuego
+  icon: {fileID: 21300000, guid: 8397f4d2a403d144bb7ccc6dcc6ab71d, type: 3}
+  Description: "Permite lanzar a su usuario una bola de fuego que har\xE1 da\xF1o
+    a los enemigos."
+  Type: 0
+  IsEquippable: 1
+  IsCumulative: 0
+  upgradeItem: 0
+  IsSpecialItem: 0
+  specialItem: 0
+  MaxAccumulation: 1
+  Amount: 0
+  Weapon: {fileID: 11400000, guid: 148f2a5b57b3a8343b1b6b52e41d0a4c, type: 2}
