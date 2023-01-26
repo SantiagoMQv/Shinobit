@@ -112,7 +112,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -125,7 +125,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_1
+      name: BlueSamurai_Idle_1
       rect:
         serializedVersion: 2
         x: 16
@@ -133,7 +133,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -146,7 +146,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_2
+      name: BlueSamurai_Idle_2
       rect:
         serializedVersion: 2
         x: 32
@@ -154,7 +154,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -167,7 +167,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_3
+      name: BlueSamurai_Idle_3
       rect:
         serializedVersion: 2
         x: 48
@@ -175,7 +175,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,10 +198,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle_1: 692197355
-      Idle_3: 1554094667
-      BlueSamurai_Idle_0: -2143962672
-      Idle_2: -1866207976
+      BlueSamurai_Idle_3: 1554094667
+      BlueSamurai_Idle_0: -1866207976
+      BlueSamurai_Idle_1: 692197355
+      BlueSamurai_Idle_2: -1866207976
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
