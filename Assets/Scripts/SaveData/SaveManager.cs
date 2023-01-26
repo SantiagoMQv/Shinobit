@@ -63,7 +63,7 @@ public class SaveManager : Singleton<SaveManager>
     }
     public void LoadGame()
     {
-        
+        RestartScriptableObjects();
         if (dataHandler.Load() != null)
         {
             // Se carga data de un fichero usando el dataHandler
