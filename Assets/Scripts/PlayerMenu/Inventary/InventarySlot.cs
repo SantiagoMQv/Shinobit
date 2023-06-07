@@ -68,6 +68,11 @@ public class InventarySlot : MonoBehaviour
         }
     }
 
+    public void SetItemIconColor(Color color)
+    {
+        itemIcon.color = color;
+    }
+    
     public void EquipWeaponContainer1()
     {
         Inventary.Instance.EquipWeaponContainer1(Index);

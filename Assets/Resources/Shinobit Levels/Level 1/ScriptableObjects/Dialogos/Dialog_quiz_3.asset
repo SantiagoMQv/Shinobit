@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66dcd65cf37d2e24cba2a8a910fe2f75, type: 3}
   m_Name: Dialog_quiz_3
   m_EditorClassIdentifier: 
-  Name: Mizukagi
+  Name: Yagnun
   Icon: {fileID: 21300000, guid: 1f85b9c510727ed4f8250a94cc75c84c, type: 3}
   IncludeExtraInteraction: 1
   ExtraInteraction: 1
-  BeginText: "\xA1Buenas! Me alegra verte por aqu\xED."
-  Conversation: []
-  EndText: "A continuaci\xF3n tienes la lista de las pruebas de C\xF3digo Ninja disponibles."
+  BeginText: "Este bosque hace no mucho era muy tranquilo, este cementerio me permit\xEDa
+    hallar una verdadera reconciliaci\xF3n conmigo mismo y mis seres queridos. "
+  Conversation:
+  - Sentence: Hallar la paz en los tiempos que corren es realmente una tarea complicada.
+  EndText: Absorbe conocimiento por el bien de la tranquilidad y la paz.

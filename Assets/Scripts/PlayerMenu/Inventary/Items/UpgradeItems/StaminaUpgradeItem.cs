@@ -11,7 +11,7 @@ public class StaminaUpgradeItem : UpgradeItem
         {
             Inventary.Instance.Player.upgradeStats.UpgradeStamina();
             bitsToUpgrade *= multiplier;
-            Mathf.Round(bitsToUpgrade);
+            bitsToUpgrade = Mathf.Round(bitsToUpgrade);
             return true;
         }
         return false;

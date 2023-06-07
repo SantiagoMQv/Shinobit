@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5cb4775b3a9acd44a5fb5f5dd008492, type: 3}
+  m_Name: Quiz 5b
+  m_EditorClassIdentifier: 
+  Name: Casting [6]
+  ID: test6
+  NumberQuestions: 5
+  quizDifficulty: 1
+  quizProgrammingLanguage: 0
+  NPCRelacionated: {fileID: 11400000, guid: 8d386d46e6130904e905bf0e785e0d8b, type: 2}
+  PossibleFails: 1
+  quizQuestions:
+  - questionType: 1
+    QuestionText: "1- \xBFCu\xE1l es la salida del siguiente c\xF3digo?"
+    GuideImage: {fileID: 21300000, guid: ef26ca078289e7e49bec35dfc8be1478, type: 3}
+    CorrectAnswer: '3
+
+      5'
+    WrongAnswer1: 
+    WrongAnswer2: 
+  - questionType: 1
+    QuestionText: "2- \xBFCu\xE1l es la salida del siguiente c\xF3digo?"
+    GuideImage: {fileID: 21300000, guid: cb034b1ab27d8c94e90826519aac1098, type: 3}
+    CorrectAnswer: 1
+    WrongAnswer1: 
+    WrongAnswer2: 
+  - questionType: 0
+    QuestionText: "5- \xBFCu\xE1l de las siguientes afirmaciones es verdadera sobre
+      la estructura de control while en C++?"
+    GuideImage: {fileID: 21300000, guid: 89ba7cba2d85af14c817103101545ed8, type: 3}
+    CorrectAnswer: C
+    WrongAnswer1: A
+    WrongAnswer2: B
+  - questionType: 1
+    QuestionText: "3- \xBFCu\xE1l ser\xE1 la salida de texto del siguiente c\xF3digo?"
+    GuideImage: {fileID: 21300000, guid: d091007d9ee786e43b994d73be7530b1, type: 3}
+    CorrectAnswer: 3 es mayor que 2
+    WrongAnswer1: 
+    WrongAnswer2: 
+  - questionType: 1
+    QuestionText: "4- \xBFCu\xE1l ser\xE1 la salida del siguiente c\xF3digo?"
+    GuideImage: {fileID: 21300000, guid: ca659e5d5fb503d40b8be4f21765aebe, type: 3}
+    CorrectAnswer: -2
+    WrongAnswer1: 
+    WrongAnswer2: 
+  Description: "Se evaluar\xE1 tu capacidad para utilizar correctamente los operadores
+    l\xF3gicos y relacionales en un programa para crear expresiones l\xF3gicas y
+    comparar valores. Se espera que seas capaz de utilizar operadores l\xF3gicos
+    como AND, OR, NOT y operadores relacionales como mayor que, menor que, igual
+    a, entre otros para crear expresiones l\xF3gicas y comparar valores en condicionales
+    y estructuras de control."
+  BitsRewards: 150
+  quizRewardItem:
+    Item: {fileID: 1742617855223945791, guid: 58e8e9544d6304947accf36962a965e2, type: 3}
+    Amount: 1
+  QuestionAnswered: 0
+  QuestionRight: 0
+  QuizCompleted: 0
+  QuizPickedUp: 0

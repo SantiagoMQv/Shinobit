@@ -12,33 +12,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cb4775b3a9acd44a5fb5f5dd008492, type: 3}
   m_Name: Quiz 3
   m_EditorClassIdentifier: 
-  Name: Estructuras de control [1]
+  Name: Estructuras de control [3]
   ID: test3
-  NumberQuestions: 2
-  quizDifficulty: 0
+  NumberQuestions: 5
+  quizDifficulty: 1
   quizProgrammingLanguage: 0
-  NPCRelacionated: {fileID: 11400000, guid: ec9c9fc6af673c146961beff9fd21a7b, type: 2}
-  PossibleFails: 1
+  NPCRelacionated: {fileID: 11400000, guid: 31512ac9fba27d74389136f307accb08, type: 2}
+  PossibleFails: 0
   quizQuestions:
   - questionType: 0
-    QuestionText: Esto e3s una prueba
-    GuideImage: {fileID: 21300000, guid: c0242e5afb014544d844e8e9ad23f8cd, type: 3}
-    CorrectAnswer: 1
-    WrongAnswer1: 2
-    WrongAnswer2: 3
-  - questionType: 1
-    QuestionText: Esto es una pru6eba
-    GuideImage: {fileID: 21300000, guid: 253d712cca3c7bb429b2488038f98334, type: 3}
-    CorrectAnswer: 'Hola
-
-      3'
-    WrongAnswer1: 2
+    QuestionText: "1- \xBFCu\xE1l es la salida del siguiente c\xF3digo?"
+    GuideImage: {fileID: 21300000, guid: b821916f1598b9141a5dd9b7b1540b16, type: 3}
+    CorrectAnswer: 5
+    WrongAnswer1: 3
+    WrongAnswer2: -2
+  - questionType: 0
+    QuestionText: "2- \xBFCu\xE1l es la salida del siguiente c\xF3digo?"
+    GuideImage: {fileID: 21300000, guid: 6f97bbcecc8ed8c4198017c43b53a2d9, type: 3}
+    CorrectAnswer: 4
+    WrongAnswer1: 3
     WrongAnswer2: 1
-  Description: En esta prueba repasaremos las estructuras de control.
-  BitsRewards: 159
+  - questionType: 1
+    QuestionText: "3- \xBFCu\xE1l es la salida del siguiente c\xF3digo?"
+    GuideImage: {fileID: 21300000, guid: 46c966fb96b84e94b8808dbadd8b6291, type: 3}
+    CorrectAnswer: '1
+
+      2'
+    WrongAnswer1: 
+    WrongAnswer2: 
+  - questionType: 1
+    QuestionText: "4- \xBFCu\xE1l es la salida del siguiente c\xF3digo?"
+    GuideImage: {fileID: 21300000, guid: b98ec4bbaebca144493d9ec9248e751a, type: 3}
+    CorrectAnswer: '0
+
+      1
+
+      2
+
+      5'
+    WrongAnswer1: '
+
+'
+    WrongAnswer2: 
+  Description: "Se evaluar\xE1 tu capacidad para utilizar estructuras de control
+    en un programa para controlar el flujo de ejecuci\xF3n. Se espera que seas capaz
+    de utilizar estructuras de control como condicionales (if, else), bucles (for,
+    while) y estructuras de selecci\xF3n (switch)."
+  BitsRewards: 170
   quizRewardItem:
     Item: {fileID: 4778483609513488409, guid: 69fff6057aae91148b01162b2dd5f1bc, type: 3}
-    Amount: 2
+    Amount: 1
   QuestionAnswered: 0
   QuestionRight: 0
   QuizCompleted: 0

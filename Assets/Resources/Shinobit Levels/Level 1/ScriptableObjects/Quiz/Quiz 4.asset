@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5cb4775b3a9acd44a5fb5f5dd008492, type: 3}
+  m_Name: Quiz 4
+  m_EditorClassIdentifier: 
+  Name: Estructuras de control [4]
+  ID: test4
+  NumberQuestions: 3
+  quizDifficulty: 0
+  quizProgrammingLanguage: 0
+  NPCRelacionated: {fileID: 11400000, guid: b881ac880bc16e54580d52fb4b7ce62b, type: 2}
+  PossibleFails: 1
+  quizQuestions:
+  - questionType: 1
+    QuestionText: "1-  \xBFCu\xE1l de las siguientes afirmaciones es verdadera sobre
+      la estructura de control if en C++?"
+    GuideImage: {fileID: 21300000, guid: cee28176828708c4ebf6f0dabcfb86ce, type: 3}
+    CorrectAnswer: B
+    WrongAnswer1: A
+    WrongAnswer2: C
+  - questionType: 0
+    QuestionText: "2- \xBFCu\xE1l es la salida del siguiente c\xF3digo?"
+    GuideImage: {fileID: 21300000, guid: 51b21a9be31f0ce458cb7bbec50f0b2a, type: 3}
+    CorrectAnswer: '1
+
+      2
+
+      4
+
+      5'
+    WrongAnswer1: '1
+
+      2
+
+      4'
+    WrongAnswer2: '1
+
+      2
+
+      3
+
+      4
+
+      5'
+  - questionType: 1
+    QuestionText: "3- \xBFCu\xE1l de las siguientes afirmaciones es verdadera sobre
+      la estructura de control while en C++?"
+    GuideImage: {fileID: 21300000, guid: 51b2a189fb525784695a321dc82d7701, type: 3}
+    CorrectAnswer: A
+    WrongAnswer1: B
+    WrongAnswer2: C
+  Description: "Se evaluar\xE1 tu capacidad para utilizar estructuras de control
+    en un programa para controlar el flujo de ejecuci\xF3n. Se espera que seas capaz
+    de utilizar estructuras de control como condicionales (if, else), bucles (for,
+    while) y estructuras de selecci\xF3n (switch)."
+  BitsRewards: 150
+  quizRewardItem:
+    Item: {fileID: 638888053112768064, guid: a4413e5324a6f4b4c9467c17dd550f5e, type: 3}
+    Amount: 1
+  QuestionAnswered: 0
+  QuestionRight: 0
+  QuizCompleted: 0
+  QuizPickedUp: 0

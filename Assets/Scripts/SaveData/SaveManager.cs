@@ -39,9 +39,9 @@ public class SaveManager : Singleton<SaveManager>
     
     private void RestartAllUpgradeItems()
     {
-        AttackUpgradeItem[] items = Resources.LoadAll<AttackUpgradeItem>("");
+        UpgradeItem[] items = Resources.LoadAll<UpgradeItem>("");
         
-        foreach (AttackUpgradeItem item in items)
+        foreach (UpgradeItem item in items)
         {
             item.bitsToUpgrade = 100;
         }

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class InventaryUI : Singleton<InventaryUI>
 {
-    [Header("Panel de descripci�n")]
+    [Header("Panel de descripci�n")]
     [SerializeField] private GameObject inventaryDescriptionPanel;
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemNameTMP;
@@ -55,7 +55,7 @@ public class InventaryUI : Singleton<InventaryUI>
     
     private void UpdateSelectedSlot()
     {
-        GameObject gameObejectSelected = EventSystem.current.currentSelectedGameObject; // Devuelve el objeto que est� siendo actualmente seleccionado
+        GameObject gameObejectSelected = EventSystem.current.currentSelectedGameObject; // Devuelve el objeto que est� siendo actualmente seleccionado
         if (gameObejectSelected == null)
         {
             inventaryDescriptionPanel.SetActive(false);
@@ -65,10 +65,19 @@ public class InventaryUI : Singleton<InventaryUI>
         InventarySlot slot = gameObejectSelected.GetComponent<InventarySlot>();
         if(slot != null)
         {
-            selectedSlot = slot;
-            UpdateInventaryDescription(selectedSlot.Index);
-            // Dibujar botones
-            UpdateButtons(selectedSlot.Index);
+            // Si el slot es de tipo UpgradeItem y no tiene ninguno, no se selecciona
+            if (Inventary.Instance.InventaryItems[slot.Index].Type == ItemType.UpgradeItem && Inventary.Instance.InventaryItems[slot.Index].Amount < 1)
+            {
+                inventaryDescriptionPanel.SetActive(false);
+            }
+            else
+            {
+                selectedSlot = slot;
+                UpdateInventaryDescription(selectedSlot.Index);
+                // Dibujar botones
+                UpdateButtons(selectedSlot.Index);
+            }
+            
         }
 
     }
@@ -79,20 +88,29 @@ public class InventaryUI : Singleton<InventaryUI>
         InventarySlot slot = availableSlot[itemIndex];
         if (itemToAdd != null)
         {
-            slot.ActivateItemIcon(true);
-            if (amount > 1)
+            if (itemToAdd.Type == ItemType.UpgradeItem && amount < 1)
             {
-                slot.ActivateBackgroundAmount(true);
+                slot.UpdateSlot(itemToAdd, amount);
+                slot.ActivateItemIcon(true); // Asegurándonos de que el ícono esté activado
+                slot.SetItemIconColor(Color.gray); // Hacer el ícono gris
+                slot.ActivateBackgroundAmount(false);
             }
-            slot.UpdateSlot(itemToAdd, amount);
-            
+            else
+            {
+                slot.ActivateItemIcon(true);
+                if (amount > 1)
+                {
+                    slot.ActivateBackgroundAmount(true);
+                }
+                slot.UpdateSlot(itemToAdd, amount);
+                slot.SetItemIconColor(Color.white); // Asegurarse de que el ícono no esté gris cuando hay ítems
+            }
         }
         else
         {
             slot.ActivateItemIcon(false);
             slot.ActivateBackgroundAmount(false);
         }
-        
     }
 
     public void UpdateInventaryDescription(int index)

@@ -9,7 +9,7 @@ public class Chest : MonoBehaviour, ISaveGame
     [SerializeField] private string id;
     [SerializeField] private bool openedChestBool;
 
-    // Permite desde el editor generar un ID identificativo que permitirá gestionar el guardado de datos para este objeto
+    // Permite desde el editor generar un ID identificativo que permitirï¿½ gestionar el guardado de datos para este objeto
     [ContextMenu("Generar guid para ID")]
     private void GenerateGuid()
     {

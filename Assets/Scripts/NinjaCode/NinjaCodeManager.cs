@@ -112,6 +112,13 @@ public class NinjaCodeManager : Singleton<NinjaCodeManager>, ISaveGame
         int i = 0;
         foreach (Quiz quiz in allQuiz)
         {
+            // Comprueba si necesitas añadir un nuevo elemento a data.quizData
+            if(i >= data.quizData.Length)
+            {
+                System.Array.Resize(ref data.quizData, i + 1); // Aumenta el tamaño del array en 1
+                data.quizData[i] = new QuizData(); // Inicializa el nuevo elemento
+            }
+
             data.quizData[i].ID = quiz.ID;
             data.quizData[i].QuizCompleted = quiz.QuizCompleted;
             data.quizData[i].QuizPickedUp = quiz.QuizPickedUp;

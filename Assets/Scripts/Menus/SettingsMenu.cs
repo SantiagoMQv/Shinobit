@@ -7,7 +7,7 @@ public class SettingsMenu : Singleton<SettingsMenu>, ISaveGame
 {
     [Header("Audio")]
     [SerializeField] public AudioMixer audioMixer;
-    [Header("Lenguaje de programación")]
+    [Header("Lenguaje de programaciï¿½n")]
     [SerializeField] public QuizProgrammingLanguage programmingLanguage;
 
     private List<Button> menuButtons;

@@ -16,9 +16,7 @@ public enum QuestionType
 
 public enum QuizProgrammingLanguage
 {
-    Cplusplus,
-    Python,
-    NuevoLenguaje
+    Cplusplus
 }
 
 [CreateAssetMenu]
@@ -45,8 +43,8 @@ public class Quiz : ScriptableObject
     public QuizRewardItem quizRewardItem;
     [HideInInspector] public int QuestionAnswered;
     [HideInInspector] public int QuestionRight;
-     public bool QuizCompleted;
-     public bool QuizPickedUp;
+    [HideInInspector]public bool QuizCompleted;
+    [HideInInspector]public bool QuizPickedUp;
 
 }
 
